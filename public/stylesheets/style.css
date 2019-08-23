@@ -2,13 +2,18 @@
     box-sizing: border-box;
 }*/
 
-/* body { */
+body {
     /* height: 100vh; */
     /* width: 800px; */
-    /* margin: 50px auto; */
+    margin-top: 50px;
+    margin-bottom: 50px;
     /* width: 1000px; */
-/* }  */
+} 
 
 /* #logo-pic {
     width: 1000px;
 } */
+
+button {
+    outline: none;
+}
