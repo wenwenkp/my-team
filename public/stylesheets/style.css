@@ -17,3 +17,7 @@ body {
 button {
     outline: none;
 }
+
+.avatar {
+    max-width: 50px;
+}

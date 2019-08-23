@@ -11,15 +11,15 @@ function index(req, res, next) {
     // let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
     // // Default to sorting by name
     // // let sortKey = req.query.sort || 'name';
-    Players.find({}, function(err, players) {
-      console.log(req.user);
-      console.log(players);
+    Players.findById(req.user.id, function(err, player) {
+      // console.log(req.user);
+      console.log(player);
     // if (err) return next(err);
     // Passing search values, name & sortKey, for use in the EJS
     res.render('players/index', { 
-      players, 
+      player, 
       user: req.user,
-      name: req.query.name, 
+      // name: req.query.name, 
     });
   });
 }

@@ -10,6 +10,10 @@ var playerSchema = new Schema({
     leader: {
         type: Boolean,
         default: false
+    },
+    team:{
+        type: Schema.Types.ObjectId, 
+        ref: 'Team'
     }
 },{
     timestamps: true

@@ -8,10 +8,17 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
 },
     function(accessToken, refreshToken, profile, cb) {
-        Player.findOne({'googleId':profile.id}, (err, player)=> {
+        Player.findOne({'googleId':profile.id}, (err, player)=>{
             if(err) return cb(err);
             if(player) {
-                return cb(null, player);
+                if (!player.avatar) {
+                    player.avatar = profile.photos[0].value;
+                    player.save((err)=>{
+                    return cb(null, player);
+                    });
+                }else{
+                    return cb(null, player);
+                }
             }else{
                 var newPlayer = new Player({
                     name: profile.displayName,

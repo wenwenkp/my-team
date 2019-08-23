@@ -2,4 +2,24 @@
 
 <h1>player main page</h1>
 
+<section>
+    <div>
+        Player: <img src="<%= player.avatar %>" alt="player avatar" class="avatar">
+    </div>
+    <div>
+        Name: <%= player.name %>
+    </div>
+    <div>
+        Favourite Team: <%= player.favTeam %>
+    </div>
+    <div>
+        Favourite Position: <%= player.favPosition %>
+    </div>
+    <% if(player.team) { %>
+    <div>
+        Title: Manager of <%= player.team %>
+    </div>
+    <% }; %>
+</section>
+
 <%- include('../partials/footer') %>
