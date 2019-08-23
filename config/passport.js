@@ -4,7 +4,7 @@ var Player = require('../models/player');
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
-    clientScrect: process.env.GOOGLE_SECRET,
+    clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
 },
     function(accessToken, refreshToken, profile, cb) {

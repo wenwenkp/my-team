@@ -1,28 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var playerCtrl = require('../controllers/players');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'My Team' });
+router.get('/', (req, res)=>{
+  res.render('index', {user: req.user});
 });
 
 router.get('/auth/google', passport.authenticate(
   'google',
-  {socpe:['profile', 'email']}
+  { scope:['profile', 'email'] }
 ));
 
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/index',
-    failureRedirect: '/index'
+    successRedirect: '/players',
+    failureRedirect: '/players'
   }
 ));
 
 router.get('/logout', (req, res)=>{
   req.logout();
-  res.redirect('index');
+  res.redirect('/');
 });
 
 module.exports = router;

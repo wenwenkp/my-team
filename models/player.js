@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var playerSchema = new Schema({
     name: String,
-    gogoleId: String,
+    googleId: String,
     avatar: String,
     favPosition: String,
     favTeam: String,
