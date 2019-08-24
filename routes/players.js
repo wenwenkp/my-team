@@ -5,6 +5,7 @@ var playersCtrl = require('../controllers/players');
 router.get('/players', isLoggedIn, playersCtrl.index);
 
 router.put('/players/join', playersCtrl.updateTeam);
+router.put('/players/leave', playersCtrl.leaveTeam);
 
 
 // POST /facts

@@ -4,6 +4,7 @@ var Teams = require('../models/team');
 module.exports = {
     index,
     updateTeam,
+    leaveTeam,
 }
 
 function index(req, res, next) {
@@ -45,5 +46,18 @@ function updateTeam (req, res, next) {
         })
       })
     })
+  });
+}
+function leaveTeam(req, res, next) {
+  console.log(req.body);
+  Players.findById(req.body.playerId, (err, player)=>{
+    player.team = null;
+    player.save();
+  });
+  Teams.findById(req.body.teamId, (err, team)=>{
+    let idx = team.players.indexOf(req.body.playerId);
+    team.players.splice(idx, 1);
+    team.save();
+    res.json(team);
   });
 }

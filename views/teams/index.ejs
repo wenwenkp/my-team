@@ -4,6 +4,11 @@
 
 <% if(player.team) { %>
     <%= player.team %>
+    <form action="/players/leave?_method=PUT" method="POST">
+        <input type="text" value="<%= player.id %>" name="playerId" hidden>
+        <input type="text" value="<%= player.team %>" name="teamId" hidden>
+        <button type="submit">Leave Team</button>
+    </form>
 <% }else{ %>
     <a href="/teams/new">Create</a>
     <a href="/teams/join">Join</a>
