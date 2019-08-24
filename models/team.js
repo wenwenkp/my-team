@@ -33,7 +33,7 @@ var matchSchema = new Schema({
         type: Date,
         required: true
     },
-    Address: {
+    address: {
         type: String,
         required: true
     }

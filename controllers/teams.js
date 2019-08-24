@@ -8,6 +8,7 @@ module.exports = {
     showTeam,
     createAnnouncement,
     showAnnouncement,
+    createMatch,
 };
 
 function index(req, res, next) {
@@ -73,5 +74,16 @@ function showAnnouncement(req, res, next) {
             team,
             post: team.announcements[targetIdx]
         })
+    })
+}
+
+function createMatch(req, res, next) {
+    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+        team.matches.push(req.body);
+        team.save();
+        res.render('teams/show', {
+            user: req.user,
+            team
+        });
     })
 }

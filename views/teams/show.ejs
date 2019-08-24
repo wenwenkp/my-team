@@ -6,7 +6,16 @@
         Content: <input type="text" name="content">
         <input type="submit" value="Create">
     </form>
+
+<form action="/teams/matches/add" method="POST">
+    With <br>
+    Team: <input type="text" name="team">
+    Time: <input type="datetime-local" name="time">
+    Address: <input type="text" name="address">
+    <input type="submit" value="Create">
+</form>
 <% }; %>
+
 
 Team Name: <%= team.name %>
 <br>
