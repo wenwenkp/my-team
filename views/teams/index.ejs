@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<% teams.forEach((team)=>{ %>
+    <div>
+        name: <%= team.name %>
+        leader: <%= team.leader %>
+        found date: <%= team.foundDate %>
+        players:
+        <% team.players.forEach((p)=>{ %>
+            <%= p.name %>
+        <% }) %>
+    </div>
+    
+<% })%>
+
+<%- include('../partials/footer') %>

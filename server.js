@@ -13,6 +13,7 @@ require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var playersRouter = require('./routes/players');
+var teamsRouter = require('./routes/teams');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/players', playersRouter);
+app.use('/teams', teamsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
