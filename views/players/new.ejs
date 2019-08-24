@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<h1>new team page</h1>
+
+<form action="/players/create" method="POST">
+    name <input type="text" name="name">
+    <input type="text" name="playerId" value="<%= playerId %>" hidden>
+    <button type="submit">Create</button>
+</form>
+
+<%- include('../partials/footer') %>
+

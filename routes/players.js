@@ -2,10 +2,13 @@ var router = require('express').Router();
 var playersCtrl = require('../controllers/players');
 
 // GET /players
-router.get('/players', isLoggedIn, playersCtrl.index);
+router.get('/', isLoggedIn, playersCtrl.index);
+router.get('/new', playersCtrl.newTeam);
+router.get('/:id', playersCtrl.showTeam);
 
-router.put('/players/join', playersCtrl.joinTeam);
-router.put('/players/leave', playersCtrl.leaveTeam);
+router.post('/create', playersCtrl.createTeam);
+
+router.put('/leave', playersCtrl.leaveTeam);
 
 
 // POST /facts

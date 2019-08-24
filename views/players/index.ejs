@@ -15,16 +15,19 @@
     <div>
         Favourite Position: <%= player.favPosition %>
     </div>
-    <% if(player.leader) { %>
+    <% if(player.isLeader) { %>
     <div>
-        Title: Manager of <%= player.team %>
+        Title: Manager of <%= team.name %>
     </div>
     <% }; %>
-    <% if(player.team) { %>
+    <% if(player.teamId) { %>
     <div>
-        Team: <%= player.team %>
+        Team: <a href="/players/<%= player.id %>"><%= team.name %></a>
     </div>
+    <% }else{; %>
+        <a href="/players/new">Create Team</a>
     <% }; %>
 </section>
 
 <%- include('../partials/footer') %>
+

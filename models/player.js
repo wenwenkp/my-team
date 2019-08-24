@@ -7,14 +7,11 @@ var playerSchema = new Schema({
     avatar: String,
     favPosition: String,
     favTeam: String,
-    leader: {
+    isLeader: {
         type: Boolean,
         default: false
     },
-    team:{
-        type: Schema.Types.ObjectId, 
-        ref: 'Team'
-    }
+    teamId: String
 },{
     timestamps: true
 });

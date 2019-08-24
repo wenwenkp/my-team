@@ -3,65 +3,78 @@ var Teams = require('../models/team');
 
 module.exports = {
     index,
-    joinTeam,
+    showTeam,
+    newTeam,
+    createTeam,
     leaveTeam,
 }
 
 function index(req, res, next) {
-    // console.log(req.body);
-    // // Make the query object to use with Student.find based up
-    // // the user has submitted the search form or now
-    // let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
-    // // Default to sorting by name
-    // // let sortKey = req.query.sort || 'name';
-    Players.findById(req.user.id, function(err, player) {
-      // console.log(req.user);
-    // if (err) return next(err);
-    // Passing search values, name & sortKey, for use in the EJS
-    res.render('players/index', { 
-      player, 
-      user: req.user,
-      // name: req.query.name, 
-    });
+    Players.findById(req.user.id, (err, player)=> {
+      Teams.findById(player.teamId, (err, team)=>{
+        res.render('players/index', {
+          user:req.user,
+          player,
+          team,
+        })
+      })
   });
 }
-function joinTeam (req, res, next) {
-  Players.findById(req.user.id, (err, player)=>{
-    player.team = req.body.teamId,
-    player.save((err)=>{
-      if(err) {
-        console.log(err);
-      };
-    })
-    Teams.findById(req.body.teamId, (err, team)=>{
-      team.players.push(player.id);
-      team.save((err)=>{
-        if(err){
-          console.log(err);
-        }
-        res.render('players/index', {
-          user: req.user,
-          team,
-          player
-        })
+function showTeam(req, res, next) {
+  Players.findById(req.params.id, (err, player)=>{
+    Teams.findById(player.teamId)
+    .populate('players')
+    .exec((err, team)=>{
+      res.render('players/team', {
+        user: player,
+        team,
+        player
       })
     })
   });
 }
 function leaveTeam(req, res, next) {
-  console.log(req.body);
-  Teams.findById(req.body.teamId, (err, team)=>{
-    let idx = team.players.indexOf(req.body.playerId);
-    team.players.splice(idx, 1);
-    team.save();
-  });
-  Players.findById(req.body.playerId, (err, player)=>{
-    player.team = null;
-    player.leader = false;
+  Players.findById(req.user.id, (err, player)=>{
+    if(player.isLeader){
+      Teams.findByIdAndDelete(player.teamId, (err, team)=>{
+        if(err)
+        console.log(err);
+      })
+    }else{
+      Teams.findById(player.teamId)
+      .populate('players')
+      .exec((err, team)=>{
+        let idx = team.players.indexOf(player.teamId);
+        team.players.splice(idx, 1);
+      })
+    };
+    player.teamId = '';
+    player.isLeader = false;
     player.save();
-    res.render('teams/index', {
-      user: player,
-      player
-    })
+    res.redirect('/players');
   });
+}
+
+function newTeam(req, res, next) {
+  res.render('players/new',{
+    user: req.user,
+    playerId: req.user.id
+  });
+}
+
+function createTeam(req, res, next) {
+  var team = new Teams(req.body);
+  Players.findById(req.body.playerId, (err, player) => {
+      player.teamId = team.id;
+      player.isLeader = true;
+      team.players.push(player.id);
+      team.leader = player.name;
+      team.save((err)=>{});
+      player.save((err)=>{});
+      res.render('players/index', {
+        player,
+        team,
+        user: player
+      });
+  })
 }

@@ -26,10 +26,7 @@ var postSchema = new Schema({
 
 var teamSchema = new Schema({
     name: String,
-    leader: {
-        type: Schema.Types.ObjectId,
-        ref: 'Player'
-    },
+    leader: String,
     players:[{
         type: Schema.Types.ObjectId, 
         ref: 'Player'
