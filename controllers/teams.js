@@ -26,13 +26,13 @@ function createTeam(req, res, next) {
     newTeam.players.push(req.user.id);
     newTeam.leader = req.user.name;
 
-    user = req.user;
-    user.teamId = newTeam.id;
-    user.isLeader = true;
-
-    res.render('players/index', {
-        user,
-        player: user,
-        team: newTeam
-    });
+    Players.findById(req.user.id, (err, p)=>{
+        p.teamId = newTeam.id;
+        p.isLeader = true;
+        p.save();
+        res.render('players/index', {
+            user: p,
+            team:newTeam
+        })
+    })
 }

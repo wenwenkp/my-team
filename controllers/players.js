@@ -34,7 +34,27 @@ function updatePlayer(req, res, next) {
 }
 
 function leaveTeam(req, res, next) {
-  res.json(req.user);
+  let user = req.user;
+  if(user.isLeader){
+    Teams.findOneAndDelete(user.teamId).populate('players').exec((err, team)=>{
+      team.players.forEach((p)=>{
+        p.teamId = '';
+      })
+      team.players = [];
+    })
+  }else{
+    Teams.findById(user.teamId, (err, team)=>{
+      let idx = team.players.indexOf(user.teamId);
+      team.players.splice(idx, 1);
+      team.save();
+    })
+  };
+  Players.findById(user.id, (err, p)=>{
+      p.isLeader = false;
+      p.teamId = '';
+      p.save();
+      res.redirect('/players');
+  })
 }
 
 

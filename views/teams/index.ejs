@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<% if(user.teamId === null){ %>
+<% if(!user.teamId){ %>
 <a href="/teams/new">Create Team</a>
 <% }; %>
 
