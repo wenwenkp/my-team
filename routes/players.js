@@ -3,22 +3,9 @@ var playersCtrl = require('../controllers/players');
 
 // GET /players
 router.get('/', isLoggedIn, playersCtrl.index);
-router.get('/new', playersCtrl.newTeam);
-router.get('/:id', playersCtrl.showTeam);
+router.get('/:id', playersCtrl.editPlayer);
 
-router.post('/create', playersCtrl.createTeam);
-
-router.put('/leave', playersCtrl.leaveTeam);
-
-
-// POST /facts
-// We will already have access to the logged in player on
-// the server, therefore do not use: /players/:id/facts
-// router.post('/facts', isLoggedIn, playersCtrl.addFact);
-
-// DELETE /facts/:id
-// router.delete('/facts/:id', playersCtrl.delFact);
-
+router.put('/:id', playersCtrl.updatePlayer);
 
 // Insert this middleware for routes that require a logged in user
 function isLoggedIn(req, res, next) {
