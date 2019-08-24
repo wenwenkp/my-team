@@ -40,8 +40,7 @@ function createTeam(req, res, next) {
 }
 
 function showTeam(req, res, next) {
-    console.log(req.user);
-    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
         res.render('teams/show', {
             user: req.user,
             team,
@@ -50,5 +49,12 @@ function showTeam(req, res, next) {
 }
 
 function createAnnouncement(req, res, next) {
-    
+    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+        team.announcements.push(req.body);
+        team.save();
+        res.render('teams/show', {
+            user: req.user,
+            team
+        });
+    })
 }

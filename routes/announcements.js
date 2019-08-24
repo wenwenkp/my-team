@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var announcementsCtrl = require('../controllers/announcements');
+var announcementsCtrl = require('../controllers/teams');
 
 router.post('/teams/announcements/add', isLoggedIn, announcementsCtrl.createAnnouncement);
 
