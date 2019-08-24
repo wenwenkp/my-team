@@ -41,12 +41,14 @@ function updatePlayer(req, res, next) {
 }
 
 function leaveTeam(req, res, next) {
-  Players.findById(req.user.id, (err, player)=>{
+  Players.findById(req.params.id, (err, player)=>{
     if(player.isLeader){
       Teams.findByIdAndDelete(player.teamId, (err, team)=>{
-        if(err)
-        console.log(err);
-      })
+        team.players.forEach((player)=>{
+          player.teamId = '';
+          team.save();
+        })
+      });
     }else{
       Teams.findById(player.teamId)
       .populate('players')

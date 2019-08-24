@@ -20,33 +20,37 @@
         Title: Manager of <%= team.name %>
     </div>
     <% }; %>
+    <a href="/players/<%= player.id %>">Edit Info</a>
+
     <% if(!player.teamId) { %>
     <div>
-        <a href="/players/team/new">Create Team</a>
+        <a href="#">Go Get a Team</a>
+    </div>
+    <% }else{ %>
+    <div>
+        <hr>
+        <div>
+                Team Name: <%= team.name %>
+                <br>
+                Team Manager: <%= team.leader %>
+                <br>
+                Teammates: 
+                <% team.players.forEach((p)=>{ %>
+                    <%= p.name %>,
+                <% }) %>
+                <br>
+                Found Date: <%= team.foundDate %>
+                <br>
+                
+                <form action="/players/leave/<%= player.id %>?_method=PUT" method="POST">
+                    <button type="submit">Leave Team</button>
+                </form>
+        </div>
     </div>
     <% }; %>
-    <div>
-        <a href="/players/<%= player.id %>">Edit Info</a>
-    </div>
+
 </section>
-<hr>
-<div>
-        Team Name: <%= team.name %>
-        <br>
-        Team Manager: <%= team.leader %>
-        <br>
-        Teammates: 
-        <% team.players.forEach((p)=>{ %>
-            <%= p.name %>,
-        <% }) %>
-        <br>
-        Found Date: <%= team.foundDate %>
-        <br>
-        
-        <form action="/players/leave?_method=PUT" method="POST">
-            <button type="submit">Leave Team</button>
-        </form>
-</div>
+
 
 <%- include('../partials/footer') %>
 
