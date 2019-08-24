@@ -21,7 +21,7 @@ function index(req, res, next) {
   });
 }
 function editPlayer(req, res, next) {
-  Players.findById(req.params.id, (err, player)=>{
+  Players.findById(req.user.id, (err, player)=>{
     res.render('players/edit', {
       player,
       user: player
@@ -31,7 +31,7 @@ function editPlayer(req, res, next) {
 }
 
 function updatePlayer(req, res, next) {
-  Players.findById(req.params.id, (err, player)=>{
+  Players.findById(req.user._id, (err, player)=>{
     player.favTeam = req.body.favTeam;
     player.favPosition = req.body.favPosition;
     player.save();
@@ -40,7 +40,7 @@ function updatePlayer(req, res, next) {
 }
 
 function leaveTeam(req, res, next) {
-  Players.findById(req.params.id, (err, player)=>{
+  Players.findById(req.params._id, (err, player)=>{
     if(player.isLeader){
       Teams.findByIdAndDelete(player.teamId, (err, team)=>{
         team.players.forEach((player)=>{

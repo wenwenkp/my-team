@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form action="/players/<%= player.id %>?_method=PUT" method="POST">
+<form action="/players?_method=PUT" method="POST">
     Favourite Team: <input type="text" name="favTeam">
     Favourite Position: <input type="text" name="favPosition">
     <button type="submit">Save</button>
