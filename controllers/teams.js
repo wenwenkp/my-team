@@ -6,6 +6,7 @@ module.exports = {
     newTeam,
     createTeam,
     showTeam,
+    createAnnouncement,
 };
 
 function index(req, res, next) {
@@ -46,4 +47,8 @@ function showTeam(req, res, next) {
             team,
         })
     })
+}
+
+function createAnnouncement(req, res, next) {
+    
 }

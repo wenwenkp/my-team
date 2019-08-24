@@ -1,7 +1,11 @@
 <%- include('../partials/header') %>
 
 <%= if(user.isLeader) { %>
-    <a href="/teams/announcement/new">Create announcement</a>
+    <form action="/teams/announcements/add" method="POST">
+        <input type="text" name="title">
+        <input type="text" name="content">
+        <input type="submit" value="Create">
+    </form>
 <% } %>
 
 Team Name: <%= team.name %>

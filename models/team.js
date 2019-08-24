@@ -8,7 +8,7 @@ var commentSchema = new Schema({
     }
 });
 
-var postSchema = new Schema({
+var announcementSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -39,7 +39,7 @@ var teamSchema = new Schema({
         type: Date,
         default: () => { return new Date;}
     },
-    posts:[postSchema],
+    announcements:[announcementSchema],
 },{
     timestamps: true
 });
