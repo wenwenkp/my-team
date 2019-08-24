@@ -57,6 +57,7 @@ function leaveTeam(req, res, next) {
   });
   Players.findById(req.body.playerId, (err, player)=>{
     player.team = null;
+    player.leader = false;
     player.save();
     res.render('teams/index', {
       user: player,

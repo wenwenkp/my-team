@@ -45,6 +45,7 @@ function createTeam(req, res, next) {
     var team = new Teams(req.body);
     Players.findById(req.user.id, (err, player) => {
         player.team = team.id;
+        player.leader = true;
         team.players.push(player.id);
         team.save((err)=>{
             if(err) {
