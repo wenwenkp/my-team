@@ -11,6 +11,7 @@ require('./config/database');
 require('./config/passport');
 
 var indexRouter = require('./routes/index');
+var teamsRouter = require('./routes/teams');
 var playersRouter = require('./routes/players');
 
 var app = express();
@@ -33,6 +34,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/', teamsRouter);
 app.use('/', playersRouter);
 
 // catch 404 and forward to error handler

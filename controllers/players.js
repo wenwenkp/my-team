@@ -13,7 +13,6 @@ function index(req, res, next) {
     // // let sortKey = req.query.sort || 'name';
     Players.findById(req.user.id, function(err, player) {
       // console.log(req.user);
-      console.log(player);
     // if (err) return next(err);
     // Passing search values, name & sortKey, for use in the EJS
     res.render('players/index', { 

@@ -15,9 +15,14 @@
     <div>
         Favourite Position: <%= player.favPosition %>
     </div>
-    <% if(player.team) { %>
+    <% if(player.leader) { %>
     <div>
         Title: Manager of <%= player.team %>
+    </div>
+    <% }; %>
+    <% if(player.team) { %>
+    <div>
+        Team: <%= player.team %>
     </div>
     <% }; %>
 </section>
