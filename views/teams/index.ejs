@@ -1,14 +1,18 @@
 <%- include('../partials/header') %>
 
+<% if(!user.teamId){ %>
+<a href="/teams/new">Create Team</a>
+<% }; %>
+
 <% teams.forEach((team)=>{ %>
     <div>
         name: <%= team.name %>
         leader: <%= team.leader %>
         found date: <%= team.foundDate %>
-        players:
-        <% team.players.forEach((p)=>{ %>
-            <%= p.name %>
-        <% }) %>
+
+        <% if(!user.teamId){ %>
+            <a href="#">Join</a>
+        <% } %>
     </div>
     
 <% })%>
