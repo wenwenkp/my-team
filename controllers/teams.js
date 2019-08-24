@@ -9,6 +9,7 @@ module.exports = {
     createAnnouncement,
     showAnnouncement,
     createMatch,
+    deleteMatch,
 };
 
 function index(req, res, next) {
@@ -85,5 +86,21 @@ function createMatch(req, res, next) {
             user: req.user,
             team
         });
+    })
+}
+function deleteMatch(req, res, next) {
+    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+        let targetIdx;
+        team.matches.forEach((m, idx)=>{
+            if(m.id === req.params.id){
+                targetIdx = idx;
+            }
+        });
+        team.matches.splice(targetIdx, 1);
+        team.save();
+        res.render('teams/show', {
+            user: req.user,
+            team
+        })
     })
 }

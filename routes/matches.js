@@ -2,6 +2,7 @@ var router = require('express').Router();
 var matchesCtrl = require('../controllers/teams');
 
 router.post('/teams/matches/add', isLoggedIn, matchesCtrl.createMatch);
+router.delete('/teams/matches/:id', isLoggedIn, matchesCtrl.deleteMatch);
 
 
 // Insert this middleware for routes that require a logged in user
