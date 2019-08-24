@@ -7,6 +7,7 @@ module.exports = {
     createTeam,
     showTeam,
     createAnnouncement,
+    deleteAnnouncement,
     showAnnouncement,
     createMatch,
     deleteMatch,
@@ -59,6 +60,22 @@ function createAnnouncement(req, res, next) {
             user: req.user,
             team
         });
+    })
+}
+function deleteAnnouncement(req, res, next) {
+    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+        let targetIdx;
+        team.announcements.forEach((a, idx)=>{
+            if(a.id === req.params.id){
+                targetIdx = idx;
+            }
+        });
+        team.announcements.splice(targetIdx, 1);
+        team.save();
+        res.render('teams/show', {
+            user: req.user,
+            team
+        })
     })
 }
 

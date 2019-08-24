@@ -3,6 +3,7 @@ var announcementsCtrl = require('../controllers/teams');
 
 router.post('/teams/announcements/add', isLoggedIn, announcementsCtrl.createAnnouncement);
 router.get('/teams/announcements/:id', isLoggedIn, announcementsCtrl.showAnnouncement);
+router.delete('/teams/announcements/:id', isLoggedIn, announcementsCtrl.deleteAnnouncement);
 
 
 // Insert this middleware for routes that require a logged in user
