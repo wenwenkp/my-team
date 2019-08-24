@@ -40,7 +40,7 @@ function createTeam(req, res, next) {
 }
 
 function showTeam(req, res, next) {
-    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
         res.render('teams/show', {
             user: req.user,
             team,

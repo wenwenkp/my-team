@@ -6,7 +6,7 @@
 
 <% teams.forEach((team)=>{ %>
     <div>
-        <a href="/teams/show">Team Name: <%= team.name %></a>
+        <a href="/teams/<%= team.id %>">Team Name: <%= team.name %></a>
         leader: <%= team.leader %>
         found date: <%= team.foundDate %>
 
