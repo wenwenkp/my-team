@@ -38,6 +38,8 @@ Team players:
     </tbody>
 </table>                
 
+<% if(user.teamId === team.id) { %>
+
 <h3>Team's Announcement:</h3>
 <table>
     <thead>
@@ -56,5 +58,7 @@ Team players:
 
     </tbody>
 </table>
+
+<% } %>
 
 <%- include('../partials/footer') %>

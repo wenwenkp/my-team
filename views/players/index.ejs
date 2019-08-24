@@ -22,9 +22,15 @@
     <% }; %>
     <a href="/players/edit">Edit Info</a>
 
-    <% if(user.teamId) { %>
-    <hr>
-    <div>
+</section>
+
+    <% if(user.teamId == '') { %>
+        <div>
+                <a href="#">Go Get a Team</a>
+            </div>
+    <% }else{ %>
+
+            <div>
              <a href="/teams/<%= team.id %>">Team Name: <%= team.name %></a>
             <br>
             Team Manager: <%= team.leader %>
@@ -32,19 +38,11 @@
             Found Date: <%= team.foundDate %>
             <br>
             
-            <form action="/players/leave?_method=PUT" method="POST">
-                <button type="submit">Leave Team</button>
-            </form>
-    </div>
 
-    <% }else{ %>
-        <div>
-            <a href="#">Go Get a Team</a>
-        </div>
+    </div>
 
     <% }; %>
 
-</section>
 
 
 <%- include('../partials/footer') %>
