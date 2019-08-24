@@ -5,7 +5,6 @@ module.exports = {
     index,
     editPlayer,
     updatePlayer,
-    leaveTeam,
 }
 
 function index(req, res, next) {
