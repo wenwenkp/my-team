@@ -6,6 +6,7 @@ module.exports = {
     editPlayer,
     updatePlayer,
     leaveTeam,
+    joinTeam,
 }
 
 function index(req, res, next) {
@@ -54,6 +55,18 @@ function leaveTeam(req, res, next) {
       p.teamId = '';
       p.save();
       res.redirect('/players');
+  })
+}
+
+function joinTeam(req, res, next) {
+  Teams.findById(req.body.teamId, (err, team)=>{
+    team.players.push(req.user.id);
+    team.save();
+    Players.findById(req.user.id, (err, p)=>{
+      p.teamId = team.id;
+      p.save();
+      res.redirect('/players');
+    })
   })
 }
 
