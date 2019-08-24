@@ -4,49 +4,49 @@
 
 <section>
     <div>
-        Player: <img src="<%= player.avatar %>" alt="player avatar" class="avatar">
+        Player: <img src="<%= user.avatar %>" alt="player avatar" class="avatar">
     </div>
     <div>
-        Name: <%= player.name %>
+        Name: <%= user.name %>
     </div>
     <div>
-        Favourite Team: <%= player.favTeam %>
+        Favourite Team: <%= user.favTeam %>
     </div>
     <div>
-        Favourite Position: <%= player.favPosition %>
+        Favourite Position: <%= user.favPosition %>
     </div>
-    <% if(player.isLeader) { %>
+    <% if(user.isLeader) { %>
     <div>
         Title: Manager of <%= team.name %>
     </div>
     <% }; %>
     <a href="/players/edit">Edit Info</a>
 
-    <% if(!player.teamId) { %>
+    <% if(user.teamId) { %>
+    <hr>
     <div>
-        <a href="#">Go Get a Team</a>
+            Team Name: <%= team.name %>
+            <br>
+            Team Manager: <%= team.leader %>
+            <br>
+            Teammates: 
+            <% team.players.forEach((p)=>{ %>
+                <%= p.name %>,
+            <% }) %>
+            <br>
+            Found Date: <%= team.foundDate %>
+            <br>
+            
+            <form action="/players/leave?_method=PUT" method="POST">
+                <button type="submit">Leave Team</button>
+            </form>
     </div>
+
     <% }else{ %>
-    <div>
-        <hr>
         <div>
-                Team Name: <%= team.name %>
-                <br>
-                Team Manager: <%= team.leader %>
-                <br>
-                Teammates: 
-                <% team.players.forEach((p)=>{ %>
-                    <%= p.name %>,
-                <% }) %>
-                <br>
-                Found Date: <%= team.foundDate %>
-                <br>
-                
-                <form action="/players/leave/<%= player.id %>?_method=PUT" method="POST">
-                    <button type="submit">Leave Team</button>
-                </form>
+            <a href="#">Go Get a Team</a>
         </div>
-    </div>
+
     <% }; %>
 
 </section>

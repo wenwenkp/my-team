@@ -5,6 +5,7 @@ var playersCtrl = require('../controllers/players');
 router.get('/', isLoggedIn, playersCtrl.index);
 router.get('/edit', playersCtrl.editPlayer);
 router.put('/', playersCtrl.updatePlayer);
+router.put('/leave', playersCtrl.leaveTeam);
 
 // Insert this middleware for routes that require a logged in user
 function isLoggedIn(req, res, next) {

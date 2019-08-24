@@ -5,29 +5,23 @@ module.exports = {
     index,
     editPlayer,
     updatePlayer,
+    leaveTeam,
 }
 
 function index(req, res, next) {
-    Players.findById(req.user.id, (err, player)=> {
-      Teams.findById(player.teamId)
+      Teams.findById(req.user.teamId)
     .populate('players')
     .exec((err, team)=>{
       res.render('players/index', {
-        user: player,
+        user: req.user,
         team,
-        player
       })
     })
-  });
 }
 function editPlayer(req, res, next) {
-  Players.findById(req.user.id, (err, player)=>{
     res.render('players/edit', {
-      player,
-      user: player
+      user: req.user
     });
-
-  })
 }
 
 function updatePlayer(req, res, next) {
@@ -40,27 +34,7 @@ function updatePlayer(req, res, next) {
 }
 
 function leaveTeam(req, res, next) {
-  Players.findById(req.params._id, (err, player)=>{
-    if(player.isLeader){
-      Teams.findByIdAndDelete(player.teamId, (err, team)=>{
-        team.players.forEach((player)=>{
-          player.teamId = '';
-          team.save();
-        })
-      });
-    }else{
-      Teams.findById(player.teamId)
-      .populate('players')
-      .exec((err, team)=>{
-        let idx = team.players.indexOf(player.teamId);
-        team.players.splice(idx, 1);
-      })
-    };
-    player.teamId = '';
-    player.isLeader = false;
-    player.save();
-    res.redirect('/players');
-  });
+  res.json(req.user);
 }
 
 
