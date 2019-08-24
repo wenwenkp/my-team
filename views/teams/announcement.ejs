@@ -7,9 +7,29 @@
 <h4>Time: <%= post.time %></h4>
 <p><%= post.content %></p>
 
+<h2>Input:</h2>
+<form action="/teams/comments/<%= post.id %>" method="POST">
+    <input type="text" name="text">
+    <input type="submit" value="Submit">
+</form>
 
-
-<h3>comments:</h3>
-
+    <h3>comments:</h3>
+    <% post.comments.forEach((c)=>{ %>
+    <table>
+        <thead>
+            <th>Time: </th>
+            <th>By: </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>At <%= c.time %></td>
+                <td>By <%= c.author %></td>
+            </tr>
+            <tr>
+                <td><%= c.text %></td>
+            </tr>
+        </tbody>
+    </table>
+    <% }) %>
 
 <%- include('../partials/footer') %>

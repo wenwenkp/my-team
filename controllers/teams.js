@@ -11,6 +11,7 @@ module.exports = {
     showAnnouncement,
     createMatch,
     deleteMatch,
+    createComment,
 };
 
 function index(req, res, next) {
@@ -118,6 +119,25 @@ function deleteMatch(req, res, next) {
         res.render('teams/show', {
             user: req.user,
             team
+        })
+    })
+}
+
+function createComment(req, res, next) {
+    Teams.findById(req.user.teamId, (err, team)=>{
+        let targetIdx;
+        team.announcements.forEach((a, idx)=>{
+            if(a.id === req.params.id){
+                targetIdx = idx;
+            }
+        });
+        req.body.author = req.user.name;
+        team.announcements[targetIdx].comments.push(req.body);
+        team.save();
+        res.render('teams/announcement', {
+            user: req.user,
+            team,
+            post: team.announcements[targetIdx]
         })
     })
 }
