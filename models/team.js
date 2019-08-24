@@ -24,6 +24,21 @@ var announcementSchema = new Schema({
     comments: [commentSchema]
 });
 
+var matchSchema = new Schema({
+    team: {
+        type: String,
+        required: true
+    },
+    time: {
+        type: Date,
+        required: true
+    },
+    Address: {
+        type: String,
+        required: true
+    }
+});
+
 var teamSchema = new Schema({
     name: String,
     leader: String,
@@ -31,10 +46,7 @@ var teamSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'Player'
     }],
-    matches:[{
-        type: Schema.Types.ObjectId,
-        ref: 'Match'
-    }],
+    matches:[matchSchema],
     foundDate: {
         type: Date,
         default: () => { return new Date;}
