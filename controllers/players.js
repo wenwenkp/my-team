@@ -10,23 +10,22 @@ module.exports = {
 }
 
 function index(req, res, next) {
-  if(req.user.teamId) {
-    Teams.findById(req.user.teamId)
-    .populate('players')
-    .exec((err, team)=>{
-      res.render('players/index', {
-        user: req.user,
-        team,
-      })
-    })
-  }else{
-    Players.findById(req.user.id, (err, player)=>{
+  // if(req.user.teamId) {
+  //   Teams.findById(req.user.teamId)
+  //   .populate('players')
+  //   .exec((err, team)=>{
+  //     res.render('players/index', {
+  //       user: req.user,
+  //       team,
+  //     })
+  //   })
+  // }else{
+    // Players.findById(req.user.id, (err, player)=>{
       res.render('players/index', {
         user: req.user,
       });
-    })
-  }
-      
+    // })
+  // }
 }
 function editPlayer(req, res, next) {
     res.render('players/edit', {
@@ -39,7 +38,9 @@ function updatePlayer(req, res, next) {
     player.favTeam = req.body.favTeam;
     player.favPosition = req.body.favPosition;
     player.save();
-    res.redirect('/players');
+    res.render('players/index',{
+      user: player
+    });
   });
 }
 

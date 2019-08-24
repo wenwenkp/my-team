@@ -55,6 +55,10 @@ var teamSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'Player'
     }],
+    description:{
+        type: String,
+        required: true
+    },
     matches:[matchSchema],
     foundDate: {
         type: Date,
