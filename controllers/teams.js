@@ -5,6 +5,7 @@ module.exports = {
     index,
     newTeam,
     createTeam,
+    showTeam,
 };
 
 function index(req, res, next) {
@@ -33,6 +34,16 @@ function createTeam(req, res, next) {
         res.render('players/index', {
             user: p,
             team:newTeam
+        })
+    })
+}
+
+function showTeam(req, res, next) {
+    console.log(req.user);
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        res.render('teams/show', {
+            user: req.user,
+            team,
         })
     })
 }

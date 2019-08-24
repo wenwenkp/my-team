@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<%= if(user.isLeader) { %>
+    <a href="/teams/announcement/new">Create announcement</a>
+<% } %>
+
+Team Name: <%= team.name %>
+<br>
+Team Found Date: <%= team.foundDate %>
+<br>
+Team Manager: <%= team.leader %>
+<br>
+Team players: 
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Picture</th>
+        <th></th>
+    </thead>
+    <tbody>
+    <% team.players.forEach((p)=>{ %>
+        <tr>
+            <td><%= p.name %></td>
+            <td><%= p.favPosition %></td>
+            <td><img src="<%= p.avatar %>" alt="player avatar" class="p-avatar"></td>
+            <td>
+                <% if(p.isLeader) { %>
+                    Leader
+                <% } %>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>                
+
+
+<%- include('../partials/footer') %>

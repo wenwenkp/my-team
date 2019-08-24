@@ -25,14 +25,9 @@
     <% if(user.teamId) { %>
     <hr>
     <div>
-            Team Name: <%= team.name %>
+             <a href="/teams/<%= team.id %>">Team Name: <%= team.name %></a>
             <br>
             Team Manager: <%= team.leader %>
-            <br>
-            Teammates: 
-            <% team.players.forEach((p)=>{ %>
-                <%= p.name %>,
-            <% }) %>
             <br>
             Found Date: <%= team.foundDate %>
             <br>

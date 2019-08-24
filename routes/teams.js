@@ -5,6 +5,8 @@ router.get('/', isLoggedIn, teamsCtrl.index);
 router.get('/new', isLoggedIn, teamsCtrl.newTeam);
 router.post('/', isLoggedIn, teamsCtrl.createTeam);
 
+router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
+
 // Insert this middleware for routes that require a logged in user
 function isLoggedIn(req, res, next) {
     if ( req.isAuthenticated() ) return next();
