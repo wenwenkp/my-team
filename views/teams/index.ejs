@@ -2,16 +2,19 @@
 
 <h1>team main page</h1>
 
+<% if(!player.team) { %>
+    <a href="/teams/new">Create</a>
+<% } %>
+<a href="/teams/find">All teams</a>
+
 <% if(player.team) { %>
-    <%= player.team %>
+    <div>My team:
+    <%= player.team %></div>
     <form action="/players/leave?_method=PUT" method="POST">
         <input type="text" value="<%= player.id %>" name="playerId" hidden>
         <input type="text" value="<%= player.team %>" name="teamId" hidden>
         <button type="submit">Leave Team</button>
     </form>
-<% }else{ %>
-    <a href="/teams/new">Create</a>
-    <a href="/teams/find">Join</a>
 <% } %>
 
 

@@ -4,9 +4,12 @@
 
 <% teams.forEach((team)=>{ %>
    <div><%= team.name %> , <%= team.foundDate %></div>
+<% if(!player.team) { %>
    <form action="/players/join?_method=PUT" method="POST">
     <input type="text" value="<%= team.id %>" name="teamId" hidden>
     <button type="submit">join</button>
+    <% } %>
+
     </form>
 <% }) %>
 

@@ -72,9 +72,12 @@ function createTeam(req, res, next) {
 }
 function findTeam(req, res, next) {
     Teams.find({}, (err, teams)=>{
-        res.render('teams/show', {
-            user: req.user,
-            teams
+        Players.findById(req.user.id, (err, player)=>{
+            res.render('teams/show', {
+                user: req.user,
+                teams,
+                player
+        })
         })
     });
 }
