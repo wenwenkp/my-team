@@ -6,7 +6,8 @@ module.exports = {
 }
 
 function index(req, res, next) {
-    Teams.find({}, (err, teams)=>{
+    Teams.find({}).populate('players').exec((err, teams)=>{
+        console.log(teams);
         res.render('teams/index', {
             user: req.user,
             teams,

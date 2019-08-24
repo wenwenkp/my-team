@@ -7,10 +7,12 @@
     <br>
     Found Date: <%= team.foundDate %>
     <br>
-    <!-- Players #: <%= team.players.length() %> -->
+    Manager: <%= team.leader %>
     <br>
-    Manager: pending
-    <br>
+    Members: 
+    <% team.players.forEach((p)=>{ %>
+        <span><%= p.name %></span>,
+    <% }) %>
     <br>
 <% }) %>
 
