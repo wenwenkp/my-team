@@ -15,33 +15,11 @@
     <div>
         Favourite Position: <%= user.favPosition %>
     </div>
-    <% if(user.isLeader) { %>
-    <div>
-        Title: Manager of <%= team.name %>
-    </div>
-    <% }; %>
     <a href="/players/edit">Edit Info</a>
 
 </section>
 
-    <% if(user.teamId == '') { %>
-        <div>
-                <a href="#">Go Get a Team</a>
-            </div>
-    <% }else{ %>
-
-            <div>
-             <a href="/teams/<%= team.id %>">Team Name: <%= team.name %></a>
-            <br>
-            Team Manager: <%= team.leader %>
-            <br>
-            Found Date: <%= team.foundDate %>
-            <br>
-            
-
-    </div>
-
-    <% }; %>
+        <a href="/teams/<%= user.teamId %>">Check My Team</a>
 
 
 

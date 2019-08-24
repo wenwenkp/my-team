@@ -8,8 +8,10 @@
 
 <hr>
 
+<% if(user.teamId) { %>
 <form action="/players/leave?_method=PUT" method="POST">
     <button type="submit">Leave Team</button>
 </form>
+<% } %>
 
 <%- include('../partials/footer') %>

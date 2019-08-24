@@ -10,7 +10,8 @@ module.exports = {
 }
 
 function index(req, res, next) {
-      Teams.findById(req.user.teamId)
+  if(req.user.teamId) {
+    Teams.findById(req.user.teamId)
     .populate('players')
     .exec((err, team)=>{
       res.render('players/index', {
@@ -18,6 +19,14 @@ function index(req, res, next) {
         team,
       })
     })
+  }else{
+    Players.findById(req.user.id, (err, player)=>{
+      res.render('players/index', {
+        user: req.user,
+      });
+    })
+  }
+      
 }
 function editPlayer(req, res, next) {
     res.render('players/edit', {
@@ -57,6 +66,7 @@ function leaveTeam(req, res, next) {
       }) 
   };
   Players.findById(user.id, (err, p)=>{
+    p.isLeader = false;
     p.teamId = '';
     p.save();
     res.redirect('/players');
