@@ -5,6 +5,7 @@ module.exports = {
     index,
     newTeam,
     createTeam,
+    joinTeam,
 }
 
 function index(req, res, next) {
@@ -23,7 +24,7 @@ function index(req, res, next) {
         res.render('teams/index', {
             player,
             user: req.user,
-            playerTeam: player.team
+            // playerTeam: player.team
         })
     //   }
     // if (err) return next(err);
@@ -42,13 +43,14 @@ function newTeam(req, res, next) {
 }
 function createTeam(req, res, next) {
     var team = new Teams(req.body);
-    team.save((err)=>{
-        if(err) {
-            console.log(err);
-        };
-    });
     Players.findById(req.user.id, (err, player) => {
         player.team = team.id;
+        team.players.push(player.id);
+        team.save((err)=>{
+            if(err) {
+                console.log(err);
+            }
+        });
         player.save((err)=>{
             if(err){
                 console.log(err);
@@ -56,9 +58,9 @@ function createTeam(req, res, next) {
             res.render('teams/index', {
                 player,
                 team,
-                user: req,user
+                user: req.user
             });
-        })
+        });
     });
     // Players.findById(req.user.id, (err, player)=>{
     //     res.render('teams/new', {
@@ -66,4 +68,12 @@ function createTeam(req, res, next) {
     //         user: req.user
     //     });
     // })
+}
+function joinTeam(req, res, next) {
+    Teams.find({}, (err, teams)=>{
+        res.render('teams/join', {
+            user: req.user,
+            teams
+        })
+    });
 }

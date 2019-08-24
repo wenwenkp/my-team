@@ -4,6 +4,9 @@ var playersCtrl = require('../controllers/players');
 // GET /players
 router.get('/players', isLoggedIn, playersCtrl.index);
 
+router.put('/players/join', playersCtrl.updateTeam);
+
+
 // POST /facts
 // We will already have access to the logged in player on
 // the server, therefore do not use: /players/:id/facts

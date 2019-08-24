@@ -1,7 +1,9 @@
 var Players = require('../models/player');
+var Teams = require('../models/team');
 
 module.exports = {
     index,
+    updateTeam,
 }
 
 function index(req, res, next) {
@@ -20,5 +22,28 @@ function index(req, res, next) {
       user: req.user,
       // name: req.query.name, 
     });
+  });
+}
+function updateTeam (req, res, next) {
+  Players.findById(req.user.id, (err, player)=>{
+    player.team = req.body.teamId,
+    player.save((err)=>{
+      if(err) {
+        console.log(err);
+      };
+    })
+    Teams.findById(req.body.teamId, (err, team)=>{
+      team.players.push(player.id);
+      team.save((err)=>{
+        if(err){
+          console.log(err);
+        }
+        res.render('players/index', {
+          user: req.user,
+          team,
+          player
+        })
+      })
+    })
   });
 }

@@ -4,8 +4,11 @@ var teamsCtrl = require('../controllers/teams');
 // GET /players
 router.get('/teams', isLoggedIn, teamsCtrl.index);
 router.get('/teams/new', teamsCtrl.newTeam);
+router.get('/teams/join', teamsCtrl.joinTeam);
 
 router.post('/teams', teamsCtrl.createTeam);
+
+
 
 
 // POST /facts

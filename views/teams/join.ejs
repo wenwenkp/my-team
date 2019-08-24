@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<h1>join team main page</h1>
+
+<% teams.forEach((team)=>{ %>
+   <div><%= team.name %> , <%= team.foundDate %></div>
+   <form action="/players/join?_method=PUT" method="POST">
+    <input type="text" value="<%= team.id %>" name="teamId" hidden>
+    <button type="submit">join</button>
+    </form>
+<% }) %>
+
+
+<%- include('../partials/footer') %>
