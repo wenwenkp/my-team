@@ -43,15 +43,14 @@ Team players:
     <thead>
         <th>Title</th>
         <th>Date</th>
+        <th></th>
     </thead>
     <tbody>
         <% team.announcements.forEach((post)=>{ %>
         <tr>
             <td><%= post.title %></td>
             <td><%= post.time %></td>
-        </tr>
-        <tr>
-            <td><%= post.content %></td>
+            <td><a href="/teams/announcements/<%= post.id %>">Details</a></td>
         </tr>
         <% }) %>
 

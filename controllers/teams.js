@@ -7,6 +7,7 @@ module.exports = {
     createTeam,
     showTeam,
     createAnnouncement,
+    showAnnouncement,
 };
 
 function index(req, res, next) {
@@ -56,5 +57,21 @@ function createAnnouncement(req, res, next) {
             user: req.user,
             team
         });
+    })
+}
+
+function showAnnouncement(req, res, next) {
+    Teams.findById(req.user.teamId, (err, team)=>{
+        let targetIdx;
+        team.announcements.forEach((post, idx)=>{
+            if(post.id === req.params.id){
+                targetIdx = idx;
+            }
+        });
+        res.render('teams/announcement', {
+            user: req.user,
+            team,
+            post: team.announcements[targetIdx]
+        })
     })
 }
