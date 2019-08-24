@@ -5,7 +5,7 @@ module.exports = {
     index,
     newTeam,
     createTeam,
-    joinTeam,
+    findTeam,
 }
 
 function index(req, res, next) {
@@ -69,9 +69,9 @@ function createTeam(req, res, next) {
     //     });
     // })
 }
-function joinTeam(req, res, next) {
+function findTeam(req, res, next) {
     Teams.find({}, (err, teams)=>{
-        res.render('teams/join', {
+        res.render('teams/show', {
             user: req.user,
             teams
         })
