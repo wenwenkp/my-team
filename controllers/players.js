@@ -38,9 +38,10 @@ function updatePlayer(req, res, next) {
     player.favTeam = req.body.favTeam;
     player.favPosition = req.body.favPosition;
     player.save();
-    res.render('players/index',{
-      user: player
-    });
+    res.redirect(`/players`);
+    // res.render('players/index',{
+    //   user: player
+    // });
   });
 }
 
