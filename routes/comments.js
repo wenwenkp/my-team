@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var commentsCtrl = require('../controllers/teams');
 
-router.post('/teams/comments/:id', isLoggedIn, commentsCtrl.createComment);
+router.post('/teams/comments/:id', commentsCtrl.createComment);
 
 
 // Insert this middleware for routes that require a logged in user
