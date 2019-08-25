@@ -3,7 +3,7 @@ var teamsCtrl = require('../controllers/teams');
 
 router.get('/', isLoggedIn, teamsCtrl.index);
 router.get('/edit', teamsCtrl.editTeam);
-router.get('/new', isLoggedIn, teamsCtrl.newTeam);
+router.get('/new', teamsCtrl.newTeam);
 router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
 
 router.post('/', isLoggedIn, teamsCtrl.createTeam);
