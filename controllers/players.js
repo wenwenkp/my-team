@@ -20,11 +20,11 @@ function index(req, res, next) {
   //     })
   //   })
   // }else{
-    // Players.findById(req.user.id, (err, player)=>{
+    Players.findById(req.user.id, (err, player)=>{
       res.render('players/index', {
-        user: req.user,
+        user: player,
       });
-    // })
+    })
   // }
 }
 function editPlayer(req, res, next) {

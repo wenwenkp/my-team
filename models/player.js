@@ -11,7 +11,10 @@ var playerSchema = new Schema({
         type: Boolean,
         default: false
     },
-    teamId: String
+    teamId: {
+        type: String,
+        default: ''
+    }
 },{
     timestamps: true
 });

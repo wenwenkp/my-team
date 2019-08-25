@@ -2,6 +2,7 @@
 
 <% if(user.isLeader) { %>
 <% if(user.teamId === team.id) { %>
+
     <form action="/teams/announcements/add" method="POST">
         Title: <input type="text" name="title">
         Content: <input type="text" name="content">
@@ -15,6 +16,9 @@
     Address: <input type="text" name="address">
     <input type="submit" value="Create">
 </form>
+
+<a href="/teams/edit">Edit Description</a>
+
 <% }; %>
 <% }; %>
 
@@ -28,11 +32,6 @@ Team Found Date: <%= team.foundDate %>
 Team Manager: <%= team.leader %>
 <br>
 Team Description: <%= team.description %>
-<% if(user.isLeader) { %>
-<% if(user.teamId === team.id) { %>
-    <a href="/teams/edit">Edit Description</a>
-<% }; %>
-<% }; %>
 
 
 <br>
