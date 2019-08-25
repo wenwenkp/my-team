@@ -2,7 +2,7 @@ var router = require('express').Router();
 var teamsCtrl = require('../controllers/teams');
 
 router.get('/', isLoggedIn, teamsCtrl.index);
-router.get('/edit', isLoggedIn, teamsCtrl.editTeam);
+router.get('/edit', teamsCtrl.editTeam);
 router.get('/new', isLoggedIn, teamsCtrl.newTeam);
 router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
 
