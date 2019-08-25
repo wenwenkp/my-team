@@ -39,10 +39,11 @@ function createTeam(req, res, next) {
         p.teamId = newTeam.id;
         p.isLeader = true;
         p.save();
-        res.render('players/index', {
-            user: p,
-            team:newTeam
-        })
+        res.redirect('/players');
+        // res.render('players/index', {
+        //     user: p,
+        //     team:newTeam
+        // })
     })
 }
 
