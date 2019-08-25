@@ -61,8 +61,11 @@ var teamSchema = new Schema({
     },
     matches:[matchSchema],
     foundDate: {
-        type: Date,
-        default: () => { return new Date;}
+        type: String,
+        default: () => {
+            var today = new Date;
+            return today.toDateString();
+        }
     },
     announcements:[announcementSchema],
 },{
