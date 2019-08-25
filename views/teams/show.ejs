@@ -24,6 +24,10 @@ Team Found Date: <%= team.foundDate %>
 Team Manager: <%= team.leader %>
 <br>
 Team Description: <%= team.description %>
+<% if(user.isLeader) { %>
+    <a href="/teams/edit">Edit Description</a>
+    <% }; %>
+
 <br>
 Team players
 <table>

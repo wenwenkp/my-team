@@ -6,6 +6,8 @@ module.exports = {
     newTeam,
     createTeam,
     showTeam,
+    editTeam,
+    updateTeam,
     createAnnouncement,
     deleteAnnouncement,
     showAnnouncement,
@@ -50,6 +52,18 @@ function showTeam(req, res, next) {
             user: req.user,
             team,
         })
+    })
+}
+
+function editTeam(req, res, next) {
+    res.render('teams/edit', {
+        user: req.user
+    })
+}
+
+function updateTeam(req, res, next) {
+    Teams.findByIdAndUpdate(req.params.id, req.body).populate('players').exec((err, team)=>{
+        res.redirect(`/teams/${team.id}`)
     })
 }
 
