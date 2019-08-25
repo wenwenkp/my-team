@@ -3,13 +3,12 @@ var teamsCtrl = require('../controllers/teams');
 
 router.get('/', isLoggedIn, teamsCtrl.index);
 router.get('/edit', isLoggedIn, teamsCtrl.editTeam);
-
 router.get('/new', isLoggedIn, teamsCtrl.newTeam);
-router.post('/', isLoggedIn, teamsCtrl.createTeam);
-
 router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
 
+router.post('/', isLoggedIn, teamsCtrl.createTeam);
 router.put('/:id', isLoggedIn, teamsCtrl.updateTeam);
+
 
 // Insert this middleware for routes that require a logged in user
 function isLoggedIn(req, res, next) {
