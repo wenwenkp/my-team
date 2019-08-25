@@ -1,14 +1,12 @@
 <%- include('../partials/header') %>
 
 <% if(user.isLeader) { %>
-<% if(user.teamId === team.id) { %>
-
-    <form action="/teams/announcements/add" method="POST">
-        Title: <input type="text" name="title">
-        Content: <input type="text" name="content">
-        <input type="submit" value="Create">
-    </form>
-
+    <% if(user.teamId === team.id) { %>
+<form action="/teams/announcements/add" method="POST">
+    Title: <input type="text" name="title">
+    Content: <input type="text" name="content">
+    <input type="submit" value="Create">
+</form>
 <form action="/teams/matches/add" method="POST">
     With <br>
     Team: <input type="text" name="team">
@@ -16,13 +14,14 @@
     Address: <input type="text" name="address">
     <input type="submit" value="Create">
 </form>
-
-<a href="/teams/edit">Edit Description</a>
-
+<button>
+    <a href="/teams/edit">Edit Description</a>
+</button>
+    <% }; %>
 <% }; %>
-<% }; %>
-
-<a href="/teams">Back</a>
+<button>
+    <a href="/teams">Back</a>
+</button>
 <br>
 
 Team Name: <%= team.name %>

@@ -51,9 +51,8 @@ function leaveTeam(req, res, next) {
     Teams.findOneAndDelete(user.teamId).populate('players').exec((err, team)=>{
       team.players.forEach((p)=>{
         p.teamId = '';
+        p.save();
       })
-      team.players = [];
-      team.save();
     })
   }else{
     Teams.findById(user.teamId).populate('players').exec((err, team)=>{
