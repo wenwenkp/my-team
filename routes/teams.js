@@ -6,7 +6,7 @@ router.get('/edit', teamsCtrl.editTeam);
 router.get('/new', teamsCtrl.newTeam);
 router.get('/:id', teamsCtrl.showTeam);
 
-router.post('/', isLoggedIn, teamsCtrl.createTeam);
+router.post('/', teamsCtrl.createTeam);
 router.put('/:id', isLoggedIn, teamsCtrl.updateTeam);
 
 
