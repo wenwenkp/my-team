@@ -24,3 +24,17 @@ button {
 .p-avatar{
     max-width: 20px;
 }
+.news {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    justify-content: start;
+    align-items: center;
+  }
+  .news-img {
+    max-width: 300px;
+    border-radius: 20px;
+  }
+  a {
+    text-decoration: none;
+  }

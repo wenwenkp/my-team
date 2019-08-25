@@ -1,0 +1,19 @@
+<%- include('../partials/secondP') %>
+
+<% newsData.forEach((news)=>{ %>
+    <section class="news">
+      <div>
+          <h2><a href="<%= news.url %>"><%= news.title %></a></h2>
+      </div>
+      <div>
+          <p><a href="<%= news.url %>"><img src="<%= news.urlToImage %>" alt="image" class="news-img"></a></p>
+      </div>
+      <div>
+          <h4>Description: <%= news.description %></h4>
+          <h5>Source: <%= news.source.name %>,  By: <%= news.author %>   <%= news.publishedAt %></h5>
+      </div>
+
+    </section>
+  <% }) %>
+
+<%- include('../partials/footer') %>
