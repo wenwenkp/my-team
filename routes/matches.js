@@ -3,7 +3,7 @@ var matchesCtrl = require('../controllers/teams');
 
 router.post('/teams/matches/add', matchesCtrl.createMatch);
 
-router.delete('/teams/matches/:id', isLoggedIn, matchesCtrl.deleteMatch);
+router.delete('/teams/matches/:id', matchesCtrl.deleteMatch);
 
 
 // Insert this middleware for routes that require a logged in user
