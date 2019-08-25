@@ -134,10 +134,11 @@ function deleteMatch(req, res, next) {
         });
         team.matches.splice(targetIdx, 1);
         team.save();
-        res.render('teams/show', {
-            user: req.user,
-            team
-        })
+        res.redirect(`/teams/${team.id}`);
+        // res.render('teams/show', {
+        //     user: req.user,
+        //     team
+        // })
     })
 }
 
