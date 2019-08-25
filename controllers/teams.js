@@ -72,10 +72,11 @@ function createAnnouncement(req, res, next) {
     Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
         team.announcements.push(req.body);
         team.save();
-        res.render('teams/show', {
-            user: req.user,
-            team
-        });
+        res.redirect(`/teams/${team.id}`);
+        // res.render('teams/show', {
+        //     user: req.user,
+        //     team
+        // });
     })
 }
 function deleteAnnouncement(req, res, next) {
