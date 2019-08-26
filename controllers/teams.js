@@ -3,8 +3,8 @@ var Members = require('../models/member');
 
 module.exports = {
     // index,
-    // newTeam,
-    // createTeam,
+    newTeam,
+    createTeam,
     showTeam,
     // editTeam,
     // updateTeam,
@@ -34,28 +34,30 @@ function showTeam(req, res, next) {
 //         })
 //     })
 // }
-// function newTeam(req, res, next) {
-//     res.render('teams/new', {
-//         user: req.user
-//     });
-// }
-// function createTeam(req, res, next) {
-//     var newTeam = new Teams(req.body);
-//     newTeam.save();
-//     newTeam.players.push(req.user.id);
-//     newTeam.leader = req.user.name;
+function newTeam(req, res, next) {
+    res.render('teams/new', {
+        user: req.user
+    });
+}
+function createTeam(req, res, next) {
+    var newTeam = new Teams(req.body);
+    newTeam.save();
+    newTeam.players.push(req.user.id);
+    newTeam.leader = req.user.name;
+    newTeam.save();
 
-//     Players.findById(req.user.id, (err, p)=>{
-//         p.teamId = newTeam.id;
-//         p.isLeader = true;
-//         p.save();
-//         res.redirect('/players');
-//         // res.render('players/index', {
-//         //     user: p,
-//         //     team:newTeam
-//         // })
-//     })
-// }
+    Members.findById(req.user.id, (err, member)=>{
+        member.joinTeam.push(newTeam.id);
+        member.ownTeam.push(newTeam.id);
+        member.isLeader = true;
+        member.save();
+        res.redirect('/members/manager');
+        // res.render('players/index', {
+        //     user: p,
+        //     team:newTeam
+        // })
+    })
+}
 
 
 

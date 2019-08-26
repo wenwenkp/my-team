@@ -32,10 +32,17 @@ function index(req, res, next) {
 }
 function showManagerTeam(req, res, next) {
   Members.findById(req.user.id).populate('Team').exec((err, member)=>{
+    Teams.find({_id: member.ownTeam})
+    .exec((err, teams)=>{
+      // res.json(teams);
+
     res.render('members/manager', {
       user:req.user,
-      ownTeam: member.ownTeam
+      teams,
+      member
     });
+  })
+
   })
 }
 function showPlayerTeam(req, res, next) {

@@ -1,13 +1,13 @@
 <%- include('../partials/header') %>
 
 <ul>
-    <% ownTeam.forEach((own)=>{ %>
-        <li><a href="/teams/<%= own.id %>"><%= own.name %></a></li>
+    <% teams.forEach((team)=>{ %>
+        <li><a href="/teams/<%= team.id %>"><%= team.name %></a></li>
     <% }) %>
 </ul>
 <hr>
 
-<button><a href="">Create Team</a></button>
+<button><a href="/teams/new">Create Team</a></button>
 
 
 

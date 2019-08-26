@@ -1,6 +1,11 @@
 var router = require('express').Router();
 var teamsCtrl = require('../controllers/teams');
 
+
+// create team page
+router.get('/new', teamsCtrl.newTeam);
+// create team
+router.post('/', teamsCtrl.createTeam);
 // show team page
 router.get('/:id', teamsCtrl.showTeam);
 
