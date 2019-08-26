@@ -1,13 +1,19 @@
 var router = require('express').Router();
 var teamsCtrl = require('../controllers/teams');
 
-router.get('/', isLoggedIn, teamsCtrl.index);
-router.get('/edit', teamsCtrl.editTeam);
-router.get('/new', teamsCtrl.newTeam);
+// show team page
 router.get('/:id', teamsCtrl.showTeam);
 
-router.post('/', teamsCtrl.createTeam);
-router.put('/:id', teamsCtrl.updateTeam);
+
+// router.get('/', isLoggedIn, teamsCtrl.index);
+// router.get('/all', isLoggedIn, teamsCtrl.allTeams);
+// router.get('/edit', teamsCtrl.editTeam);
+
+// //create team page
+// router.get('/new', teamsCtrl.newTeam);
+
+// router.post('/', teamsCtrl.createTeam);
+// router.put('/:id', teamsCtrl.updateTeam);
 
 
 // Insert this middleware for routes that require a logged in user

@@ -53,7 +53,7 @@ var teamSchema = new Schema({
     leader: String,
     players:[{
         type: Schema.Types.ObjectId, 
-        ref: 'Player'
+        ref: 'Member'
     }],
     description:{
         type: String,

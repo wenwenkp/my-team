@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var playerSchema = new Schema({
+var memberSchema = new Schema({
     name: String,
     googleId: String,
     avatar: String,
@@ -11,12 +11,16 @@ var playerSchema = new Schema({
         type: Boolean,
         default: false
     },
-    teamId: {
-        type: String,
-        default: ''
-    }
+    ownTeam:[{        
+        type: Schema.Types.ObjectId, 
+        ref: 'Team'
+    }],
+    joinTeam: [{
+        type: Schema.Types.ObjectId,
+        ref:'Team'
+    }]
 },{
     timestamps: true
 });
 
-module.exports = mongoose.model('Player', playerSchema);
+module.exports = mongoose.model('Member', memberSchema);

@@ -30,18 +30,16 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="/api/uk">UK news</a>
                               <a class="dropdown-item" href="/api/usa">USA news</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Scores</a>
+                            <a class="nav-link" href="/members">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/players">Player</a>
+                            <a class="nav-link" href="/members/manager">Manager</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="/teams">My Team</a>
+                            <a class="nav-link" href="/members/player">Player</a>
                         </li>
                     </ul>
                     <% if (user) { %>
@@ -51,3 +49,7 @@
                     <% } %>
                 </div>
             </nav>
+        </div>
+        <div class="container">
+
+        

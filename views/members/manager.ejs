@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<ul>
+    <% ownTeam.forEach((own)=>{ %>
+        <li><a href="/teams/<%= own.id %>"><%= own.name %></a></li>
+    <% }) %>
+</ul>
+<hr>
+
+<button><a href="">Create Team</a></button>
+
+
+
+
+<%- include('../partials/footer') %>

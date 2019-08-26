@@ -30,12 +30,14 @@ button {
     grid-template-rows: auto auto auto;
     justify-content: start;
     align-items: center;
-  }
-  .news-img {
+}
+.news-img {
     max-width: 300px;
     border-radius: 20px;
-  }
-  a {
+}
+a {
     text-decoration: none;
-  }
-  
+}
+.video-size {
+    width: 700;
+}  
