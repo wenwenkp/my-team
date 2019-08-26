@@ -1,15 +1,12 @@
 <%- include('../partials/header') %>
 
 <ul>
-    <% joinTeam.forEach((join)=>{ %>
-        <li><a href="/teams/<%= join.id %>"><%= join.name %></a></li>
+    <% teams.forEach((team)=>{ %>
+        <li><a href="/teams/<%= team.id %>"><%= team.name %></a></li>
     <% }) %>
 </ul>
 <hr>
 
-<button><a href="">Join Team</a></button>
-
-
-
+<button><a href="/teams/list">Join Team</a></button>
 
 <%- include('../partials/footer') %>

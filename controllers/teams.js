@@ -6,6 +6,7 @@ module.exports = {
     newTeam,
     createTeam,
     showTeam,
+    showAllTeams,
     // editTeam,
     // updateTeam,
     // createAnnouncement,
@@ -17,14 +18,6 @@ module.exports = {
     // allTeams,
 };
 
-function showTeam(req, res, next) {
-    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
-        res.render('teams/show', {
-            user: req.user,
-            team,
-        })
-    })
-}
 
 // function index(req, res, next) {
 //     Teams.find({}, (err, teams)=>{
@@ -58,7 +51,18 @@ function createTeam(req, res, next) {
         // })
     })
 }
-
+function showTeam(req, res, next) {
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        // res.render('teams/show', {
+        //     user: req.user,
+        //     team,
+        // })
+        res.json(team);
+    })
+}
+function showAllTeams(req, res, next) {
+    
+}
 
 
 // function editTeam(req, res, next) {

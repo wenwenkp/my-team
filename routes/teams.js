@@ -4,6 +4,8 @@ var teamsCtrl = require('../controllers/teams');
 
 // create team page
 router.get('/new', teamsCtrl.newTeam);
+// team list 
+router.get('/list', teamsCtrl.showAllTeams);
 // create team
 router.post('/', teamsCtrl.createTeam);
 // show team page

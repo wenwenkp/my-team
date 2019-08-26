@@ -32,7 +32,7 @@ function index(req, res, next) {
 }
 function showManagerTeam(req, res, next) {
   Members.findById(req.user.id).populate('Team').exec((err, member)=>{
-    Teams.find({_id: member.ownTeam})
+    Teams.find({_id: member.ownTeam}).populate('Member')
     .exec((err, teams)=>{
       // res.json(teams);
 
@@ -47,10 +47,15 @@ function showManagerTeam(req, res, next) {
 }
 function showPlayerTeam(req, res, next) {
   Members.findById(req.user.id).populate('Team').exec((err, member)=>{
-    res.render('members/player', {
-      user:req.user,
-      joinTeam: member.joinTeam
-    });
+    Teams.find({_id: member.joinTeam}).populate('Member')
+    .exec((err, teams)=>{
+      res.render('members/player', {
+        user:req.user,
+        teams,
+        member
+      });
+    })
+    
   })
 }
 
