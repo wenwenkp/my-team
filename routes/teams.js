@@ -8,7 +8,13 @@ router.get('/new', teamsCtrl.newTeam);
 router.get('/list', teamsCtrl.showAllTeams);
 // create team
 router.post('/', teamsCtrl.createTeam);
-// show team page
+// show team players page
+router.get('/:id/players', teamsCtrl.showTeamPlayers);
+// show team schedule page
+router.get('/:id/schedule', teamsCtrl.showTeamSchedule);
+// show team announcements page
+router.get('/:id/announcements', teamsCtrl.showTeamAnnouncements);
+//show team page- description
 router.get('/:id', teamsCtrl.showTeam);
 
 

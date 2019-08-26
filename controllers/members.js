@@ -6,8 +6,8 @@ module.exports = {
     showManagerTeam,
     showPlayerTeam,
     joinTeam,
-    // editPlayer,
-    // updatePlayer,
+    editMember,
+    updateMember,
     // leaveTeam,
     // allPlayers,
 }
@@ -74,23 +74,27 @@ function joinTeam(req, res, next) {
   })
 }
 
-// function editPlayer(req, res, next) {
-//     res.render('players/edit', {
-//       user: req.user
-//     });
-// }
+function editMember(req, res, next) {
+  Members.findById(req.params.id, (err, member)=>{
+    res.render('members/edit', {
+      user: req.user,
+      member
+    });
+  })
 
-// function updatePlayer(req, res, next) {
-//   Players.findById(req.user._id, (err, player)=>{
-//     player.favTeam = req.body.favTeam;
-//     player.favPosition = req.body.favPosition;
-//     player.save();
-//     res.redirect(`/players`);
-//     // res.render('players/index',{
-//     //   user: player
-//     // });
-//   });
-// }
+}
+
+function updateMember(req, res, next) {
+  Members.findById(req.params.id, (err, member)=>{
+    member.favTeam = req.body.favTeam;
+    member.favPosition = req.body.favPosition;
+    member.save();
+    res.redirect(`/members`);
+    // res.render('players/index',{
+    //   user: player
+    // });
+  });
+}
 
 // function leaveTeam(req, res, next) {
 //   let user = req.user;

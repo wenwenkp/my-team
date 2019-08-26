@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<%- include('../partials/subNav') %>
+
+<% if(leader) { %>
+    <form action="/teams/matches/add" method="POST">
+        With <br>
+        Team: <input type="text" name="team">
+        Time: <input type="datetime-local" name="time">
+        Address: <input type="text" name="address">
+        <input type="submit" value="Create">
+    </form>
+<% }; %>
+
+
+<%- include('../partials/footer') %>

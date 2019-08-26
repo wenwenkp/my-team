@@ -6,6 +6,9 @@ module.exports = {
     newTeam,
     createTeam,
     showTeam,
+    showTeamPlayers,
+    showTeamSchedule,
+    showTeamAnnouncements,
     showAllTeams,
     // editTeam,
     // updateTeam,
@@ -53,11 +56,83 @@ function createTeam(req, res, next) {
 }
 function showTeam(req, res, next) {
     Teams.findById(req.params.id).populate('players').exec((err, team)=>{
-        // res.render('teams/show', {
-        //     user: req.user,
-        //     team,
-        // })
-        res.json(team);
+        Members.findById(req.user.id, (err, member)=>{
+            let leader =false;
+            let teammate = false;
+            if(member.ownTeam.includes(team.id)){
+                leader = true;
+            };
+            if(member.joinTeam.includes(team.id)){
+                teammate = true;
+            }
+        res.render('teams/show', {
+            user: req.user,
+            team,
+            member,
+            leader,
+            teammate
+        })
+        })
+    })
+}
+function showTeamPlayers(req, res, next) {
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        // Members.findById(req.user.id, (err, member)=>{
+        //     let leader =false;
+        //     let teammate = false;
+        //     if(member.ownTeam.includes(team.id)){
+        //         leader = true;
+        //     };
+        //     if(member.joinTeam.includes(team.id)){
+        //         teammate = true;
+        //     }
+        res.render('teams/showPlayers', {
+            user: req.user,
+            team,
+        })
+        
+    })
+}
+function showTeamSchedule(req, res, next) {
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        Members.findById(req.user.id, (err, member)=>{
+            let leader =false;
+            let teammate = false;
+            if(member.ownTeam.includes(team.id)){
+                leader = true;
+            };
+            if(member.joinTeam.includes(team.id)){
+                teammate = true;
+            }
+        res.render('teams/showSchedule', {
+            user: req.user,
+            team,
+            member,
+            leader,
+            teammate
+        })
+        })
+    })
+}
+function showTeamAnnouncements(req, res, next) {
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        Members.findById(req.user.id, (err, member)=>{
+            let leader =false;
+            let teammate = false;
+            if(member.ownTeam.includes(team.id)){
+                leader = true;
+            };
+            if(member.joinTeam.includes(team.id)){
+                teammate = true;
+            }
+        res.render('teams/showAnnouncements', {
+            user: req.user,
+            team,
+            member,
+            leader,
+            teammate
+        })
+        })
     })
 }
 function showAllTeams(req, res, next) {

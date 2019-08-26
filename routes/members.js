@@ -11,11 +11,13 @@ router.get('/player', isLoggedIn, membersCtrl.showPlayerTeam);
 router.put('/join', membersCtrl.joinTeam);
 
 // router.get('/all', isLoggedIn, membersCtrl.allPlayers);
-// router.get('/edit', membersCtrl.editPlayer);
+// edit profile page
+router.get('/:id/edit', membersCtrl.editMember);
 
 // router.put('/leave', membersCtrl.leaveTeam);
 // router.put('/join', membersCtrl.joinTeam);
-// router.put('/', membersCtrl.updatePlayer);
+// save edit
+router.put('/:id', membersCtrl.updateMember);
 
 
 // Insert this middleware for routes that require a logged in user
