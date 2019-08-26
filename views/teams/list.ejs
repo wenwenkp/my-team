@@ -4,6 +4,7 @@
     <thead>
         <th>Team Name</th>
         <th>Found Date</th>
+        <th>Manager</th>
         <th>Join?</th>
     </thead>
     <tbody>
@@ -11,8 +12,9 @@
         <tr>
             <td><%= team.name %></td>
             <td><%= team.foundDate %></td>
+            <td><%= team.leader %></td>
             <td>
-                <form action="/players/join?_method=PUT" method="POST">
+                <form action="/members/join?_method=PUT" method="POST">
                     <input type="text" name="teamId" value="<%= team.id %>" hidden>
                     <input type="submit" value="Join">
                 </form>

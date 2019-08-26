@@ -61,7 +61,12 @@ function showTeam(req, res, next) {
     })
 }
 function showAllTeams(req, res, next) {
-    
+    Teams.find({}, (err, teams)=>{
+        res.render('teams/list', {
+            user: req.user,
+            teams
+        });
+    })
 }
 
 
