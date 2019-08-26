@@ -62,10 +62,19 @@ function showTeam(req, res, next) {
 }
 function showAllTeams(req, res, next) {
     Teams.find({}, (err, teams)=>{
+        // Members.findById(req.user.id, (err, member)=>{
+        // let filteredTeams = [];
+        // teams.forEach((team, idx)=>{
+        //     if(!member.joinTeam.includes(team.id)){
+        //         filteredTeams.push(team);
+        //     }
+        // })
         res.render('teams/list', {
             user: req.user,
-            teams
+            teams,
+            // member
         });
+    // })
     })
 }
 

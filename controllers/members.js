@@ -61,6 +61,9 @@ function showPlayerTeam(req, res, next) {
 
 function joinTeam(req, res, next) {
   Teams.findById(req.body.teamId, (err, team)=>{
+    if(team.players.includes(req.user.id)){
+      return res.redirect('/teams/list');
+    };
     team.players.push(req.user.id);
     team.save();
     Members.findById(req.user.id, (err, member)=>{
