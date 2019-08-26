@@ -3,9 +3,12 @@ var membersCtrl = require('../controllers/members');
 
 // user profile
 router.get('/', isLoggedIn, membersCtrl.index);
-// user/managers + //user/players
+// user/managers page
 router.get('/manager', isLoggedIn, membersCtrl.showManagerTeam);
+//user/players page
 router.get('/player', isLoggedIn, membersCtrl.showPlayerTeam);
+// join team route
+router.put('/join', membersCtrl.joinTeam);
 
 // router.get('/all', isLoggedIn, membersCtrl.allPlayers);
 // router.get('/edit', membersCtrl.editPlayer);
