@@ -191,7 +191,7 @@ a {
 .section-form {
     margin-top: 40px;
     padding: 30px 50px;
-    background-color: lightblue;
+    /* background-color: lightblue; */
     border-radius: 20px;
 
 }
