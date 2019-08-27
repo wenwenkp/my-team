@@ -40,11 +40,36 @@ button {
 }
 .profile-edit {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    border-bottom: grey solid 1px;
+    padding-bottom: 20px;
+}
+.profile-edit > button {
+    align-self: flex-end;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 10px;
 }
 .profile-back {
     display: flex;
     justify-content: flex-start;
+}
+.profile-part2 {
+    display: flex;
+    justify-content: space-between;
+}
+.profile-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-save > form {
+    background: lightblue;
+    padding: 40px;
+}
+.profile-save > form > input:last-child{
+    margin: 20px 0px 0px 50px;
+    border-radius: 10px;
 }
 
 

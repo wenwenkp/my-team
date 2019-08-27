@@ -5,12 +5,13 @@
 
 
 <main class="profile-main">
-    <div class="prfile-back">
+    <div class="profile-edit">
+        <h1>Profile</h1>
         <button>
             <a href="/members">Back</a>
         </button>
     </div>
-    <div>
+    <div class="profile-save">
         <form action="/members/<%= member.id %>?_method=PUT" method="POST">
             Favourite Team: <input type="text" name="favTeam"><br>
             Favourite Position: <input type="text" name="favPosition"><br>

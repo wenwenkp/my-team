@@ -5,28 +5,30 @@
 
 <main class="profile-main">
     <div class="profile-edit">
+        <h1>Profile</h1>
         <button>
                 <a href="/members/<%= user.id %>/edit">Edit Info</a>
         </button>
     </div>
-
+<div class="profile-part2">
     <section>
         <div>
-            <img src="<%= user.avatar %>" alt="player avatar" class="profile-avatar">
+            <span>Name :</span> <%= user.name %>
         </div>
         <div>
-            Name: <%= user.name %>
+            <span>Email :</span> <%= user.email %>
         </div>
         <div>
-            Email: <%= user.email %>
+            <span>Favourite Team :</span> <%= user.favTeam %>
         </div>
         <div>
-            Favourite Team: <%= user.favTeam %>
-        </div>
-        <div>
-            Favourite Position: <%= user.favPosition %>
+            <span>Favourite Position :</span> <%= user.favPosition %>
         </div>
     </section>
+    <section>
+            <img src="<%= user.avatar %>" alt="player avatar" class="profile-avatar">
+    </section>
+</div>
 </main>
 
 
