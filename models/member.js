@@ -5,6 +5,7 @@ var memberSchema = new Schema({
     name: String,
     googleId: String,
     avatar: String,
+    email:String,
     favPosition: String,
     favTeam: String,
     isLeader: {

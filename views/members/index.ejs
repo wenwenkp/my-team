@@ -1,23 +1,33 @@
 <%- include('../partials/header') %>
 
-<h1>player main page</h1>
 
-<section>
-    <div>
-        Player: <img src="<%= user.avatar %>" alt="player avatar" class="avatar">
-    </div>
-    <div>
-        Name: <%= user.name %>
-    </div>
-    <div>
-        Favourite Team: <%= user.favTeam %>
-    </div>
-    <div>
-        Favourite Position: <%= user.favPosition %>
-    </div>
-    <a href="/members/<%= user.id %>/edit">Edit Info</a>
 
-</section>
+
+<main class="profile-main">
+    <div class="profile-edit">
+        <button>
+                <a href="/members/<%= user.id %>/edit">Edit Info</a>
+        </button>
+    </div>
+
+    <section>
+        <div>
+            <img src="<%= user.avatar %>" alt="player avatar" class="profile-avatar">
+        </div>
+        <div>
+            Name: <%= user.name %>
+        </div>
+        <div>
+            Email: <%= user.email %>
+        </div>
+        <div>
+            Favourite Team: <%= user.favTeam %>
+        </div>
+        <div>
+            Favourite Position: <%= user.favPosition %>
+        </div>
+    </section>
+</main>
 
 
 <%- include('../partials/footer') %>

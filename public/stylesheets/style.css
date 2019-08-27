@@ -18,12 +18,29 @@ button {
     outline: none;
 }
 
-.avatar {
-    max-width: 50px;
+/* member profile */
+.profile-avatar {
+    max-width: 150px;
 }
 .p-avatar{
     max-width: 20px;
 }
+.profile-main {
+    padding: 50px 200px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+}
+.profile-edit {
+    display: flex;
+    justify-content: flex-end;
+}
+.profile-back {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
 /* API page */
 .news {
     display: grid;
@@ -54,5 +71,9 @@ a {
     align-items: center;
 }
 .home-img {
-    max-width: 500px;
+    max-width: 300px;
+}
+
+.team-logo {
+    max-width: 300px;
 }

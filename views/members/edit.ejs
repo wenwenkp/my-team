@@ -1,16 +1,22 @@
 <%- include('../partials/header') %>
 
-<form action="/members/<%= member.id %>?_method=PUT" method="POST">
-    Favourite Team: <input type="text" name="favTeam">
-    Favourite Position: <input type="text" name="favPosition">
-    <button type="submit">Save</button>
-</form>
-
-<hr>
 
 
-<button>
-    <a href="/members">Back</a>
-</button>
+
+
+<main class="profile-main">
+    <div class="prfile-back">
+        <button>
+            <a href="/members">Back</a>
+        </button>
+    </div>
+    <div>
+        <form action="/members/<%= member.id %>?_method=PUT" method="POST">
+            Favourite Team: <input type="text" name="favTeam"><br>
+            Favourite Position: <input type="text" name="favPosition"><br>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+</main>
 
 <%- include('../partials/footer') %>
