@@ -30,8 +30,10 @@ module.exports = {
 //     })
 // }
 function newTeam(req, res, next) {
+    let options = ['1-10', '20-40', 'After 40'];
     res.render('teams/new', {
-        user: req.user
+        user: req.user,
+        options
     });
 }
 function createTeam(req, res, next) {

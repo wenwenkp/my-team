@@ -5,43 +5,49 @@
     <div>
         <button><a href="/members/manager">Back</a></button>
     </div>
-    <div>
-        <form action="/teams" method="POST">
-            name: <input type="text" name="name"> <br>
-            description: <input type="text" name="description"> <br>
-            Logo: <br>
-            <section class="logo-section">
-                <div>
-                    <input type="radio" value="/images/logo1.jpg" name="logo">
-                    <img src="/images/logo1.jpg" alt="" class="create-logo">
+    <section class="create-form">
+        <h2>Create Team</h2>
+        <div>
+            <form action="/teams" method="POST" id="create-team-form">
+                <div class="create-part1">
+                    <label>Team Nmae</label>
+                    <input type="text" name="name">
+                    <label>Location</label>
+                    <input type="text" name="description">
+                    <label>Group Age</label>
+                    <select name="groupAge">
+                        <% options.forEach(function(option) { %>
+                        <option value="<%= option %>"><%= option %></option>
+                        <% }); %>
+                    </select>
+                    <textarea rows="4" cols="50" name="description" form="create-team-form"></textarea>
                 </div>
-                <div>
-                    <input type="radio" value="/images/logo1.jpg" name="logo">
-                    <img src="/images/logo2.jpg" alt="" class="create-logo">
-                </div>
-                <div>
-                    <input type="radio" value="/images/logo1.jpg" name="logo">
-                    <img src="/images/logo3.jpg" alt="" class="create-logo">
-                </div>
-                <div>
-                    <input type="radio" value="/images/logo1.jpg" name="logo">
-                    <img src="/images/logo4.jpg" alt="" class="create-logo">
-                </div>
-                <div>
-                    <input type="radio" value="/images/logo1.jpg" name="logo">
-                    <img src="/images/logo5.jpg" alt="" class="create-logo">
-                </div>
-                <div>
-                    <input type="radio" value="/images/logo1.jpg" name="logo">
-                    <img src="/images/logo6.jpg" alt="" class="create-logo">
-                </div>
-            </section>
 
-            <div class="create-submit">
-                <input type="submit" value="Create">
-            </div>
-        </form>
-    </div>
+                <div class="create-part2">
+                    <label>Choose Team Logo</label>
+                    <section class="logo-section">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo1.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo2.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo3.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo4.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo5.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo6.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo7.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo8.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo9.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo10.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo11.jpg" class="create-logo">
+                        <input type="image" name="logo" value="/images/logo.jpg"  alt="team logo " src="/images/logo12.jpg" class="create-logo">
+                    </section>
+                </div>
+    
+                <div class="create-submit">
+                    <input type="submit" value="Save & Continue">
+                </div>
+            </form>
+        </div>
+    </section>
+    
 </main>
 
 

@@ -17,6 +17,10 @@ var matchSchema = new Schema({
 });
 
 var teamSchema = new Schema({
+    ageGroup: {
+        type: String,
+        enum: ['1-10', '20-40', 'After 40']
+    },
     logo: String,
     name: String,
     leader: String,
