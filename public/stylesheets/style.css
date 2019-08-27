@@ -337,21 +337,43 @@ a {
 #schedule {
     border-collapse: collapse;
     width: 90%;
-  }
-  
-  #schedule td, #schedule th {
+}
+
+#schedule td, #schedule th {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  #schedule tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #schedule tr:hover {background-color: #ddd;}
-  
-  #schedule th {
+}
+
+#schedule tr:nth-child(even){background-color: #f2f2f2;}
+
+#schedule tr:hover {background-color: #ddd;}
+
+#schedule th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #4CAF50;
     color: white;
-  }
+}
+
+#players {
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
+}
+
+#players td, #players th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#players tr:nth-child(even){background-color: #f2f2f2;}
+
+#players tr:hover {background-color: #ddd;}
+
+#players th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}

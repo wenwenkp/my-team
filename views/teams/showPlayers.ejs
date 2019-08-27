@@ -1,20 +1,23 @@
 <%- include('../partials/header') %>
 
+<main class="show-team">
 
 <%- include('../partials/subNav') %>
 
 
-<br>
+
 <section>
-    Team players
-    <table>
-        <thead>
+    <div class="schedule-part1">
+        <h1><%= team.name %></h1>
+        <h3>Players</h3>
+    </div>
+    <table id="players">
+        <tr>
             <th>Name</th>
             <th>Position</th>
             <th>Picture</th>
             <th></th>
-        </thead>
-        <tbody>
+        </tr>
         <% team.players.forEach((p)=>{ %>
             <tr>
                 <td><%= p.name %></td>
@@ -27,8 +30,8 @@
                 </td>
             </tr>
         <% }) %>
-        </tbody>
     </table>
 </section>
+</main>
 
 <%- include('../partials/footer') %>
