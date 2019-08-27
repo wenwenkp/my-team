@@ -17,6 +17,7 @@ var matchSchema = new Schema({
 });
 
 var teamSchema = new Schema({
+    logo: String,
     name: String,
     leader: String,
     players:[{

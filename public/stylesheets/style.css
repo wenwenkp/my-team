@@ -65,15 +65,80 @@ a {
     grid-template-rows: auto auto;
     grid-gap: 30px;
 }
-.rows {
+.rows1 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
+.rows1 > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.rows2 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.rows2 > section {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-gap: 150px;
+}
+.rows2 > section > .column {
+    
+}
+.home-manager, .home-player {
+    padding: 50px;
+    border: black 2px solid;
+}
+.video-home{
+    width: 500px;
+    height: 350px;
+}
 .home-img {
-    max-width: 300px;
+    max-width: 200px;
 }
 
 .team-logo {
     max-width: 300px;
+}
+
+/* create team */
+.new-team {
+    padding: 50px 200px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-gap: 30px;
+}
+.new-team > div:first-child {
+    display: flex;
+    justify-content: flex-start;
+}
+.create-logo {
+    max-width: 150px;
+}
+.logo-section {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+}
+.create-submit {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+/* manager-page */
+.manager-logo {
+    max-width: 150px;
+}
+.manager-main {
+
 }

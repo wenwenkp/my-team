@@ -1,10 +1,6 @@
 <%- include('../partials/header') %>
 
-<ul>
-    <% teams.forEach((team)=>{ %>
-        <li><a href="/teams/<%= team.id %>"><%= team.name %></a></li>
-    <% }) %>
-</ul>
+
 
 
 <main class="manager-main">
@@ -13,9 +9,9 @@
     </div>
 
     <section>
-    <% teams.forEach((team)=>{ %>
+        <% teams.forEach((team)=>{ %>
         <div>
-            <div><img src="" alt="team logo">Team-Logo</div>
+            <div><img src=<%= team.logo %> alt="team logo" class="manager-logo"></div>
             <div>
                 <ul>
                     <li><a href="/teams/<%= team.id %>"><%= teams.name %></a></li>
@@ -23,7 +19,7 @@
                 </ul>
             </div>
         </div>
-    <% }) %>
+        <% }) %>
     </section>
 </main>
 

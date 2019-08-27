@@ -1,10 +1,48 @@
 <%- include('../partials/header') %>
 
-<h1>new team page</h1>
-<form action="/teams" method="POST">
-    name: <input type="text" name="name">
-    description: <input type="text" name="description">
-    <input type="submit" value="Create">
-</form>
+
+<main class="new-team">
+    <div>
+        <button><a href="/members/manager">Back</a></button>
+    </div>
+    <div>
+        <form action="/teams" method="POST">
+            name: <input type="text" name="name"> <br>
+            description: <input type="text" name="description"> <br>
+            Logo: <br>
+            <section class="logo-section">
+                <div>
+                    <input type="radio" value="/images/logo1.jpg" name="logo">
+                    <img src="/images/logo1.jpg" alt="" class="create-logo">
+                </div>
+                <div>
+                    <input type="radio" value="/images/logo1.jpg" name="logo">
+                    <img src="/images/logo2.jpg" alt="" class="create-logo">
+                </div>
+                <div>
+                    <input type="radio" value="/images/logo1.jpg" name="logo">
+                    <img src="/images/logo3.jpg" alt="" class="create-logo">
+                </div>
+                <div>
+                    <input type="radio" value="/images/logo1.jpg" name="logo">
+                    <img src="/images/logo4.jpg" alt="" class="create-logo">
+                </div>
+                <div>
+                    <input type="radio" value="/images/logo1.jpg" name="logo">
+                    <img src="/images/logo5.jpg" alt="" class="create-logo">
+                </div>
+                <div>
+                    <input type="radio" value="/images/logo1.jpg" name="logo">
+                    <img src="/images/logo6.jpg" alt="" class="create-logo">
+                </div>
+            </section>
+
+            <div class="create-submit">
+                <input type="submit" value="Create">
+            </div>
+        </form>
+    </div>
+</main>
+
 
 <%- include('../partials/footer') %>
