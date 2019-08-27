@@ -39,7 +39,7 @@ function newTeam(req, res, next) {
 function createTeam(req, res, next) {
     var newTeam = new Teams(req.body);
     newTeam.save();
-    newTeam.players.push(req.user.id);
+    newTeam.players.push(req.user._id);
     newTeam.leader = req.user.name;
     newTeam.save();
 

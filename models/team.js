@@ -21,6 +21,7 @@ var teamSchema = new Schema({
         type: String,
         enum: ['1-10', '20-40', 'After 40']
     },
+    location: String,
     logo: String,
     name: String,
     leader: String,

@@ -119,29 +119,57 @@ a {
 }
 
 /* create team */
-.new-team {
-    padding: 50px 200px;
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-gap: 30px;
+.create-page {
+    padding: 50px;
 }
-.new-team > div:first-child {
-    display: flex;
-    justify-content: flex-start;
+.section-form {
+    margin-top: 40px;
+    padding: 30px 50px;
+    background-color: lightblue;
 }
+
+
 .create-logo {
-    max-width: 150px;
+    max-width: 70px;
+}
+#create-team-form {
+    display: flex;
+    justify-content: space-evenly;
+    /* grid-template-columns: 40% 10% 40%; */
+}
+
+.create-part1 {
+    display: grid;
+    grid-template-rows: auto*8;
+    align-items: center;
+    grid-row-gap: 2px;
+}
+.create-part1 > label {
+    font-size: 25px;
+}
+.create-part1 > input {
+    font-size: 25px;
+}
+.create-part2 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 .logo-section {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
-    grid-gap: 20px;
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    grid-column-gap: 40px;
+    grid-row-gap: 15px;
+    margin-top: 20px;
+}
+.logo-section > input {
+    justify-self: center;
 }
 .create-submit {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
+    padding: 20px 0px 0px 150px;
 }
 
 /* manager-page */
