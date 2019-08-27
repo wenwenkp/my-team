@@ -1,17 +1,30 @@
 <%- include('./partials/header') %>
 
-<h1>Home Page</h1>
 
-<main class="container">
-    <div class="row">
-        <div class="col">video</div>
-        <div class="col">description</div>
+<main class="home-main">
+    <div class="rows">
+        <div class="column">
+                <video width="400" controls>
+                    <source src="mov_bbb.mp4" type="video/mp4">
+                    <source src="mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML5 video.
+                </video>
+        </div>
+        <div class="column">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+                Voluptate commodi minima asperiores nihil provident ut <br>
+                nesciunt odit quaerat veritatis officia nam reiciendis <br>
+                eos impedit id corrupti pariatur, dolor accusantium dolorum!</p>
+        </div>
     </div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    
-
+    <div class="rows">
+        <div class="column">
+            <a href="/members/manager"><img class="home-img" src="/images/manager.png" alt="I want to be a manager to create a team."></a>
+        </div>
+        <div class="column">
+            <a href="/members/player"><img class="home-img" src="/images/player.png" alt="i want to be a player to join a team."></a>
+        </div>
+    </div>
 </main>
 
 <%- include('./partials/footer') %>

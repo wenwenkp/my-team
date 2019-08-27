@@ -24,6 +24,7 @@ button {
 .p-avatar{
     max-width: 20px;
 }
+/* API page */
 .news {
     display: grid;
     grid-template-columns: auto;
@@ -38,6 +39,20 @@ button {
 a {
     text-decoration: none;
 }
-.video-size {
-    width: 700;
-}  
+
+/* home page */
+.home-main {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-gap: 30px;
+}
+.rows {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.home-img {
+    max-width: 500px;
+}
