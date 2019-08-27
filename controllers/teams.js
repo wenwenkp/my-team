@@ -10,8 +10,8 @@ module.exports = {
     showTeamSchedule,
     showTeamAnnouncements,
     showAllTeams,
-    // editTeam,
-    // updateTeam,
+    editTeam,
+    updateTeam,
     // createAnnouncement,
     // deleteAnnouncement,
     // showAnnouncement,
@@ -154,17 +154,22 @@ function showAllTeams(req, res, next) {
 }
 
 
-// function editTeam(req, res, next) {
-//     res.render('teams/edit', {
-//         user: req.user
-//     })
-// }
+function editTeam(req, res, next) {
+    Teams.findById(req.params.id, (err, team)=>{
 
-// function updateTeam(req, res, next) {
-//     Teams.findByIdAndUpdate(req.params.id, req.body).populate('players').exec((err, team)=>{
-//         res.redirect(`/teams/${team.id}`)
-//     })
-// }
+    res.render('teams/edit', {
+        user: req.user,
+        team
+    })
+})
+
+}
+
+function updateTeam(req, res, next) {
+    Teams.findByIdAndUpdate(req.params.id, req.body).populate('players').exec((err, team)=>{
+        res.redirect(`/teams/${team.id}`)
+    })
+}
 
 // function createAnnouncement(req, res, next) {
 //     Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{

@@ -14,6 +14,8 @@ router.get('/:id/players', teamsCtrl.showTeamPlayers);
 router.get('/:id/schedule', teamsCtrl.showTeamSchedule);
 // show team announcements page
 router.get('/:id/announcements', teamsCtrl.showTeamAnnouncements);
+//show edit team page
+router.get('/:id/edit', teamsCtrl.editTeam);
 //show team page- description
 router.get('/:id', teamsCtrl.showTeam);
 
@@ -26,7 +28,9 @@ router.get('/:id', teamsCtrl.showTeam);
 // router.get('/new', teamsCtrl.newTeam);
 
 // router.post('/', teamsCtrl.createTeam);
-// router.put('/:id', teamsCtrl.updateTeam);
+
+//edit team page
+router.put('/:id', teamsCtrl.updateTeam);
 
 
 // Insert this middleware for routes that require a logged in user

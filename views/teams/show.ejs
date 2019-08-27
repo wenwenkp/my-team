@@ -1,18 +1,15 @@
 <%- include('../partials/header') %>
 
+<%- include('../partials/subNav') %>
+
+
 <% if(leader) { %>
-<form action="/teams/announcements/add" method="POST">
-    Title: <input type="text" name="title">
-    Content: <input type="text" name="content">
-    <input type="submit" value="Create">
-</form>
 
 <button>
-    <a href="/teams/edit">Edit Description</a>
+    <a href="/teams/<%= team.id %>/edit">Edit Description</a>
 </button>
 <% }; %>
 
-<%- include('../partials/subNav') %>
 
 
 <br>
