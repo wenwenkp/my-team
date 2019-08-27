@@ -1,5 +1,42 @@
 <%- include('./partials/header') %>
 
-<h1>Main Page</h1>
+
+<main class="home-main">
+    <div class="rows1">
+        <!-- <div class="column">
+                <video controls class="video-home">
+                    <source src="mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+        </div>
+        <section class="column">
+            <h3>The Best Soccer Team Experience</h3>
+            <p>Organise your team in a heartbeat with <br>
+                powerful and easy tools to manage your <br>
+                schedule, people and more.</p>
+        </section> -->
+        <img src="/images/home-pic.jpg" alt="" width="1110px" class="img-fluid">
+        <div class="centered">The Best Soccer Team Experience</div>
+    </div>
+    <div class="rows2">
+        <h3>Who are you?</h3>
+        <section>
+            <div class="column">
+                <div class="home-manager">
+                    <a href="/members/manager"><img class="home-img" src="/images/decision-making.png" alt="I want to be a manager to create a team."></a>
+                    <h3>Manager</h3>
+                    <button class="home-btn"><a href="/teams/new" style="color:white">Create Team</a></button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="home-player">
+                    <a href="/members/player"><img class="home-img" src="/images/player-logo.png" alt="i want to be a player to join a team."></a>
+                    <h3>Player</h3>
+                    <button class="home-btn"><a href="/teams/list" style="color:white">Find Team</a></button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
 
 <%- include('./partials/footer') %>

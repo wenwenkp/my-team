@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+
+
+
+<main class="manager-main">
+    <section class="manager-part1">
+        <h3>My Teams</h3>
+        <div class="manager-btn">
+            <button><a href="/teams/new">Create Team</a></button>
+        </div>
+    </section>
+    <section class="manager-part2">
+        <% teams.forEach((team)=>{ %>
+        <div>
+            <div><img src=<%= team.logo %> alt="team logo" class="manager-logo"></div>
+            <div class="team-description">
+                <h4><a class="team-name" href="/teams/<%= team.id %>"><%= team.name %></a></h4>
+                <span><%= team.matchesNumber %> Matches</span>        
+            </div>
+        </div>
+        <% }) %>
+    </section>
+</main>
+
+
+
+<%- include('../partials/footer') %>

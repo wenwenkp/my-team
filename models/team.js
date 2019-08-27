@@ -1,38 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var commentSchema = new Schema({
-    time: {
-        type: Date,
-        required: true,
-        default: () => {return new Date;}
-    },
-    text: {
-        type: String,
-        required: true
-    },
-    author: {
-        type: String,
-        required: true
-    }
-});
-
-var announcementSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    time: {
-        type: Date,
-        default: () => {return new Date;}
-    },
-    content: {
-        type: String,
-        required: true
-    },
-    comments: [commentSchema]
-});
-
 var matchSchema = new Schema({
     team: {
         type: String,
@@ -49,25 +17,34 @@ var matchSchema = new Schema({
 });
 
 var teamSchema = new Schema({
+    ageGroup: {
+        type: String,
+        enum: ['1-10', '20-40', 'After 40']
+    },
+    location: String,
+    logo: String,
     name: String,
     leader: String,
     players:[{
         type: Schema.Types.ObjectId, 
-        ref: 'Player'
+        ref: 'Member'
     }],
     description:{
         type: String,
         required: true
     },
     matches:[matchSchema],
+    matchesNumber:{
+        type: Number,
+        default: 0
+    },
     foundDate: {
         type: String,
         default: () => {
             var today = new Date;
-            return today.toDateString();
+            return today.toLocaleString();
         }
     },
-    announcements:[announcementSchema],
 },{
     timestamps: true
 });

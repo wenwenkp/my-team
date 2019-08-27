@@ -1,116 +1,48 @@
 <%- include('../partials/header') %>
 
-<% if(user.isLeader) { %>
-    <% if(user.teamId === team.id) { %>
-<form action="/teams/announcements/add" method="POST">
-    Title: <input type="text" name="title">
-    Content: <input type="text" name="content">
-    <input type="submit" value="Create">
-</form>
-<form action="/teams/matches/add" method="POST">
-    With <br>
-    Team: <input type="text" name="team">
-    Time: <input type="datetime-local" name="time">
-    Address: <input type="text" name="address">
-    <input type="submit" value="Create">
-</form>
-<button>
-    <a href="/teams/edit">Edit Description</a>
-</button>
-    <% }; %>
-<% }; %>
-<button>
-    <a href="/teams">Back</a>
-</button>
-<br>
+<main class="show-team">
 
-Team Name: <%= team.name %>
-<br>
-Team Found Date: <%= team.foundDate %>
-<br>
-Team Manager: <%= team.leader %>
-<br>
-Team Description: <%= team.description %>
+    <%- include('../partials/subNav') %>
 
+    <section>
+        <div class="description-part1">
+            <h1><%= team.name %></h1>
+            <% if(leader) { %>
+            <button>
+                <a href="/teams/<%= team.id %>/edit">Edit</a>
+            </button>
+            <% }else if(teammate) { %>
+            <form action="/members/<%= team.id %>/leave?_method=PUT" method="POST">
+                <input type="submit" value="Leave Team">
+            </form>
+            <% }; %>
+        </div>
+        
+        <div class="description-part2">
+            <div>
+                <h5>Found Date</h5>
+                <span><%= team.foundDate %></span>
+                <h5>Team Manager</h5>
+                <span><%= team.leader %></span>
+                <h5>Age Group</h5>
+                <span><%= team.ageGroup %></span>
+                <h5>Location</h5>
+                <span><%= team.location %></span>
+                <h5>Matches Completed</h5>
+                <span><%= team.matchesNumber %></span>
+            </div>
+            <div>
+                <img class="show-logo" src=<%= team.logo %> alt="team logo">
+            </div>
+        </div>
+        <div class="description-part3">
+            <h3>Team Description</h3>
+            <p>
+                <%= team.description %>
+            </p>
+        </div>
 
-<br>
-Team players
-<table>
-    <thead>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Picture</th>
-        <th></th>
-    </thead>
-    <tbody>
-    <% team.players.forEach((p)=>{ %>
-        <tr>
-            <td><%= p.name %></td>
-            <td><%= p.favPosition %></td>
-            <td><img src="<%= p.avatar %>" alt="player avatar" class="p-avatar"></td>
-            <td>
-                <% if(p.isLeader) { %>
-                    Leader
-                <% } %>
-            </td>
-        </tr>
-    <% }) %>
-    </tbody>
-</table>                
-
-<% if(user.teamId === team.id) { %>
-<h3>Team's Announcement:</h3>
-<table>
-    <thead>
-        <th>Title</th>
-        <th>Date</th>
-        <th></th>
-        <th></th>
-    </thead>
-    <tbody>
-        <% team.announcements.forEach((post)=>{ %>
-        <tr>
-            <td><%= post.title %></td>
-            <td><%= post.time %></td>
-            <td><a href="/teams/announcements/<%= post.id %>">Details</a></td>
-            <td>
-                <% if(user.isLeader) { %>
-                <form action="/teams/announcements/<%= post._id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="delete">
-                </form>
-                <% }; %>
-            </td>
-        </tr>
-        <% }) %>
-
-    </tbody>
-</table>
-
-<h3>Team Schedule</h3>
-<table>
-    <thead>
-        <th>Team</th>
-        <th>Date</th>
-        <th>Address</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <% team.matches.forEach((m)=>{ %>
-        <tr>
-            <td><%= m.team %></td>
-            <td><%= m.time %></td>
-            <td><%= m.address %></td>
-            <td>
-                <% if(user.isLeader) { %>
-                <form action="/teams/matches/<%= m._id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="delete">
-                </form>
-                <% }; %>
-            </td>
-        </tr>
-        <% }) %>
-    </tbody>
-</table>
-<% } %>
+    </section>
+</main>
 
 <%- include('../partials/footer') %>

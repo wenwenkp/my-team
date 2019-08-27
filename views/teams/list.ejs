@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<div class="list">
+<table id="list">
+    <tr>
+        <th>Team Name</th>
+        <th>Found Date</th>
+        <th>Manager</th>
+        <th>Join?</th>
+    </tr>
+<% teams.forEach((team)=>{ %>
+        <tr>
+            <td><%= team.name %></td>
+            <td><%= team.foundDate %></td>
+            <td><%= team.leader %></td>
+            <td>
+                <form action="/members/join?_method=PUT" method="POST">
+                    <input type="text" name="teamId" value="<%= team.id %>" hidden>
+                    <input type="submit" value="Join">
+                </form>
+            </td>
+        </tr>
+<% }) %>
+</table>
+</div>
+    
+
+<%- include('../partials/footer') %>

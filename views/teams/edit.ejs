@@ -1,10 +1,40 @@
 <%- include('../partials/header') %>
 
-<h1>edit team page</h1>
-<form action="/teams/<%= user.teamId %>?_method=PUT" method="POST">
-    Description:
-    <input type="text" name="description">
-    <input type="submit" value="Save">
-</form>
+<main class="edit-team">
+
+    <%- include('../partials/subNav') %>
+    <section>
+            <h1><%= team.name %></h1>
+            <div class="edit-logo">
+                <img class="show-logo" src=<%= team.logo %> alt="team logo">
+            </div>
+            <form action="/teams/<%= team.id %>?_method=PUT" method="POST" id="edit-team-form">
+                <div>
+                    <div>
+                        <label>Age Group</label>
+                        <select name="ageGroup">
+                            <% options.forEach(function(option) { %>
+                            <option value="<%= option %>"><%= option %></option>
+                            <% }); %>
+                        </select>
+                    
+                    </div>
+                    <div>
+                        <label>Location</label>
+                        <input type="text" name="location">
+                    </div>
+                </div>
+            <div>
+                <p>Description <br>
+                <textarea rows="4" cols="60" name="description" form="edit-team-form"></textarea>
+                </p>
+                <input type="submit" value="Save" class="edit-submit">
+            </div>
+            </form>
+    </section>
+    
+</main>
+
 
 <%- include('../partials/footer') %>
+

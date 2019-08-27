@@ -1,6 +1,6 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var Player = require('../models/player');
+var Member = require('../models/member');
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -8,38 +8,39 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
 },
     function(accessToken, refreshToken, profile, cb) {
-        Player.findOne({'googleId':profile.id}, (err, player)=>{
+        Member.findOne({'googleId':profile.id}, (err, member)=>{
             if(err) return cb(err);
-            if(player) {
-                if (!player.avatar) {
-                    player.avatar = profile.photos[0].value;
-                    player.save((err)=>{
-                    return cb(null, player);
+            if(member) {
+                if (!member.avatar) {
+                    member.avatar = profile.photos[0].value;
+                    member.email = profile.emails[0].value,
+                    member.save((err)=>{
+                    return cb(null, member);
                     });
                 }else{
-                    return cb(null, player);
+                    return cb(null, member);
                 }
             }else{
-                var newPlayer = new Player({
+                var newMember = new Member({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     googleId: profile.id
                 });
-                newPlayer.save((err)=>{
+                newMember.save((err)=>{
                     if(err) return cb(err);
-                    return cb(null, player);
+                    return cb(null, member);
                 })
             }
         });
     }
 ));
 
-passport.serializeUser((player, done)=>{
-    done(null, player.id);
+passport.serializeUser((member, done)=>{
+    done(null, member.id);
 });
 
 passport.deserializeUser((id, done)=>{
-    Player.findById(id, (err, player)=>{
-        done(err, player);
+    Member.findById(id, (err, member)=>{
+        done(err, member);
     });
 });
