@@ -36,7 +36,7 @@
             </tr>
             <% team.matches.forEach((match)=>{ %>
             <tr>
-                <td><%= match.time %></td>
+                <td><%= match.time.toLocaleString() %></td>
                 <td><%= match.address %></td>
                 <td><%= match.team %></td>
                 <td>

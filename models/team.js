@@ -42,7 +42,7 @@ var teamSchema = new Schema({
         type: String,
         default: () => {
             var today = new Date;
-            return today.toDateString();
+            return today.toLocaleString();
         }
     },
 },{
