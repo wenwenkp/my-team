@@ -63,6 +63,11 @@ button {
 a {
     text-decoration: none;
 }
+.news {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 50px;
+}
 
 /* home page */
 .home-main {
