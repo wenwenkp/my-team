@@ -1,42 +1,52 @@
 <%- include('../partials/header') %>
 
+<main class="show-team">
 <%- include('../partials/subNav') %>
 
-<% if(leader) { %>
-    <form action="/teams/<%= team.id %>/schedule" method="POST">
-        <br>
-        Team: <input type="text" name="team">
-        Time: <input type="datetime-local" name="time">
-        Address: <input type="text" name="address">
-        <input type="submit" value="Create">
-    </form>
-<% }; %>
-
-
-<table>
-    <thead>
-        <th>Team</th>
-        <th>Date</th>
-        <th>Location</th>
-    </thead>
-    <tbody>
-<% team.matches.forEach((match)=>{ %>
-        <tr>
-            <td><%= match.team %></td>
-            <td><%= match.time %></td>
-            <td><%= match.address %></td>
-            <td>
+<section>
+    <div class="schedule-part1">
+        <h1><%= team.name %></h1>
+        <h3>Schedule</h3>
+    </div>
+    <div class="schedule-part2">
         <% if(leader) { %>
-                <form action="/teams/<%= team.id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="delete">
-                </form>
-<% }; %>
+            <form action="/teams/<%= team.id %>/schedule" method="POST" id="schedule-form">
+                <label>Date / Time</label>
+                <input type="datetime-local" name="time">
+                <label>Location</label>
+                <input type="text" name="address">
+                <label>Type of Game</label>
+                <input type="text" name="team">
+                <input type="submit" value="Create" class="schedule-btn">
+            </form>
+        <% }; %>
+    </div>
 
-            </td>
-        </tr>
-<% }) %>
-    </tbody>
-</table>
+    <div class="schedule-part3">
+        <table id="schedule">
+            <tr>
+                <th>Date / Time</th>
+                <th>Location</th>
+                <th>Type of Game</th>
+                <th></th>
+            </tr>
+            <% team.matches.forEach((match)=>{ %>
+            <tr>
+                <td><%= match.time %></td>
+                <td><%= match.address %></td>
+                <td><%= match.team %></td>
+                <td>
+                    <% if(leader) { %>
+                    <form action="/teams/<%= team.id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="delete">
+                    </form>
+                <% }; %>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</section>
 
-
+</main>
 <%- include('../partials/footer') %>

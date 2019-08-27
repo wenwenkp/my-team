@@ -263,6 +263,10 @@ a {
     padding: 5px 15px;
     border-radius: 10px;
 }
+#edit-team-form {
+    background: lightblue;
+    padding: 35px 0px;
+}
 #edit-team-form > div:first-child {
     display: flex;
     justify-content: space-evenly;
@@ -273,3 +277,51 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+/* schedule page */
+.schedule-part1 > h1 {
+    border-bottom: grey solid 1px;
+    padding-bottom: 20px;
+}
+.schedule-part1 > h3 {
+    margin-top: 20px;
+}
+#schedule-form {
+    background: lightblue;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.schedule-btn {
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.schedule-part3 {
+    margin-top: 50px;
+}
+/*
+.schedule-part3 > thead > th {
+    padding: 50px;
+} */
+#schedule {
+    border-collapse: collapse;
+    width: 90%;
+  }
+  
+  #schedule td, #schedule th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #schedule tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #schedule tr:hover {background-color: #ddd;}
+  
+  #schedule th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
