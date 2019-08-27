@@ -1,38 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var commentSchema = new Schema({
-    time: {
-        type: Date,
-        required: true,
-        default: () => {return new Date;}
-    },
-    text: {
-        type: String,
-        required: true
-    },
-    author: {
-        type: String,
-        required: true
-    }
-});
-
-var announcementSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    time: {
-        type: Date,
-        default: () => {return new Date;}
-    },
-    content: {
-        type: String,
-        required: true
-    },
-    comments: [commentSchema]
-});
-
 var matchSchema = new Schema({
     team: {
         type: String,
@@ -67,7 +35,6 @@ var teamSchema = new Schema({
             return today.toDateString();
         }
     },
-    announcements:[announcementSchema],
 },{
     timestamps: true
 });

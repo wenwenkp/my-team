@@ -12,8 +12,6 @@ router.post('/', teamsCtrl.createTeam);
 router.get('/:id/players', teamsCtrl.showTeamPlayers);
 // show team schedule page
 router.get('/:id/schedule', teamsCtrl.showTeamSchedule);
-// show team announcements page
-router.get('/:id/announcements', teamsCtrl.showTeamAnnouncements);
 //show edit team page
 router.get('/:id/edit', teamsCtrl.editTeam);
 //show team page- description
