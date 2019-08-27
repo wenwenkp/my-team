@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<h1>player main page</h1>
+
+<section>
+    <div>
+        Player: <img src="<%= user.avatar %>" alt="player avatar" class="avatar">
+    </div>
+    <div>
+        Name: <%= user.name %>
+    </div>
+    <div>
+        Favourite Team: <%= user.favTeam %>
+    </div>
+    <div>
+        Favourite Position: <%= user.favPosition %>
+    </div>
+    <a href="/players/edit">Edit Info</a>
+
+</section>
+    <% if(user.teamId !== '') {%>
+        <a href="/teams/<%= user.teamId %>">Check My Team</a>
+    <% } %>
+
+
+<%- include('../partials/footer') %>
+

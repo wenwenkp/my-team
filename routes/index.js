@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var playerCtrl = require('../controllers/players');
 
 /* GET home page. */
 router.get('/', (req, res)=>{
@@ -15,8 +16,8 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/members',
-    failureRedirect: '/members'
+    successRedirect: '/players',
+    failureRedirect: '/players'
   }
 ));
 

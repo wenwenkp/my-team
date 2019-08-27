@@ -1,71 +1,10 @@
 <%- include('../partials/header') %>
 
-
-<main class="create-page">
-    <!-- <div class="container"> -->
-        <img src="/images/event-pic.jpg" alt="" width="1110px">
-        <!-- <div class="bottom-left">Create Team</div> -->
-    <!-- </div> -->
-    <!-- <div class="create-back">
-        <button><a href="/members/manager" style="color:white">Back</a></button>
-    </div> -->
-    <section class="section-form">
-            <h2>Create Team</h2>
-            <form action="/teams" method="POST" id="create-team-form">
-                    <div class="create-part1">
-                        <span>Team Name</span>     
-                        <input type="text" name="name" required placeholder="name...">
-                        <span>City</span>
-                        <input type="text" name="location" required placeholder="city...">
-                        <span>Age Group</span>
-                        <select name="ageGroup" required>
-                            <% options.forEach(function(option) { %>
-                            <option value="<%= option %>"><%= option %></option>
-                            <% }); %>
-                        </select>
-                        <span>Description</span>
-                        <textarea rows="4" cols="50" name="description" form="create-team-form" required placeholder="description about your team..."></textarea>
-                    </div>
-                    <div></div>
-                    <div class="create-part2">
-                        <span>Choose Team Logo</span>
-                        <section class="logo-section">
-                            <img src="/images/logo1.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo2.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo3.jpg" alt="team logo" class="create-logo">
-                            <input type="radio" name="logo" value="/images/logo1.jpg">
-                            <input type="radio" name="logo" value="/images/logo2.jpg">
-                            <input type="radio" name="logo" value="/images/logo3.jpg">
-
-                            <img src="/images/logo4.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo5.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo6.jpg" alt="team logo" class="create-logo">
-                            <input type="radio" name="logo" value="/images/logo4.jpg">
-                            <input type="radio" name="logo" value="/images/logo5.jpg">
-                            <input type="radio" name="logo" value="/images/logo6.jpg">
-
-                            <img src="/images/logo7.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo8.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo9.jpg" alt="team logo" class="create-logo">
-                            <input type="radio" name="logo" value="/images/logo7.jpg">
-                            <input type="radio" name="logo" value="/images/logo8.jpg">
-                            <input type="radio" name="logo" value="/images/logo9.jpg">
-
-                            <img src="/images/logo10.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo11.jpg" alt="team logo" class="create-logo">
-                            <img src="/images/logo12.jpg" alt="team logo" class="create-logo">
-                            <input type="radio" name="logo" value="/images/logo10.jpg">
-                            <input type="radio" name="logo" value="/images/logo11.jpg">
-                            <input type="radio" name="logo" value="/images/logo12.jpg">
-                        </section>
-                        <div class="create-submit">
-                                <input type="submit" value="Save & Continue" style="color:white">
-                        </div>
-                    </div>
-            </form>
-    </section>
-    
-</main>
-
+<h1>new team page</h1>
+<form action="/teams" method="POST">
+    <input type="text" name="name">
+    <input type="text" name="description">
+    <input type="submit" value="Create">
+</form>
 
 <%- include('../partials/footer') %>
