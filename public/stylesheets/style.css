@@ -66,9 +66,9 @@ a {
     grid-gap: 30px;
 }
 .rows1 {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 50px;
 }
 .rows1 > section {
     display: flex;
@@ -94,8 +94,12 @@ a {
     
 }
 .home-manager, .home-player {
-    padding: 50px;
+    padding: 20px 50px;
     border: black 2px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .video-home{
     width: 500px;
@@ -107,6 +111,11 @@ a {
 
 .team-logo {
     max-width: 300px;
+}
+.home-btn {
+    background: lightskyblue;
+    color: white;
+    padding: 5px 20px;
 }
 
 /* create team */
