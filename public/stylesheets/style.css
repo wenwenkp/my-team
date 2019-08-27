@@ -9,11 +9,6 @@ body {
     margin-bottom: 50px;
     /* width: 1000px; */
 } 
-
-/* #logo-pic {
-    width: 1000px;
-} */
-
 button {
     outline: none;
 }
@@ -90,9 +85,6 @@ a {
     grid-template-rows: auto;
     grid-gap: 150px;
 }
-.rows2 > section > .column {
-    
-}
 .home-manager, .home-player {
     padding: 20px 50px;
     border: black 2px solid;
@@ -108,7 +100,6 @@ a {
 .home-img {
     max-width: 200px;
 }
-
 .team-logo {
     max-width: 300px;
 }
@@ -127,17 +118,13 @@ a {
     padding: 30px 50px;
     background-color: lightblue;
 }
-
-
 .create-logo {
     max-width: 70px;
 }
 #create-team-form {
     display: flex;
     justify-content: space-evenly;
-    /* grid-template-columns: 40% 10% 40%; */
 }
-
 .create-part1 {
     display: grid;
     grid-template-rows: auto*8;
@@ -177,5 +164,39 @@ a {
     max-width: 150px;
 }
 .manager-main {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-row-gap: 30px;
+}
+.manager-part1 {
+    padding: 50px 40px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: grey solid 2px
+}
+.manager-part1 > div > button {
+    background-color: lightgrey;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.manager-part2 {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.manager-part2 > div{
+    justify-self: center;
+    margin-bottom: 50px;
+    background-color: lightgrey;
+    padding: 20px 20px 0px 20px;
+}
+.team-description {
+    background-color: lightgrey;
+    text-align: center;
+    padding: 10px 0px;
+}
 
+.team-name {
+    font-size: 20px;
+    font-weight: bold;
 }

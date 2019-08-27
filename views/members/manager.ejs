@@ -4,19 +4,19 @@
 
 
 <main class="manager-main">
-    <div>
-        <button><a href="/teams/new">Create Team</a></button>
-    </div>
-
-    <section>
+    <section class="manager-part1">
+        <h3>My Teams</h3>
+        <div>
+            <button><a href="/teams/new">Create Team</a></button>
+        </div>
+    </section>
+    <section class="manager-part2">
         <% teams.forEach((team)=>{ %>
         <div>
             <div><img src=<%= team.logo %> alt="team logo" class="manager-logo"></div>
-            <div>
-                <ul>
-                    <li><a href="/teams/<%= team.id %>"><%= teams.name %></a></li>
-                    <li><%= team.matchesNumber %> Matches</li>        
-                </ul>
+            <div class="team-description">
+                <h4><a class="team-name" href="/teams/<%= team.id %>"><%= team.name %></a></h4>
+                <span><%= team.matchesNumber %> Matches</span>        
             </div>
         </div>
         <% }) %>
