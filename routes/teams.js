@@ -17,7 +17,7 @@ router.get('/:id/schedule', teamsCtrl.showTeamSchedule);
 //show edit team page
 router.get('/:id/edit', teamsCtrl.editTeam);
 //show team page- description
-router.get('/:id', teamsCtrl.showTeam);
+router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
 
 
 // router.get('/', isLoggedIn, teamsCtrl.index);
@@ -31,6 +31,8 @@ router.get('/:id', teamsCtrl.showTeam);
 
 //edit team page
 router.put('/:id', teamsCtrl.updateTeam);
+//delete team schedule
+router.delete('/:id', teamsCtrl.deleteSchedule);
 
 
 // Insert this middleware for routes that require a logged in user

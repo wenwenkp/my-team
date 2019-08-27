@@ -15,7 +15,7 @@ module.exports = {
     // deleteAnnouncement,
     // showAnnouncement,
     createSchedule,
-    // deleteMatch,
+    deleteSchedule,
     // createComment,
     // allTeams,
 };
@@ -55,7 +55,7 @@ function createTeam(req, res, next) {
 }
 function showTeam(req, res, next) {
     Teams.findById(req.params.id).populate('players').exec((err, team)=>{
-        Members.findById(req.user.id, (err, member)=>{
+        Members.findById(req.user._id, (err, member)=>{
             let leader =false;
             let teammate = false;
             if(member.ownTeam.includes(team.id)){
@@ -207,23 +207,23 @@ function createSchedule(req, res, next) {
         // });
     })
 }
-// function deleteMatch(req, res, next) {
-//     Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
-//         let targetIdx;
-//         team.matches.forEach((m, idx)=>{
-//             if(m.id === req.params.id){
-//                 targetIdx = idx;
-//             }
-//         });
-//         team.matches.splice(targetIdx, 1);
-//         team.save();
-//         res.redirect(`/teams/${team.id}`);
-//         // res.render('teams/show', {
-//         //     user: req.user,
-//         //     team
-//         // })
-//     })
-// }
+function deleteSchedule(req, res, next) {
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        let targetIdx;
+        team.matches.forEach((m, idx)=>{
+            if(m.id === req.params.id){
+                targetIdx = idx;
+            }
+        });
+        team.matches.splice(targetIdx, 1);
+        team.save();
+        res.redirect(`/teams/${team.id}/schedule`);
+        // res.render('teams/show', {
+        //     user: req.user,
+        //     team
+        // })
+    })
+}
 
 // function createComment(req, res, next) {
 //     Teams.findById(req.user.teamId, (err, team)=>{

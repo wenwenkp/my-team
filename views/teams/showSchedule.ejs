@@ -13,13 +13,30 @@
 <% }; %>
 
 
-<ul>
+<table>
+    <thead>
+        <th>Team</th>
+        <th>Date</th>
+        <th>Location</th>
+    </thead>
+    <tbody>
 <% team.matches.forEach((match)=>{ %>
-    <li><%= match.team %></li>
-    <li><%= match.time %></li>
-    <li><%= match.address %></li>
+        <tr>
+            <td><%= match.team %></td>
+            <td><%= match.time %></td>
+            <td><%= match.address %></td>
+            <td>
+        <% if(leader) { %>
+                <form action="/teams/<%= team.id %>?_method=DELETE" method="POST">
+                    <input type="submit" value="delete">
+                </form>
+<% }; %>
+
+            </td>
+        </tr>
 <% }) %>
-</ul>
+    </tbody>
+</table>
 
 
 <%- include('../partials/footer') %>
