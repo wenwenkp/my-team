@@ -3,7 +3,7 @@ var teamsCtrl = require('../controllers/teams');
 
 
 // create team page
-router.get('/new', teamsCtrl.newTeam);
+router.get('/new', isLoggedIn, teamsCtrl.newTeam);
 // team list 
 router.get('/list',isLoggedIn, teamsCtrl.showAllTeams);
 // post schedule
