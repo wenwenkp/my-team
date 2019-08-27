@@ -124,7 +124,7 @@ function leaveTeam(req, res, next) {
 
 function disbandTeam(req, res, next) {
   // let user = req.user;
-  //   Teams.findOneAndDelete(req.params.id).populate('players').exec((err, team)=>{
+    // Teams.findOneAndDelete(req.params.id).populate('players').exec((err, team)=>{
   //     team.players.forEach((player)=>{
   //       player.joinTeam.forEach((teamId, idx)=>{
   //         let playerTeamIdx;
@@ -137,8 +137,8 @@ function disbandTeam(req, res, next) {
   //         player.save();
   //       })
   //     })
-  //   })
-  //   res.redirect('/players');
+    // })
+    // res.redirect('/members/player');
 }
 
 

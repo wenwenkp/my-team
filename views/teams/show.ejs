@@ -8,9 +8,6 @@
         <div class="description-part1">
             <h1><%= team.name %></h1>
             <% if(leader) { %>
-            <form action="/members/<%= team.id %>/disband?_method=PUT" method="POST">
-                <input type="submit" value="Disband Team">
-            </form>
             <button>
                 <a href="/teams/<%= team.id %>/edit">Edit</a>
             </button>

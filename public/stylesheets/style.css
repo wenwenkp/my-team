@@ -251,9 +251,15 @@ a {
     border-bottom: grey solid 2px
 }
 .manager-part1 > div > button {
-    background-color: lightgrey;
+    background: rgb(235, 158, 44);
     padding: 10px 15px;
     border-radius: 10px;
+}
+.manager-btn > button > a {
+    color: white;
+}
+.manager-btn > button > a:hover {
+    text-decoration: none;
 }
 .manager-part2 {
     margin-top: 20px;
@@ -265,6 +271,7 @@ a {
     margin-bottom: 50px;
     background-color: lightgrey;
     padding: 20px 20px 0px 20px;
+    border-radius: 20px;
 }
 .team-description {
     background-color: lightgrey;
@@ -356,6 +363,7 @@ a {
     display: flex;
     flex-direction: column;
     width: 400px;
+    border-radius: 20px;
 }
 .schedule-btn {
     border-radius: 10px;
@@ -377,7 +385,10 @@ a {
     border: 1px solid #ddd;
     padding: 8px;
 }
+#schedule tr:first-child {
+    /* border-radius: 20px 20px 0px 0px; */
 
+}
 #schedule tr:nth-child(even){background-color: #f2f2f2;}
 
 #schedule tr:hover {background-color: #ddd;}
@@ -386,7 +397,7 @@ a {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color:  rgb(8, 47, 95);
     color: white;
 }
 
