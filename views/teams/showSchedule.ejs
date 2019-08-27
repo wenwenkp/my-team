@@ -12,11 +12,11 @@
         <% if(leader) { %>
             <form action="/teams/<%= team.id %>/schedule" method="POST" id="schedule-form">
                 <label>Date / Time</label>
-                <input type="datetime-local" name="time">
+                <input type="datetime-local" name="time" required>
                 <label>Location</label>
-                <input type="text" name="address">
+                <input type="text" name="address" required>
                 <label>Type of Game</label>
-                <input type="text" name="team">
+                <input type="text" name="team" required>
                 <input type="submit" value="Create" class="schedule-btn">
             </form>
         <% }; %>
