@@ -55,6 +55,7 @@ button {
     padding: 5px 10px;
     font-size: 15px;
     border-radius: 10px;
+    background: rgb(235, 158, 44);
 }
 .profile-back {
     display: flex;
@@ -102,17 +103,26 @@ a {
 
 /* home page */
 .home-main {
-    margin-top: 30px;
+    /* margin-top: 30px; */
     margin-bottom: 30px;
     display: grid;
     grid-template-rows: auto auto;
     grid-gap: 30px;
 }
-/* .rows1 {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 50px;
-} */
+.rows1 {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    font-weight: bold;
+    font-size: 64px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .rows1 > section {
     display: flex;
     flex-direction: column;
@@ -152,10 +162,15 @@ a {
     max-width: 300px;
 }
 .home-btn {
-    background: lightskyblue;
-    color: white;
+    background: rgb(235, 158, 44);
     padding: 5px 20px;
+    font-size: 20px;
+    border-radius: 10px;
 }
+.home-btn > a:hover, .profile-edit > button > a:hover {
+    text-decoration: none;
+}
+
 
 /* create team */
 .create-page {
@@ -205,6 +220,11 @@ a {
 }
 .create-submit {
     padding: 20px 0px 0px 150px;
+}
+.create-submit > input, .create-back > button {
+    background: rgb(235, 158, 44);
+    border-radius: 10px;
+    padding: 5px 15px;
 }
 
 /* manager-page */
