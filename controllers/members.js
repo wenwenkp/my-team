@@ -97,28 +97,47 @@ function updateMember(req, res, next) {
 }
 
 function leaveTeam(req, res, next) {
-  let user = req.user;
-    Teams.findById(req.params.id, (err, team)=>{
-      let targetIdx;
-      team.players.forEach((p, idx)=>{
-        if(p === user.id){
-          targetIdx = idx;
+  Teams.findById(req.params.id, (err, team)=>{
+    team.players.forEach((player, idx)=>{
+      if(player == req.user.id){
+        team.players.splice(idx, 1);
+      }
+    })
+    team.save();
+    Members.findById(req.user.id, (err, member)=>{
+      member.joinTeam.forEach((t, idx)=>{
+        console.log(typeof t);
+        if(t == team.id){
+          member.joinTeam.splice(idx, 1);
         }
       })
-      team.players.splice(targetIdx, 1);
-      team.save();
-      Members.findById(req.user.id, (err, member)=>{
-        let index;
-        member.joinTeam.forEach((t, idx)=>{
-          if(t === req.params.id){
-            index = idx;
-          }
-        })
-        member.joinTeam.splice(index, 1);
-        member.save();
-        res.redirect('/members/player');
-      })
-    }) 
+      member.save();
+      // res.json(member);
+      res.redirect('/members/player');
+    })
+  })
+  // let user = req.user;
+  //   Teams.findById(req.params.id, (err, team)=>{
+  //     let targetIdx;
+  //     team.players.forEach((p, idx)=>{
+  //       if(p === user.id){
+  //         targetIdx = idx;
+  //       }
+  //     })
+  //     team.players.splice(targetIdx, 1);
+  //     team.save();
+  //     Members.findById(req.user.id, (err, member)=>{
+  //       let index;
+  //       member.joinTeam.forEach((t, idx)=>{
+  //         if(t === req.params.id){
+  //           index = idx;
+  //         }
+  //       })
+  //       member.joinTeam.splice(index, 1);
+  //       member.save();
+  //       res.redirect('/members/player');
+  //     })
+  //   }) 
   };
 
 
