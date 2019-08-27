@@ -3,7 +3,7 @@
 <%- include('../partials/subNav') %>
 
 <% if(leader) { %>
-    <form action="/teams/matches/add" method="POST">
+    <form action="/teams/<%= team.id %>/schedule" method="POST">
         <br>
         Team: <input type="text" name="team">
         Time: <input type="datetime-local" name="time">
@@ -11,6 +11,15 @@
         <input type="submit" value="Create">
     </form>
 <% }; %>
+
+
+<ul>
+<% team.matches.forEach((match)=>{ %>
+    <li><%= match.team %></li>
+    <li><%= match.time %></li>
+    <li><%= match.address %></li>
+<% }) %>
+</ul>
 
 
 <%- include('../partials/footer') %>

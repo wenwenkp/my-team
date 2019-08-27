@@ -8,14 +8,13 @@ module.exports = {
     showTeam,
     showTeamPlayers,
     showTeamSchedule,
-    showTeamAnnouncements,
     showAllTeams,
     editTeam,
     updateTeam,
     // createAnnouncement,
     // deleteAnnouncement,
     // showAnnouncement,
-    // createMatch,
+    createSchedule,
     // deleteMatch,
     // createComment,
     // allTeams,
@@ -111,30 +110,11 @@ function showTeamSchedule(req, res, next) {
             leader,
             teammate
         })
+        // res.json(team);
         })
     })
 }
-function showTeamAnnouncements(req, res, next) {
-    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
-        Members.findById(req.user.id, (err, member)=>{
-            let leader =false;
-            let teammate = false;
-            if(member.ownTeam.includes(team.id)){
-                leader = true;
-            };
-            if(member.joinTeam.includes(team.id)){
-                teammate = true;
-            }
-        res.render('teams/showAnnouncements', {
-            user: req.user,
-            team,
-            member,
-            leader,
-            teammate
-        })
-        })
-    })
-}
+
 function showAllTeams(req, res, next) {
     Teams.find({}, (err, teams)=>{
         // Members.findById(req.user.id, (err, member)=>{
@@ -216,17 +196,17 @@ function updateTeam(req, res, next) {
 //     })
 // }
 
-// function createMatch(req, res, next) {
-//     Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
-//         team.matches.push(req.body);
-//         team.save();
-//         res.redirect(`/teams/${team.id}`);
-//         // res.render('teams/show', {
-//         //     user: req.user,
-//         //     team
-//         // });
-//     })
-// }
+function createSchedule(req, res, next) {
+    Teams.findById(req.params.id).populate('players').exec((err, team)=>{
+        team.matches.push(req.body);
+        team.save();
+        res.redirect(`/teams/${team.id}/schedule`);
+        // res.render('teams/show', {
+        //     user: req.user,
+        //     team
+        // });
+    })
+}
 // function deleteMatch(req, res, next) {
 //     Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
 //         let targetIdx;
