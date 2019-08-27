@@ -12,7 +12,7 @@ router.put('/join', membersCtrl.joinTeam);
 
 // router.get('/all', isLoggedIn, membersCtrl.allPlayers);
 // edit profile page
-router.get('/:id/edit', membersCtrl.editMember);
+router.get('/:id/edit', isLoggedIn, membersCtrl.editMember);
 // leave team button
 router.put('/:id/leave', membersCtrl.leaveTeam);
 // disband team button

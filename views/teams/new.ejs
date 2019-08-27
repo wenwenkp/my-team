@@ -14,9 +14,9 @@
             <form action="/teams" method="POST" id="create-team-form">
                     <div class="create-part1">
                         <span>Team Name</span>     
-                        <input type="text" name="name" required>
+                        <input type="text" name="name" required placeholder="name...">
                         <span>City</span>
-                        <input type="text" name="location" required>
+                        <input type="text" name="location" required placeholder="city...">
                         <span>Age Group</span>
                         <select name="ageGroup" required>
                             <% options.forEach(function(option) { %>
@@ -24,7 +24,7 @@
                             <% }); %>
                         </select>
                         <span>Description</span>
-                        <textarea rows="4" cols="50" name="description" form="create-team-form" required></textarea>
+                        <textarea rows="4" cols="50" name="description" form="create-team-form" required placeholder="description about your team..."></textarea>
                     </div>
                     <div></div>
                     <div class="create-part2">

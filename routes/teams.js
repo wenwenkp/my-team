@@ -11,11 +11,11 @@ router.post('/:id/schedule', teamsCtrl.createSchedule);
 // create team
 router.post('/', teamsCtrl.createTeam);
 // show team players page
-router.get('/:id/players', teamsCtrl.showTeamPlayers);
+router.get('/:id/players',isLoggedIn, teamsCtrl.showTeamPlayers);
 // show team schedule page
-router.get('/:id/schedule', teamsCtrl.showTeamSchedule);
+router.get('/:id/schedule',isLoggedIn, teamsCtrl.showTeamSchedule);
 //show edit team page
-router.get('/:id/edit', teamsCtrl.editTeam);
+router.get('/:id/edit',isLoggedIn, teamsCtrl.editTeam);
 //show team page- description
 router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
 
