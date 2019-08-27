@@ -13,6 +13,12 @@ button {
     outline: none;
 }
 
+.header-banner {
+    background: rgb(8, 47, 95);
+    width: 1110px;
+    height: 100px;
+}
+
 /* sub nave */
 .sub-nav {
     margin-top: 40px;
@@ -102,11 +108,11 @@ a {
     grid-template-rows: auto auto;
     grid-gap: 30px;
 }
-.rows1 {
+/* .rows1 {
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 50px;
-}
+} */
 .rows1 > section {
     display: flex;
     flex-direction: column;

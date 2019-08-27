@@ -139,6 +139,7 @@ function showAllTeams(req, res, next) {
 function editTeam(req, res, next) {
     Teams.findById(req.params.id, (err, team)=>{
         let options = ['1-10', '20-40', 'After 40'];
+        ;
     res.render('teams/edit', {
         user: req.user,
         team,

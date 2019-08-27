@@ -10,17 +10,17 @@
             <form action="/teams" method="POST" id="create-team-form">
                     <div class="create-part1">
                         <span>Team Name</span>     
-                        <input type="text" name="name">
-                        <span>Location</span>
-                        <input type="text" name="location">
+                        <input type="text" name="name" required>
+                        <span>City</span>
+                        <input type="text" name="location" required>
                         <span>Age Group</span>
-                        <select name="ageGroup">
+                        <select name="ageGroup" required>
                             <% options.forEach(function(option) { %>
                             <option value="<%= option %>"><%= option %></option>
                             <% }); %>
                         </select>
                         <span>Description</span>
-                        <textarea rows="4" cols="50" name="description" form="create-team-form"></textarea>
+                        <textarea rows="4" cols="50" name="description" form="create-team-form" required></textarea>
                     </div>
                     <div></div>
                     <div class="create-part2">
