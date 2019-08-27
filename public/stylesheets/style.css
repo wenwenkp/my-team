@@ -35,6 +35,7 @@ button {
 /* member profile */
 .profile-avatar {
     max-width: 150px;
+    border-radius: 20px;
 }
 .p-avatar{
     max-width: 20px;
@@ -177,9 +178,11 @@ a {
 
 
 /* create team */
-.create-page {
-    padding: 50px;
+.create-page > img {
+    /* padding: 20px 0px 20px 0px; */
+    border-radius: 0px 0px 20px 20px;
 }
+
 .section-form {
     margin-top: 40px;
     padding: 30px 50px;
@@ -405,6 +408,32 @@ a {
 #players th {
     padding-top: 12px;
     padding-bottom: 12px;
-    background-color: #4CAF50;
+    background-color: rgb(8, 47, 95);
     color: white;
+}
+
+#list {
+    border-collapse: collapse;
+    width: 90%;
+}
+
+#list td, #list th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#list tr:nth-child(even){background-color: #f2f2f2;}
+
+#list tr:hover {background-color: #ddd;}
+
+#list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(8, 47, 95);
+    color: white;
+}
+.list {
+    margin-top: 50px;
+    margin-left: 50px;
 }

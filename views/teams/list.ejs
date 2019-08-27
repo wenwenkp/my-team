@@ -1,13 +1,13 @@
 <%- include('../partials/header') %>
 
-<table>
-    <thead>
+<div class="list">
+<table id="list">
+    <tr>
         <th>Team Name</th>
         <th>Found Date</th>
         <th>Manager</th>
         <th>Join?</th>
-    </thead>
-    <tbody>
+    </tr>
 <% teams.forEach((team)=>{ %>
         <tr>
             <td><%= team.name %></td>
@@ -21,8 +21,8 @@
             </td>
         </tr>
 <% }) %>
-    </tbody>
 </table>
+</div>
     
 
 <%- include('../partials/footer') %>
