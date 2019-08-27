@@ -1,32 +1,44 @@
 <%- include('../partials/header') %>
 
-<%- include('../partials/subNav') %>
+<main class="show-team">
 
+    <%- include('../partials/subNav') %>
 
-<% if(leader) { %>
+    <section>
+        <div class="description-part1">
+            <h1><%= team.name %></h1>
+            <% if(leader) { %>
+            <button>
+                <a href="/teams/<%= team.id %>/edit">Edit</a>
+            </button>
+            <% }; %>
+        </div>
+        
+        <div class="description-part2">
+            <div>
+                <h5>Found Date</h5>
+                <span><%= team.foundDate %></span>
+                <h5>Team Manager</h5>
+                <span><%= team.leader %></span>
+                <h5>Age Group</h5>
+                <span><%= team.ageGroup %></span>
+                <h5>Location</h5>
+                <span><%= team.location %></span>
+                <h5>Matches Completed</h5>
+                <span><%= team.matchesNumber %></span>
+            </div>
+            <div>
+                <img class="show-logo" src=<%= team.logo %> alt="team logo">
+            </div>
+        </div>
+        <div class="description-part3">
+            <h3>Team Description</h3>
+            <p>
+                <%= team.description %>
+            </p>
+        </div>
 
-<button>
-    <a href="/teams/<%= team.id %>/edit">Edit Description</a>
-</button>
-<% }; %>
-
-
-
-<br>
-<section>
-    Team Name: <%= team.name %>
-    <br>
-    Team Found Date: <%= team.foundDate %>
-    <br>
-    Team Manager: <%= team.leader %>
-    <br>
-    Team Description: <%= team.description %>
-</section>
-
-                
-
-<% if(teammate) { %>
-
-<% } %>
+    </section>
+</main>
 
 <%- include('../partials/footer') %>

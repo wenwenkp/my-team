@@ -13,6 +13,18 @@ button {
     outline: none;
 }
 
+/* sub nave */
+.sub-nav {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sub-nav > img {
+    max-width: 150px;
+}
+
 /* member profile */
 .profile-avatar {
     max-width: 150px;
@@ -195,8 +207,69 @@ a {
     text-align: center;
     padding: 10px 0px;
 }
-
 .team-name {
     font-size: 20px;
     font-weight: bold;
+}
+
+/* show team */
+.show-team {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding: 40px 0px;
+}
+.show-team > section {
+    padding: 0px 40px;
+}
+.description-part1 {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: grey solid 1px;
+    padding-bottom: 20px;
+}
+.description-part1 > button {
+    align-self: flex-end;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.show-logo {
+    max-width: 300px;
+}
+.description-part2 {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+/* edit page */
+.edit-team {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+.edit-team > section > h1 {
+    border-bottom: grey solid 1px;
+    padding-bottom: 20px;
+}
+.edit-logo {
+    margin: 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-submit {
+    margin-top: 20px;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+#edit-team-form > div:first-child {
+    display: flex;
+    justify-content: space-evenly;
+}
+#edit-team-form > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
