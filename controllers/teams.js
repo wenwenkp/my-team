@@ -44,7 +44,7 @@ function createTeam(req, res, next) {
     newTeam.save();
 
     Members.findById(req.user.id, (err, member)=>{
-        member.joinTeam.push(newTeam.id);
+        // member.joinTeam.push(newTeam.id);
         member.ownTeam.push(newTeam.id);
         member.isLeader = true;
         member.save();

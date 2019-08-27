@@ -13,8 +13,10 @@ router.put('/join', membersCtrl.joinTeam);
 // router.get('/all', isLoggedIn, membersCtrl.allPlayers);
 // edit profile page
 router.get('/:id/edit', membersCtrl.editMember);
-
-// router.put('/leave', membersCtrl.leaveTeam);
+// leave team button
+router.put('/:id/leave', membersCtrl.leaveTeam);
+// disband team button
+router.put('/:id/disband', membersCtrl.leaveTeam);
 // router.put('/join', membersCtrl.joinTeam);
 // save edit
 router.put('/:id', membersCtrl.updateMember);

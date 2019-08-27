@@ -8,7 +8,8 @@ module.exports = {
     joinTeam,
     editMember,
     updateMember,
-    // leaveTeam,
+    leaveTeam,
+    disbandTeam,
     // allPlayers,
 }
 
@@ -60,9 +61,9 @@ function showPlayerTeam(req, res, next) {
 
 function joinTeam(req, res, next) {
   Teams.findById(req.body.teamId, (err, team)=>{
-    if(team.players.includes(req.user.id)){
-      return res.redirect('/teams/list');
-    };
+    // if(team.players.includes(req.user.id)){
+    //   return res.redirect('/teams/list');
+    // };
     team.players.push(req.user.id);
     team.save();
     Members.findById(req.user.id, (err, member)=>{
@@ -95,34 +96,51 @@ function updateMember(req, res, next) {
   });
 }
 
-// function leaveTeam(req, res, next) {
-//   let user = req.user;
-//   if(user.isLeader){
-//     Teams.findOneAndDelete(user.teamId).populate('players').exec((err, team)=>{
-//       team.players.forEach((p)=>{
-//         p.teamId = '';
-//         p.save();
-//       })
-//     })
-//   }else{
-//     Teams.findById(user.teamId).populate('players').exec((err, team)=>{
-//       let targerIdx;
-//       team.players.forEach((p, idx)=>{
-//         if(p.teamId === user.teamId){
-//           targerIdx = idx;
-//         }
-//       })
-//       team.players.splice(targerIdx, 1);
-//       team.save();
-//       }) 
-//   };
-//   Players.findById(user.id, (err, p)=>{
-//     p.isLeader = false;
-//     p.teamId = '';
-//     p.save();
-//     res.redirect('/players');
-// })
-// }
+function leaveTeam(req, res, next) {
+  let user = req.user;
+    Teams.findById(req.params.id, (err, team)=>{
+      let targetIdx;
+      team.players.forEach((p, idx)=>{
+        if(p === user.id){
+          targetIdx = idx;
+        }
+      })
+      team.players.splice(targetIdx, 1);
+      team.save();
+      Members.findById(req.user.id, (err, member)=>{
+        let index;
+        member.joinTeam.forEach((t, idx)=>{
+          if(t === req.params.id){
+            index = idx;
+          }
+        })
+        member.joinTeam.splice(index, 1);
+        member.save();
+        res.redirect('/members/player');
+      })
+    }) 
+  };
+
+
+function disbandTeam(req, res, next) {
+  // let user = req.user;
+  //   Teams.findOneAndDelete(req.params.id).populate('players').exec((err, team)=>{
+  //     team.players.forEach((player)=>{
+  //       player.joinTeam.forEach((teamId, idx)=>{
+  //         let playerTeamIdx;
+  //         teamId.forEach((id, index)=>{
+  //           if(id === req.params.id){
+  //             playerTeamIdx = index;
+  //           }
+  //         })
+  //         teamId.splice(playerTeamId, 1);
+  //         player.save();
+  //       })
+  //     })
+  //   })
+  //   res.redirect('/players');
+}
+
 
 
 
