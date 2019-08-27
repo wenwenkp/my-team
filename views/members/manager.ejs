@@ -5,10 +5,27 @@
         <li><a href="/teams/<%= team.id %>"><%= team.name %></a></li>
     <% }) %>
 </ul>
-<hr>
 
-<button><a href="/teams/new">Create Team</a></button>
 
+<main class="manager-main">
+    <div>
+        <button><a href="/teams/new">Create Team</a></button>
+    </div>
+
+    <section>
+    <% teams.forEach((team)=>{ %>
+        <div>
+            <div><img src="" alt="team logo">Team-Logo</div>
+            <div>
+                <ul>
+                    <li><a href="/teams/<%= team.id %>"><%= teams.name %></a></li>
+                    <li><%= team.matchesNumber %> Matches</li>        
+                </ul>
+            </div>
+        </div>
+    <% }) %>
+    </section>
+</main>
 
 
 

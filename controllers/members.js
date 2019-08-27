@@ -34,12 +34,11 @@ function showManagerTeam(req, res, next) {
   Members.findById(req.user.id).populate('Team').exec((err, member)=>{
     Teams.find({_id: member.ownTeam}).populate('Member')
     .exec((err, teams)=>{
-      // res.json(teams);
-
     res.render('members/manager', {
       user:req.user,
       teams,
-      member
+      member,
+      // number
     });
   })
 

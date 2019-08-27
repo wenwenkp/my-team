@@ -28,6 +28,10 @@ var teamSchema = new Schema({
         required: true
     },
     matches:[matchSchema],
+    matchesNumber:{
+        type: Number,
+        default: 0
+    },
     foundDate: {
         type: String,
         default: () => {
