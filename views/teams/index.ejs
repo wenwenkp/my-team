@@ -12,65 +12,35 @@
     </div>
 
     <hr>
-    <!-- <div class="table-responsive"> -->
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-    <!-- </div> -->
+    
+    <div class="container">
+        <section>
+            <% teams.forEach((team)=>{ %>
+            <div class="card" style="width: 15rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h4 class="card-title"><%= team.name %></h4>
+                    <p class="card-text">
+                        <h6>Leader</h6>
+                        <span><%= team.leader %></span>
+                        <h6>Found Date</h6>
+                        <span><%= team.foundDate %></span>
+                    </p>
+                    <a href="/teams/<%= team.id %>" class="btn btn-primary">Go Check</a>
+                    <% if(!user.teamId){ %>
+                    <form action="/players/join?_method=PUT" method="POST">
+                        <input type="text" name="teamId" value="<%= team.id %>" hidden>
+                        <button type="submit" class="btn btn-success">Join</button>
+                    </form>
+                    <% } %>
+                </div>
+            </div>
+            <% })%>
+        </section>
+    </div>
+
 </div>
 
-<table>
-    <thead>
-        <th>Team Name</th>
-        <th>Leader</th>
-        <th>Found Date</th>
-        <th></th>
-    </thead>
-    <tbody>
-    <% teams.forEach((team)=>{ %>
-        <tr>
-            <td><a href="/teams/<%= team.id %>"><%= team.name %></a></td>
-            <td><%= team.leader %></td>
-            <td><%= team.foundDate %></td>
-            <td>
-                <% if(!user.teamId){ %>
-                <form action="/players/join?_method=PUT" method="POST">
-                    <input type="text" name="teamId" value="<%= team.id %>" hidden>
-                    <input type="submit" value="Join">
-                </form>
-                <% } %>
-            </td>
-        </tr>
-    <% })%>
-    </tbody>
-</table>
 
 
 <%- include('../partials/footer') %>
