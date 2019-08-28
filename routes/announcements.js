@@ -2,7 +2,7 @@ var router = require('express').Router();
 var announcementsCtrl = require('../controllers/teams');
 
 router.post('/teams/announcements/add', announcementsCtrl.createAnnouncement);
-router.get('/teams/announcements/:id', announcementsCtrl.showAnnouncement);
+router.get('/announcements/:id', announcementsCtrl.showAnnouncement);
 router.delete('/teams/announcements/:id', announcementsCtrl.deleteAnnouncement);
 
 

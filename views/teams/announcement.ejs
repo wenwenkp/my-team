@@ -1,38 +1,126 @@
 <%- include('../partials/header') %>
 
+
+<div class="mx-auto mt-5 container" style="width: 800px;">
+        <!-- header -->
+            <div class="row">
+                    <div class="col-3">
+                        <% if(user.teamId) { %>
+                            <% if(user.teamId == team.id) { %>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#leaveTeamModal">
+                                <% if(user.isLeader) { %>
+                                    Disband Team
+                                <% }else{ %>
+                                    Leave Team
+                                <% } %>
+                        </button> 
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div class="col-6">  
+                    </div>
+                    <div class="col-3">
+                        <a href="/teams" class="btn btn-outline-dark" role="button" aria-pressed="true">Team List</a>
+                    </div>
+                </div>
+            
+            <hr>
+            <!-- team info -->
+        <div class="container">
+    
+                <div class="row">
+                    <div class="col-10">  
+                        <div class="row">                               
+                            <h1>Profile</h1>
+                        </div>
+                        <div class="row">
+                            Team Name: <%= team.name %>
+
+                            <% if(user.isLeader) { %>
+                                <% if(user.teamId === team.id) { %>
+                            <div class="row">
+                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#addMatchModal">
+                                    Add Match
+                                </button>
+                            </div>
+                                <% }; %>
+                            <% }; %>
+                        </div>
+                        <div class="row">
+                            
+                            <!-- announcement table -->
+
+                            <% if(user.teamId === team.id) { %>
+                                <% team.announcements.forEach((p)=>{ %>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <%= p.time %>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 class="card-title"><%= p.title %></h6>
+                                        <p class="card-text">
+                                            <%= p.content %>
+                                        </p>
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            Comments
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                    <% p.comments.forEach((c)=>{ %>
+                                        <h6>At <%= c.time %>  By <%= c.author %></h6>
+                                        <p><%= c.text %></p>
+                                    <% }); %>
+                                    </div>
+                                </div>
+                                <% }); %>
+                            <% } %>
+                        </div>
+                        
+                            
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-1">
+                        <div class="row">
+                        <!-- team logo -->
+                            <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
+                        </div>
+                        <div class="row">
+                        <!-- buttons -->
+                            <a href="/teams/<%= team.id %>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Team Info</a>
+                        </div>
+                        <div class="row">
+                        <!-- buttons -->
+                            <a href="/matches/<%= team.id %>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Schedule</a>
+                        </div>
+                        <div class="row">
+                        <!-- buttons -->
+                        <% if(user.teamId) { %>
+                            <% if(user.teamId == team.id) { %>                    
+                            <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Announcements</a>
+                            <% }; %>
+                        <% } %>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+
+</div>
+
+
+
 <h1>announcement page</h1>
 
-<h1>Team: <%= team.name %></h1>
-<h2>Title: <%= post.title %></h2>
-<h4>Time: <%= post.time %></h4>
-<p><%= post.content %></p>
 
 <a href="/teams/<%= team.id %>">Back</a>
 
 <h2>Input:</h2>
-<form action="/teams/comments/<%= post.id %>" method="POST">
     <input type="text" name="text">
     <input type="submit" value="Submit">
 </form>
 
-    <h3>comments:</h3>
-    <% post.comments.forEach((c)=>{ %>
-    <table>
-        <thead>
-            <th>Time: </th>
-            <th>By: </th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>At <%= c.time %></td>
-                <td>By <%= c.author %></td>
-            </tr>
-            <tr>
-                <td><%= c.text %></td>
-            </tr>
-        </tbody>
-    </table>
-    <% }) %>
 
 
 <%- include('../partials/footer') %>

@@ -114,6 +114,8 @@ function showAnnouncement(req, res, next) {
         })
     })
 }
+
+
 function showMatch(req, res, next) {
     Teams.findById(req.params.id, (err, team)=>{
         res.render('teams/match', {
