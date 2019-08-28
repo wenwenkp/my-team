@@ -19,20 +19,19 @@
                         Team Manager: <%= team.leader %>
                     </div>
                     <div class="row">
-                        Favourite Position: <%= user.favPosition %>
+                        Team Description: <%= team.description %>
                     </div>
                     <div class="row">
-                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
-                            Edit Profile
+                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#editTeamModal">
+                            Edit Team Profile
                         </button>
                     </div>
                     <div class="row">
-                        <% if(user.teamId !== '') {%>
-                            <a href="/teams/<%= user.teamId %>">Check My Team</a>
-                        <% } %>  
+                        
                     </div>
                 </div>
                 <div class="col-4">
+                    <!-- team logo -->
                     <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
                 </div>
             </div>
@@ -40,7 +39,9 @@
         </div>
     </div>
 
-<% if(user.isLeader) { %>
+    <% if(user.isLeader) { %>
+
+<!-- post -->
     <% if(user.teamId === team.id) { %>
 <form action="/teams/announcements/add" method="POST">
     Title: <input type="text" name="title">
@@ -48,12 +49,14 @@
     <input type="submit" value="Create">
 </form>
 
+<!-- leave -->
 <% if(user.teamId) { %>
     <form action="/players/leave?_method=PUT" method="POST">
         <button type="submit">Leave Team</button>
     </form>
     <% } %>
 
+    <!-- add matches -->
 <form action="/teams/matches/add" method="POST">
     With <br>
     Team: <input type="text" name="team">
@@ -61,6 +64,8 @@
     Address: <input type="text" name="address">
     <input type="submit" value="Create">
 </form>
+
+
 <button>
     <a href="/teams/edit">Edit Description</a>
 </button>
@@ -71,13 +76,6 @@
 </button>
 <br>
 
-Team Name: <%= team.name %>
-<br>
-Team Found Date: <%= team.foundDate %>
-<br>
-Team Manager: <%= team.leader %>
-<br>
-Team Description: <%= team.description %>
 
 
 <br>
@@ -159,5 +157,43 @@ Team players
     </tbody>
 </table>
 <% } %>
+
+<!-- Modal -->
+<div class="modal fade" id="editTeamModal" tabindex="-1" role="dialog" aria-labelledby="editTeamModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form action="/teams/<%= user.teamId %>?_method=PUT" method="POST">
+    
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editTeamModalTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+    
+                    <div class="modal-body">
+                        <!-- <div class="col-8">   -->
+                            <div class="form-group">
+                                <label class="col-form-label">Description</label>
+                                <textarea class="form-control" name="description"></textarea>
+                            </div>
+                            <!-- <div class="row">
+                                Favourite Team: <input type="text" name="favTeam">
+                            </div>
+                            <div class="row">
+                                Favourite Position: <input type="text" name="favPosition">
+                            </div> -->
+                        <!-- </div> -->
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
 
 <%- include('../partials/footer') %>
