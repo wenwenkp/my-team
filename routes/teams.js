@@ -5,6 +5,7 @@ router.get('/', isLoggedIn, teamsCtrl.index);
 router.get('/:id', teamsCtrl.showTeam);
 
 router.put('/:id/matches', teamsCtrl.createMatch);
+router.post('/:id/announcements', teamsCtrl.createAnnouncement);
 
 router.put('/:id', teamsCtrl.updateTeam);
 

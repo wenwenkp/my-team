@@ -71,10 +71,10 @@ function updateTeam(req, res, next) {
 }
 
 function createAnnouncement(req, res, next) {
-    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+    Teams.findById(req.user.teamId, (err, team)=>{
         team.announcements.push(req.body);
         team.save();
-        res.redirect(`/teams/${team.id}`);
+        res.redirect(`/announcements/${team.id}`);
         // res.render('teams/show', {
         //     user: req.user,
         //     team
@@ -82,7 +82,7 @@ function createAnnouncement(req, res, next) {
     })
 }
 function deleteAnnouncement(req, res, next) {
-    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+    Teams.findById(req.user.teamId, (err, team)=>{
         let targetIdx;
         team.announcements.forEach((a, idx)=>{
             if(a.id === req.params.id){
@@ -91,7 +91,7 @@ function deleteAnnouncement(req, res, next) {
         });
         team.announcements.splice(targetIdx, 1);
         team.save();
-        res.redirect(`/teams/${team.id}`);
+        res.redirect(`/announcements/${team.id}`);
         // res.render('teams/show', {
         //     user: req.user,
         //     team
