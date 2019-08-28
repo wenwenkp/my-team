@@ -124,10 +124,11 @@ function showMatch(req, res, next) {
 }
 
 function createMatch(req, res, next) {
-    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+    Teams.findById(req.user.teamId, (err, team)=>{
         team.matches.push(req.body);
         team.save();
-        res.redirect(`/teams/${team.id}`);
+        console.log(`match created!!!`);
+        res.redirect(`/teams/${team.id}/matches`);
         // res.render('teams/show', {
         //     user: req.user,
         //     team

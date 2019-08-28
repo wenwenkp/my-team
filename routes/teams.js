@@ -6,11 +6,14 @@ router.get('/edit', teamsCtrl.editTeam);
 router.get('/new', teamsCtrl.newTeam);
 router.get('/:id', teamsCtrl.showTeam);
 
+// router.put('/:id', teamsCtrl.updateTeam);
+
+
+router.put('/:id', teamsCtrl.createMatch);
 router.get('/:id/matches', teamsCtrl.showMatch);
 
 
 router.post('/', teamsCtrl.createTeam);
-router.put('/:id', teamsCtrl.updateTeam);
 
 
 // Insert this middleware for routes that require a logged in user
