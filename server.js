@@ -16,6 +16,7 @@ var playersRouter = require('./routes/players');
 var teamsRouter = require('./routes/teams');
 var announcementsRouter = require('./routes/announcements');
 var commentsRouter = require('./routes/comments');
+var matchesRouter = require('./routes/matches');
 var apiRouter = require('./routes/api');
 
 var app = express();
@@ -43,6 +44,7 @@ app.use('/players', playersRouter);
 app.use('/teams', teamsRouter);
 app.use('/', announcementsRouter);
 app.use('/', commentsRouter);
+app.use('/', matchesRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler

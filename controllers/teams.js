@@ -128,7 +128,7 @@ function createMatch(req, res, next) {
         team.matches.push(req.body);
         team.save();
         console.log(`match created!!!`);
-        res.redirect(`/teams/${team.id}/matches`);
+        res.redirect(`/matches/${team.id}`);
         // res.render('teams/show', {
         //     user: req.user,
         //     team
@@ -136,7 +136,7 @@ function createMatch(req, res, next) {
     })
 }
 function deleteMatch(req, res, next) {
-    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
+    Teams.findById(req.user.teamId, (err, team)=>{
         let targetIdx;
         team.matches.forEach((m, idx)=>{
             if(m.id === req.params.id){
@@ -145,7 +145,7 @@ function deleteMatch(req, res, next) {
         });
         team.matches.splice(targetIdx, 1);
         team.save();
-        res.redirect(`/teams/${team.id}`);
+        res.redirect(`/matches/${team.id}`);
         // res.render('teams/show', {
         //     user: req.user,
         //     team

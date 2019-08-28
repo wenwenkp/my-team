@@ -64,7 +64,7 @@
                                     <td>
                                         <% if(user.isLeader) { %>
                                         <% if(user.teamId == team.id) { %>
-                                        <form action="/teams/matches/<%= m._id %>?_method=DELETE" method="POST">
+                                        <form action="/matches/<%= m._id %>?_method=DELETE" method="POST">
                                             <input type="submit" value="Delete" class="delete">
                                         </form>
                                         <% }; %>
@@ -119,7 +119,7 @@
 <div class="modal fade" id="addMatchModal" tabindex="-1" role="dialog" aria-labelledby="addMatchModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form action="/teams/<%= user.teamId %>?_method=PUT" method="POST">
+                <form action="/teams/<%= user.teamId %>/matches?_method=PUT" method="POST">
     
                     <div class="modal-header">
                         <h5 class="modal-title" id="addMatchModalTitle">Modal title</h5>
