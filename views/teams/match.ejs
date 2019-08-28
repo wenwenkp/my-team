@@ -28,7 +28,7 @@
         <div class="container">
     
             <div class="row">
-                <div class="col-8">  
+                <div class="col-10">  
                     <div class="row">                               
                         <h1>Profile</h1>
                     </div>
@@ -87,7 +87,8 @@
                     <% }; %>
                         
                 </div>
-                <div class="col-4">
+                <div class="col-1"></div>
+                <div class="col-1">
                     <div class="row">
                     <!-- team logo -->
                         <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
@@ -113,59 +114,6 @@
     
         </div>
     </div>
-
-    <% if(user.isLeader) { %>
-
-    <% if(user.teamId === team.id) { %>
-
-
-    <!-- add matches -->
-<form action="/teams/matches/add" method="POST">
-    With <br>
-    Team: <input type="text" name="team">
-    Time: <input type="datetime-local" name="time">
-    Address: <input type="text" name="address">
-    <input type="submit" value="Create">
-</form>
-
-
-
-    <% }; %>
-<% }; %>
-
-
-
-               
-
-<% if(user.teamId === team.id) { %>
-
-
-<h3>Team Schedule</h3>
-<table>
-    <thead>
-        <th>Team</th>
-        <th>Date</th>
-        <th>Address</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <% team.matches.forEach((m)=>{ %>
-        <tr>
-            <td><%= m.team %></td>
-            <td><%= m.time %></td>
-            <td><%= m.address %></td>
-            <td>
-                <% if(user.isLeader) { %>
-                <form action="/teams/matches/<%= m._id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="delete">
-                </form>
-                <% }; %>
-            </td>
-        </tr>
-        <% }) %>
-    </tbody>
-</table>
-<% } %>
 
 <!-- Edit Team Modal -->
 <div class="modal fade" id="addMatchModal" tabindex="-1" role="dialog" aria-labelledby="addMatchModalTitle" aria-hidden="true">
