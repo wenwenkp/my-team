@@ -100,18 +100,22 @@ function deleteAnnouncement(req, res, next) {
 }
 
 function showAnnouncement(req, res, next) {
-    Teams.findById(req.user.teamId, (err, team)=>{
+    Teams.findById(req.user.teamId).populate('players').exec((err, team)=>{
         let targetIdx;
         team.announcements.forEach((post, idx)=>{
             if(post.id === req.params.id){
                 targetIdx = idx;
             }
         });
+        Players.findById(req.user.id, (err, player)=>{
+            let user = player;
         res.render('teams/announcement', {
-            user: req.user,
+            user,
             team,
             post: team.announcements[targetIdx]
         })
+    })
+
     })
 }
 

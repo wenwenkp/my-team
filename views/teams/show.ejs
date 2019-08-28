@@ -137,34 +137,6 @@
 
                
 
-<% if(user.teamId === team.id) { %>
-<h3>Team's Announcement:</h3>
-<table>
-    <thead>
-        <th>Title</th>
-        <th>Date</th>
-        <th></th>
-        <th></th>
-    </thead>
-    <tbody>
-        <% team.announcements.forEach((post)=>{ %>
-        <tr>
-            <td><%= post.title %></td>
-            <td><%= post.time %></td>
-            <td><a href="/teams/announcements/<%= post.id %>">Details</a></td>
-            <td>
-                <% if(user.isLeader) { %>
-                <form action="/teams/announcements/<%= post._id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="delete">
-                </form>
-                <% }; %>
-            </td>
-        </tr>
-        <% }) %>
-
-    </tbody>
-</table>
-<% } %>
 
 <!-- Edit Team Modal -->
 <div class="modal fade" id="editTeamModal" tabindex="-1" role="dialog" aria-labelledby="editTeamModalTitle" aria-hidden="true">
