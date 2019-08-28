@@ -9,7 +9,7 @@ module.exports = {
     editMember,
     updateMember,
     leaveTeam,
-    disbandTeam,
+    deleteTeam,
     // allPlayers,
 }
 
@@ -141,24 +141,49 @@ function leaveTeam(req, res, next) {
   };
 
 
-function disbandTeam(req, res, next) {
-  // let user = req.user;
-    // Teams.findOneAndDelete(req.params.id).populate('players').exec((err, team)=>{
-  //     team.players.forEach((player)=>{
-  //       player.joinTeam.forEach((teamId, idx)=>{
-  //         let playerTeamIdx;
-  //         teamId.forEach((id, index)=>{
-  //           if(id === req.params.id){
-  //             playerTeamIdx = index;
-  //           }
-  //         })
-  //         teamId.splice(playerTeamId, 1);
-  //         player.save();
-  //       })
-  //     })
-    // })
-    // res.redirect('/members/player');
+function deleteTeam(req, res, next) {
+  Members.findById(req.user.id, (err, member)=>{
+    member.ownTeam.forEach((t, idx)=>{
+      if(t == req.params.id){
+        member.ownTeam.splice(idx, 1);
+      }
+    });
+    member.save();
+    Teams.findByIdAndDelete(req.params.id).populate((err, team)=>{
+      team.players.forEach((player, idx)=>{
+        res.json(player);
+    //   model.find(player, (err, docs)=>{
+    //      console.log(player);
+    //      res.json(player);
+    // });
+  })
+
+      // team.players.forEach((playerId, idx)=>{
+      //   if(playerId == req.user.id){
+      //     team.players.splice(idx, 1);
+      //   }
+      // })
+      // if(team.players && team.players.length){
+      //   Members.findById(team.players[0], (err, secondMember)=>{
+      //     secondMember.ownTeam.push(team.id);
+      //     team.leader = secondMember.eventNames;
+      //     secondMember.save();
+      //     team.save();
+      // res.redirect('/members/manager');
+
+      //   })
+      // }else{
+      //   Teams.findOneAndDelete(req.params.id, (err, targetTeam)=>{
+      //     res.redirect('/members/manager');
+            
+        // })
+      // };
+
+    })
+
+  })
 }
+
 
 
 

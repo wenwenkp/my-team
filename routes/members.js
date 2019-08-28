@@ -16,7 +16,7 @@ router.get('/:id/edit', isLoggedIn, membersCtrl.editMember);
 // leave team button
 router.put('/:id/leave', membersCtrl.leaveTeam);
 // disband team button
-router.put('/:id/disband', membersCtrl.leaveTeam);
+router.delete('/:id', membersCtrl.deleteTeam);
 // router.put('/join', membersCtrl.joinTeam);
 // save edit
 router.put('/:id', membersCtrl.updateMember);
