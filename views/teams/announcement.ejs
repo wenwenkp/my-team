@@ -67,17 +67,18 @@
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAnnouncementModal">
                                             Delete
                                         </button>
-                                            <% }; %>
+                                        <% }; %>
                                     </div>
+                                    <div class="collapse" id="collapseExample">
+                                            <div class="card card-body">
+                                            <% p.comments.forEach((c)=>{ %>
+                                                <h6>At <%= c.time %>  By <%= c.author %></h6>
+                                                <p><%= c.text %></p>
+                                            <% }); %>
+                                            </div>
+                                        </div>
                                 </div>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                    <% p.comments.forEach((c)=>{ %>
-                                        <h6>At <%= c.time %>  By <%= c.author %></h6>
-                                        <p><%= c.text %></p>
-                                    <% }); %>
-                                    </div>
-                                </div>
+                                
                                 <% }); %>
                             <% } %>
                         </div>
