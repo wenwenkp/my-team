@@ -1,6 +1,15 @@
 <%- include('../partials/header') %>
 
 <div class="mx-auto mt-5 container" style="width: 800px;">
+        <div class="row">
+                <div class="col-9">  
+                </div>
+                <div class="col-3">
+                    <a href="/teams" class="btn btn-outline-dark" role="button" aria-pressed="true">Team List</a>
+                </div>
+            </div>
+        
+        <hr>
 
         <div class="container">
     
@@ -21,11 +30,15 @@
                     <div class="row">
                         Team Description: <%= team.description %>
                     </div>
+                    <% if(user.isLeader) { %>
+                        <% if(user.teamId === team.id) { %>
                     <div class="row">
                         <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#editTeamModal">
                             Edit Team Profile
                         </button>
                     </div>
+                        <% }; %>
+                    <% }; %>
                     <div class="row">
                         
                     </div>
