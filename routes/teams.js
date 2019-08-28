@@ -6,6 +6,9 @@ router.get('/edit', teamsCtrl.editTeam);
 router.get('/new', teamsCtrl.newTeam);
 router.get('/:id', teamsCtrl.showTeam);
 
+router.get('/:id/matches', teamsCtrl.showMatch);
+
+
 router.post('/', teamsCtrl.createTeam);
 router.put('/:id', teamsCtrl.updateTeam);
 

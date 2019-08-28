@@ -36,19 +36,51 @@
                         Team Name: <%= team.name %>
                     </div>
                     <div class="row">
-                        Team Found Date: <%= team.foundDate %>
-                    </div>
-                    <div class="row">
-                        Team Manager: <%= team.leader %>
-                    </div>
-                    <div class="row">
-                        Team Description: <%= team.description %>
+                        
+                        <!-- schedule table -->
+                        <table class="table">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Team</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Location</th>
+                                    <% if(user.isLeader) { %>
+                                    <% if(user.teamId == team.id) { %>
+                                        <th scopt="col">
+                                        </th>
+                                    <% }; %>
+                                    <% }; %>
+                                  </tr>
+                                </thead>
+                                <tbody>
+
+                                <% team.matches.forEach((m, idx)=>{ %>
+                                  <tr>
+                                    <th scope="row"><%=  idx + 1 %></th>
+                                    <td><%= m.team %></td>
+                                    <td><%= m.time %></td>
+                                    <td><%= m.address %></td>
+                                    <td>
+                                        <% if(user.isLeader) { %>
+                                        <% if(user.teamId == team.id) { %>
+                                        <form action="/teams/matches/<%= m._id %>?_method=DELETE" method="POST">
+                                            <input type="submit" value="Delete" class="delete">
+                                        </form>
+                                        <% }; %>
+                                        <% }; %>
+                                    </td>
+                                  </tr>
+                                <% }) %>
+
+                                </tbody>
+                              </table>
                     </div>
                     <% if(user.isLeader) { %>
                         <% if(user.teamId === team.id) { %>
                     <div class="row">
                         <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#editTeamModal">
-                            Edit Team Profile
+                            Add Match
                         </button>
                     </div>
                         <% }; %>
@@ -66,7 +98,7 @@
                     </div>
                     <div class="row">
                     <!-- buttons -->
-                        <a href="/teams/<%= team.id %>/matches" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Schedule</a>
+                        <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Schedule</a>
                     </div>
                     <div class="row">
                     <!-- buttons -->
@@ -78,33 +110,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- players list -->
-            <!-- need to set section as grid -->
-            <section>
-                    <% team.players.forEach((p)=>{ %>
-                        <div class="card" style="width: 15rem;">
-                            <img src="<%= p.avatar %>" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    <span class="card-text">
-                                            <%= p.name %>
-                                    </span>
-                                    <span class="card-text">
-                                        Favourite Position: <%= p.favPosition %>
-                                    </span>
-                                    <span class="card-text">
-                                        <small class="text-muted">
-                                            <% if(p.isLeader) { %>
-                                                Leader
-                                            <% } %>
-                                        </small>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    <% }) %>
-            </section>
     
         </div>
     </div>
@@ -112,13 +117,6 @@
     <% if(user.isLeader) { %>
 
     <% if(user.teamId === team.id) { %>
-<!-- post -->
-
-<form action="/teams/announcements/add" method="POST">
-    Title: <input type="text" name="title">
-    Content: <input type="text" name="content">
-    <input type="submit" value="Create">
-</form>
 
 
     <!-- add matches -->
@@ -140,32 +138,7 @@
                
 
 <% if(user.teamId === team.id) { %>
-<h3>Team's Announcement:</h3>
-<table>
-    <thead>
-        <th>Title</th>
-        <th>Date</th>
-        <th></th>
-        <th></th>
-    </thead>
-    <tbody>
-        <% team.announcements.forEach((post)=>{ %>
-        <tr>
-            <td><%= post.title %></td>
-            <td><%= post.time %></td>
-            <td><a href="/teams/announcements/<%= post.id %>">Details</a></td>
-            <td>
-                <% if(user.isLeader) { %>
-                <form action="/teams/announcements/<%= post._id %>?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="delete">
-                </form>
-                <% }; %>
-            </td>
-        </tr>
-        <% }) %>
 
-    </tbody>
-</table>
 
 <h3>Team Schedule</h3>
 <table>
