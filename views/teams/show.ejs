@@ -1,5 +1,45 @@
 <%- include('../partials/header') %>
 
+<div class="mx-auto mt-5 container" style="width: 800px;">
+
+        <div class="container">
+    
+            <div class="row">
+                <div class="col-8">  
+                    <div class="row">                               
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="row">
+                        Team Name: <%= team.name %>
+                    </div>
+                    <div class="row">
+                        Team Found Date: <%= team.foundDate %>
+                    </div>
+                    <div class="row">
+                        Team Manager: <%= team.leader %>
+                    </div>
+                    <div class="row">
+                        Favourite Position: <%= user.favPosition %>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                            Edit Profile
+                        </button>
+                    </div>
+                    <div class="row">
+                        <% if(user.teamId !== '') {%>
+                            <a href="/teams/<%= user.teamId %>">Check My Team</a>
+                        <% } %>  
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
 <% if(user.isLeader) { %>
     <% if(user.teamId === team.id) { %>
 <form action="/teams/announcements/add" method="POST">
