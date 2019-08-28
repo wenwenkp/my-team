@@ -18,8 +18,8 @@ button {
     outline: none;
 }
 
-.avatar {
-    max-width: 50px;
+.self-avatar {
+    max-width: 100px;
 }
 .p-avatar{
     max-width: 20px;

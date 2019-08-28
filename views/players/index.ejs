@@ -1,27 +1,79 @@
 <%- include('../partials/header') %>
 
-<h1>player main page</h1>
+<div class="mx-auto mt-5 container" style="width: 800px;">
 
-<section>
-    <div>
-        Player: <img src="<%= user.avatar %>" alt="player avatar" class="avatar">
-    </div>
-    <div>
-        Name: <%= user.name %>
-    </div>
-    <div>
-        Favourite Team: <%= user.favTeam %>
-    </div>
-    <div>
-        Favourite Position: <%= user.favPosition %>
-    </div>
-    <a href="/players/edit">Edit Info</a>
+    <div class="container">
 
-</section>
-    <% if(user.teamId !== '') {%>
-        <a href="/teams/<%= user.teamId %>">Check My Team</a>
-    <% } %>
+        <div class="row">
+            <div class="col-8">  
+                <div class="row">                               
+                    <h1>Profile</h1>
+                </div>
+                <div class="row">
+                        Name: <%= user.name %>
+                </div>
+                <div class="row">
+                        Email: 
+                </div>
+                <div class="row">
+                    Favourite Team: <%= user.favTeam %>
+                </div>
+                <div class="row">
+                    Favourite Position: <%= user.favPosition %>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                        Edit Profile
+                    </button>
+                </div>
+                <div class="row">
+                    <% if(user.teamId !== '') {%>
+                        <a href="/teams/<%= user.teamId %>">Check My Team</a>
+                    <% } %>  
+                </div>
+            </div>
+            <div class="col-4">
+                <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
+                col-4
+            </div>
+        </div>
 
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form action="/players?_method=PUT" method="POST">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="col-8">  
+                        <div class="row">
+                            Favourite Team: <input type="text" name="favTeam">
+                        </div>
+                        <div class="row">
+                            Favourite Position: <input type="text" name="favPosition">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>
 
