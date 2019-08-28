@@ -48,6 +48,33 @@
                     <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
                 </div>
             </div>
+
+            <!-- players list -->
+            <!-- need to set section as grid -->
+            <section>
+                    <% team.players.forEach((p)=>{ %>
+                        <div class="card" style="width: 15rem;">
+                            <img src="<%= p.avatar %>" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <span class="card-text">
+                                            <%= p.name %>
+                                    </span>
+                                    <span class="card-text">
+                                        Favourite Position: <%= p.favPosition %>
+                                    </span>
+                                    <span class="card-text">
+                                        <small class="text-muted">
+                                            <% if(p.isLeader) { %>
+                                                Leader
+                                            <% } %>
+                                        </small>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    <% }) %>
+            </section>
     
         </div>
     </div>

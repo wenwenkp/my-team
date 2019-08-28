@@ -14,18 +14,25 @@
     <hr>
     
     <div class="container">
+        <!-- need to set section as grid -->
         <section>
             <% teams.forEach((team)=>{ %>
             <div class="card" style="width: 15rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title"><%= team.name %></h4>
-                    <p class="card-text">
-                        <h6>Leader</h6>
-                        <span><%= team.leader %></span>
-                        <h6>Found Date</h6>
-                        <span><%= team.foundDate %></span>
-                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Leader: 
+                        <%= team.leader %>
+                    </li>
+                    <li class="list-group-item">
+                        Found Date: 
+                        <%= team.foundDate %>
+                    </li>
+                </ul>
+                <div class="card-body">                
                     <a href="/teams/<%= team.id %>" class="btn btn-primary">Go Check</a>
                     <% if(!user.teamId){ %>
                     <form action="/players/join?_method=PUT" method="POST">
