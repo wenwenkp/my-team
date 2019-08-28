@@ -34,7 +34,6 @@
             </div>
             <div class="col-4">
                 <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
-                col-4
             </div>
         </div>
 
@@ -55,14 +54,22 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="col-8">  
-                        <div class="row">
+                    <!-- <div class="col-8">   -->
+                        <div class="form-group">
+                            <label for="favourite-team" class="col-form-label">Favourite Team:</label>
+                            <input type="text" class="form-control" name="favTeam">
+                        </div>
+                        <div class="form-group">
+                            <label for="favourite-position" class="col-form-label">Favourite Position</label>
+                            <input class="form-control" name="favPosition"></textarea>
+                        </div>
+                        <!-- <div class="row">
                             Favourite Team: <input type="text" name="favTeam">
                         </div>
                         <div class="row">
                             Favourite Position: <input type="text" name="favPosition">
-                        </div>
-                    </div>
+                        </div> -->
+                    <!-- </div> -->
                 </div>
 
                 <div class="modal-footer">
