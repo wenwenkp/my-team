@@ -12,12 +12,11 @@ require('./config/database');
 require('./config/passport');
 
 var indexRouter = require('./routes/index');
-var membersRouter = require('./routes/members');
+var playersRouter = require('./routes/players');
 var teamsRouter = require('./routes/teams');
-
-// var announcementsRouter = require('./routes/announcements');
-// var commentsRouter = require('./routes/comments');
-// var matchesRouter = require('./routes/matches');
+var announcementsRouter = require('./routes/announcements');
+var commentsRouter = require('./routes/comments');
+var matchesRouter = require('./routes/matches');
 var apiRouter = require('./routes/api');
 
 var app = express();
@@ -41,11 +40,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
-app.use('/members', membersRouter);
+app.use('/players', playersRouter);
 app.use('/teams', teamsRouter);
-// app.use('/', announcementsRouter);
-// app.use('/', commentsRouter);
-// app.use('/', matchesRouter);
+app.use('/', announcementsRouter);
+app.use('/', commentsRouter);
+app.use('/', matchesRouter);
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler

@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<form action="/players?_method=PUT" method="POST">
+    Favourite Team: <input type="text" name="favTeam">
+    Favourite Position: <input type="text" name="favPosition">
+    <button type="submit">Save</button>
+</form>
+
+<hr>
+
+<% if(user.teamId) { %>
+<form action="/players/leave?_method=PUT" method="POST">
+    <button type="submit">Leave Team</button>
+</form>
+<% } %>
+
+<button>
+    <a href="/players">Back</a>
+</button>
+
+<%- include('../partials/footer') %>
