@@ -65,7 +65,11 @@
                     </div>
                     <div class="row">
                     <!-- buttons -->
+                    <% if(user.teamId) { %>
+                        <% if(user.teamId == team.id) { %>                    
                         <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Announcements</a>
+                        <% } %>
+                    <% } %>
                     </div>
                 </div>
             </div>
