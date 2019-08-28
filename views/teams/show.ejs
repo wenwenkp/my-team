@@ -1,14 +1,19 @@
 <%- include('../partials/header') %>
 
 <div class="mx-auto mt-5 container" style="width: 800px;">
+    <!-- header -->
         <div class="row">
                 <div class="col-3">
                     <% if(user.teamId) { %>
-                    <% if(user.teamId == team.id) { %>
+                        <% if(user.teamId == team.id) { %>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#leaveTeamModal">
-                        Leave Team
+                            <% if(user.isLeader) { %>
+                                Disband Team
+                            <% }else{ %>
+                                Leave Team
+                            <% } %>
                     </button> 
-                    <% } %>
+                        <% } %>
                     <% } %>
                 </div>
                 <div class="col-6">  
@@ -19,7 +24,7 @@
             </div>
         
         <hr>
-
+        <!-- team info -->
         <div class="container">
     
             <div class="row">
@@ -114,12 +119,6 @@
     <input type="submit" value="Create">
 </form>
 
-<!-- leave -->
-<% if(user.teamId) { %>
-    <form action="/players/leave?_method=PUT" method="POST">
-        <button type="submit">Leave Team</button>
-    </form>
-    <% } %>
 
     <!-- add matches -->
 <form action="/teams/matches/add" method="POST">
