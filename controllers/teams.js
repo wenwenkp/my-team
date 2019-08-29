@@ -167,9 +167,18 @@ function createComment(req, res, next) {
                 targetIdx = idx;
             }
         });
+        console.log(team.announcements[targetIdx].id);
         req.body.author = req.user.name;
         team.announcements[targetIdx].comments.push(req.body);
         team.save();
+
+        // Players.findById(req.user.id, (err, player)=>{
+        //     let user = player;
+        // res.render('teams/announcement', {
+        //     user,
+        //     team,
+        //     post: team.announcements[targetIdx]
+        // })
         res.redirect(`/announcements/${team.id}`);
         // res.render('teams/announcement', {
         //     user: req.user,
