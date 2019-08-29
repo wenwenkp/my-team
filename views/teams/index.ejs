@@ -57,7 +57,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
 
     <div class="modal-content">
-        <form action="/teams" method="POST">
+        <form action="/teams" enctype="multipart/form-data" method="POST">
 
             <div class="modal-header">
                 <h5 class="modal-title" id="createTeamModalLabel">New Team</h5>
@@ -79,7 +79,11 @@
                     <label class="col-form-label">Description</label>
                     <textarea class="form-control" name="description"></textarea>
                 </div>
-                <div class="form-group team-logos">
+                <div class="form-group">
+                    <label for="new-logo" class="col-form-label">New Logo</label>
+                    <input type="file" class="form-control" name="upload" multiple="multiple">
+                </div>
+                <!-- <div class="form-group team-logos">
                         <div class="row d-flex justify-content-center">
                             <div class="col-4">
                                 <img src="/images/team-logo-1.jpg" alt="team logo" width="100px;">
@@ -124,7 +128,7 @@
                                 <input type="radio" name="logo" value="/images/team-logo-6.jpg">
                             </div>
                         </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="modal-footer">

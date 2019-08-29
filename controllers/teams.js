@@ -34,8 +34,13 @@ function newTeam(req, res, next) {
     });
 }
 function createTeam(req, res, next) {
-    var newTeam = new Teams(req.body);
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(error, fields, files) {
+        fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+    var newTeam = new Teams(fields);
     newTeam.save();
+    newTeam.logo = `/images/teams-avatar/${files.upload.name}`;
+
     newTeam.players.push(req.user.id);
     newTeam.leader = req.user.name;
 
@@ -49,6 +54,9 @@ function createTeam(req, res, next) {
         //     team:newTeam
         // })
     })
+})
+
+
 }
 
 function showTeam(req, res, next) {
