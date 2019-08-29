@@ -8,11 +8,16 @@
                 <div class="row">                               
                     <h1><%= team.name %></h1>
                 </div>
+                <% if(user.isLeader) { %>
+                    <% if(user.teamId === team.id) { %>
                 <div class="row team-header mt-2 mb-5">
                         <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#editTeamModal">
                                 Edit Team Profile
                             </button>
                 </div>
+
+                <% }; %>
+                <% }; %>
                 <div class="row">
                     Team Found Date: <%= team.foundDate %>
                 </div>
@@ -22,13 +27,7 @@
                 <div class="row">
                     Team Description: <%= team.description %>
                 </div>
-                <% if(user.isLeader) { %>
-                    <% if(user.teamId === team.id) { %>
-                <div class="row mt-5">
-                    
-                </div>
-                    <% }; %>
-                <% }; %>
+
             </div>
             
 <%- include('../partials/subNav') %>

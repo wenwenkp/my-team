@@ -34,7 +34,7 @@
                     <div class="col-10">
 
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-light border-dark">
                             <%= p.time.toLocaleString() %>
                         </div>
                         <div class="card-body">
@@ -42,7 +42,7 @@
                             <p class="card-text">
                                 <%= p.content %>
                             </p>
-                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#c<%= p.id%>" aria-expanded="false" aria-controls="collapseExample">
+                            <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#c<%= p.id%>" aria-expanded="false" aria-controls="collapseExample">
                                 Show Comments
                             </button>
                             <% if(user.isLeader) { %>

@@ -72,7 +72,7 @@ function updateTeam(req, res, next) {
 
 function createAnnouncement(req, res, next) {
     Teams.findById(req.user.teamId, (err, team)=>{
-        team.announcements.push(req.body);
+        team.announcements.unshift(req.body);
         team.save();
         res.redirect(`/announcements/${team.id}`);
         // res.render('teams/show', {
@@ -131,7 +131,7 @@ function showMatch(req, res, next) {
 
 function createMatch(req, res, next) {
     Teams.findById(req.user.teamId, (err, team)=>{
-        team.matches.push(req.body);
+        team.matches.unshift(req.body);
         team.save();
         console.log(`match created!!!`);
         res.redirect(`/matches/${team.id}`);
@@ -169,7 +169,7 @@ function createComment(req, res, next) {
         });
         console.log(team.announcements[targetIdx].id);
         req.body.author = req.user.name;
-        team.announcements[targetIdx].comments.push(req.body);
+        team.announcements[targetIdx].comments.unshift(req.body);
         team.save();
 
         // Players.findById(req.user.id, (err, player)=>{
