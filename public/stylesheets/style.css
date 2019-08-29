@@ -21,8 +21,17 @@ button {
 .self-avatar {
     max-width: 100px;
 }
+.team-avatar {
+    max-width: 200px;
+}
 .p-avatar{
     max-width: 20px;
+}
+.no-pad {
+    padding: 0px;
+}
+.no-style {
+    list-style: none;
 }
 .news {
     display: grid;
@@ -39,3 +48,11 @@ button {
     text-decoration: none;
   }
   
+
+  /* home */
+  .header {
+      margin-top: 30px;
+  }
+  .header-img {
+      border-radius: 20px 20px 0px 0px
+  }

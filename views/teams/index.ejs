@@ -17,30 +17,39 @@
         <!-- need to set section as grid -->
         <section>
             <% teams.forEach((team)=>{ %>
-            <div class="card" style="width: 15rem;">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card" style="width: 12rem;">
+                <img src="<%= team.logo %>" class="card-img-top team-avatar" alt="team logo">
                 <div class="card-body">
-                    <h4 class="card-title"><%= team.name %></h4>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
+                <ul>
+                    <li class="no-style">
+                    <h5 class="card-title no-pad"><%= team.name %></h5>
+
+                    </li>
+                    <li class="no-style">
                         Leader: 
                         <%= team.leader %>
                     </li>
-                    <li class="list-group-item">
+                    <li class="no-style">
                         Found Date: 
                         <%= team.foundDate %>
                     </li>
-                </ul>
-                <div class="card-body">                
-                    <a href="/teams/<%= team.id %>" class="btn btn-primary">Go Check</a>
+            <li class="no-style">
+
+                    <a href="/teams/<%= team.id %>" class="btn btn-outline-dark">Go Check</a>
+                </li>
+                <li class="no-style">
+
                     <% if(!user.teamId){ %>
                     <form action="/players/join?_method=PUT" method="POST">
                         <input type="text" name="teamId" value="<%= team.id %>" hidden>
                         <button type="submit" class="btn btn-success">Join</button>
                     </form>
                     <% } %>
-                </div>
+                </li>
+
+                </ul>
+            </div>
+
             </div>
             <% })%>
         </section>
@@ -73,8 +82,56 @@
                     <input type="text" class="form-control" name="name">
                 </div>
                 <div class="form-group">
+                    <label class="col-form-label">Location:</label>
+                    <input type="text" class="form-control" name="location">
+                </div>
+                <div class="form-group">
                     <label class="col-form-label">Description</label>
                     <textarea class="form-control" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <img src="/images/team-logo-1.png" alt="team logo" width="100px;">
+                        </div>
+                        <div class="col-4">
+                            <img src="/images/team-logo-2.png" alt="team logo" width="100px;">
+                        </div>
+                        <div class="col-4">
+                            <img src="/images/team-logo-3.png" alt="team logo" width="100px;">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4 mx-auto">
+                            <input type="radio" name="logo" value="/images/team-logo-1.png">
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="logo" value="/images/team-logo-2.png">
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="logo" value="/images/team-logo-3.png">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="/images/team-logo-4.png" alt="team logo" width="100px;">
+                        </div>
+                        <div class="col-4">
+                            <img src="/images/team-logo-5.png" alt="team logo" width="100px;">
+                        </div>
+                        <div class="col-4">
+                            <img src="/images/team-logo-6.png" alt="team logo" width="100px;">
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="logo" value="/images/team-logo-4.png">
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="logo" value="/images/team-logo-5.png">
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="logo" value="/images/team-logo-6.png">
+                        </div>
+                    </div>
                 </div>
             </div>
 
