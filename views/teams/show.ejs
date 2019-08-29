@@ -1,82 +1,78 @@
 <%- include('../partials/header') %>
 <%- include('../partials/secondHeader') %>
 
-    <!-- team info -->
-    <div class="container">
-        <div class="row">
-            <div class="col-10">  
-                <div class="row">                               
-                    <h1><%= team.name %></h1>
-                </div>
-                <% if(user.isLeader) { %>
-                    <% if(user.teamId === team.id) { %>
-                <div class="row team-header mt-2 mb-5">
-                        <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal" data-target="#editTeamModal">
-                            Edit Team Profile
-                        </button>
-                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#uploadLogo">
-                            Upload Logo
-                        </button>
-                </div>
-                <% }; %>
-                <% }; %>
-                <div class="row">
-                    Team Found Date: <%= team.foundDate %>
-                </div>
-                <div class="row">
-                    Team Manager: <%= team.leader %>
-                </div>
-                <div class="row">
-                    Team Description: <%= team.description %>
-                </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="row">
+                <h1><%= team.name %></h1>
             </div>
-            
-<%- include('../partials/subNav') %>
-
-
+            <% if(user.isLeader) { %>
+            <% if(user.teamId === team.id) { %>
+            <div class="row team-header mt-2 mb-5">
+                <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal"
+                    data-target="#editTeamModal">
+                    Edit Team Profile
+                </button>
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#uploadLogo">
+                    Upload Logo
+                </button>
+            </div>
+            <% }; %>
+            <% }; %>
+            <div class="row">
+                Team Found Date: <%= team.foundDate %>
+            </div>
+            <div class="row">
+                Team Manager: <%= team.leader %>
+            </div>
+            <div class="row">
+                Team Description: <%= team.description %>
+            </div>
         </div>
-<hr>
-<div class="row">                               
+
+        <%- include('../partials/subNav') %>
+
+    </div>
+    <hr>
+    <div class="row">
         <h1 class="mb-5">Players</h1>
     </div>
-
-        <!-- players list -->
-        <!-- need to set section as grid -->
-        <section class="players-list">
-            <% team.players.forEach((p)=>{ %>
-            <div class="player mr-3 mb-5">
-                <img src="<%= p.avatar %>" class="player-logo" alt="player logo">
-                <div class="player-info">
-                    <h2 class="player-name">
-                        <%= p.name %>
-                    </h2>
-                    <h6 class="player-position">
-                        Position: <%= p.favPosition %>
-                    </h6>
-                    <span class="captain">
-                        <small class="text-muted">
-                            <% if(p.isLeader) { %>
-                                Leader
-                            <% } %>
-                        </small>
-                    </span>
-                </div>
+    <section class="players-list">
+        <% team.players.forEach((p)=>{ %>
+        <div class="player mr-3 mb-5">
+            <img src="<%= p.avatar %>" class="player-logo" alt="player logo">
+            <div class="player-info">
+                <h2 class="player-name">
+                    <%= p.name %>
+                </h2>
+                <h6 class="player-position">
+                    Position: <%= p.favPosition %>
+                </h6>
+                <span class="captain">
+                    <small class="text-muted">
+                        <% if(p.isLeader) { %>
+                        Leader
+                        <% } %>
+                    </small>
+                </span>
             </div>
-            <% }) %>
-        </section>
-    </div>
+        </div>
+        <% }) %>
+    </section>
+</div>
 </div>
 
 <!-- Edit Team Modal -->
-<div class="modal fade" id="editTeamModal" tabindex="-1" role="dialog" aria-labelledby="editTeamModalTitle" aria-hidden="true">
+<div class="modal fade" id="editTeamModal" tabindex="-1" role="dialog" aria-labelledby="editTeamModalTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="/teams/<%= user.teamId %>?_method=PUT" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editTeamModalTitle">Edit Team Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -93,9 +89,10 @@
         </div>
     </div>
 </div>
-      
+
 <!-- Leave Team Modal -->
-<div class="modal fade" id="leaveTeamModal" tabindex="-1" role="dialog" aria-labelledby="leaveTeamModalTitle" aria-hidden="true">
+<div class="modal fade" id="leaveTeamModal" tabindex="-1" role="dialog" aria-labelledby="leaveTeamModalTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="/players/leave?_method=PUT" method="POST">
@@ -118,33 +115,30 @@
 </div>
 
 <!-- upload logo Modal -->
-<div class="modal fade" id="uploadLogo" tabindex="-1" role="dialog" aria-labelledby="uploadLogoTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form action="/teams/logos" enctype="multipart/form-data" method="POST">
-    
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editProfileModalTitle">New Logo</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<div class="modal fade" id="uploadLogo" tabindex="-1" role="dialog" aria-labelledby="uploadLogoTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form action="/teams/logos" enctype="multipart/form-data" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalTitle">New Logo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                        </button>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="new-logo" class="col-form-label">New Logo</label>
+                        <input type="file" class="form-control" name="upload" multiple="multiple">
                     </div>
-    
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="new-logo" class="col-form-label">New Logo</label>
-                            <input type="file" class="form-control" name="upload" multiple="multiple">
-                        </div>
-                    </div>
-    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </div>
-    
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 <%- include('../partials/footer') %>

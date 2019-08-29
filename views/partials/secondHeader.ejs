@@ -1,23 +1,22 @@
 <div class="mx-auto mt-5 container" style="width: 900px;">
-        <!-- header -->
-            <div class="row">
-                <div class="col-3">
-                    <% if(user.teamId) { %>
-                    <% if(user.teamId == team.id) { %>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#leaveTeamModal">
-                        <% if(user.isLeader) { %>
-                            Disband Team
-                        <% }else{ %>
-                            Leave Team
-                        <% } %>
-                    </button> 
-                    <% } %>
-                    <% } %>
-                </div>
-                <div class="col-7">  
-                </div>
-                <div class="col-2 d-flex justify-content-end">
-                    <a href="/teams" class="btn btn-outline-dark" role="button" aria-pressed="true">Team List</a>
-                </div>
-            </div>   
-            <hr>
+    <div class="row">
+        <div class="col-3">
+            <% if(user.teamId) { %>
+            <% if(user.teamId == team.id) { %>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#leaveTeamModal">
+                <% if(user.isLeader) { %>
+                Disband Team
+                <% }else{ %>
+                Leave Team
+                <% } %>
+            </button>
+            <% } %>
+            <% } %>
+        </div>
+        <div class="col-7">
+        </div>
+        <div class="col-2 d-flex justify-content-end">
+            <a href="/teams" class="btn btn-outline-dark" role="button" aria-pressed="true">Team List</a>
+        </div>
+    </div>
+    <hr>

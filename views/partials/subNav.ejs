@@ -1,28 +1,29 @@
 <div class="col-2">
-        <div class="row d-flex justify-content-end">
+    <div class="row d-flex justify-content-end">
         <!-- team logo -->
-            <img src="<%= team.logo %>" alt="team avatar" class="team-avatar">
-        </div>
-        <div class="row d-flex justify-content-end mt-5">
+        <img src="<%= team.logo %>" alt="team avatar" class="team-avatar">
+    </div>
+    <div class="row d-flex justify-content-end mt-5">
         <!-- buttons -->
-            <a href="/teams/<%= team.id %>" class="btn btn-outline-dark btn-lg" role="button" aria-pressed="true">
-                Team Info
-            </a>
-        </div>
-        <div class="row d-flex justify-content-end mt-3">
+        <a href="/teams/<%= team.id %>" class="btn btn-outline-dark btn-lg" role="button" aria-pressed="true">
+            Team Info
+        </a>
+    </div>
+    <div class="row d-flex justify-content-end mt-3">
         <!-- buttons -->
-            <a href="/matches/<%= team.id %>" class="btn btn-outline-dark btn-lg" role="button" aria-pressed="true">
-                Schedule
-            </a>
-        </div>
-        <div class="row d-flex justify-content-end">
+        <a href="/matches/<%= team.id %>" class="btn btn-outline-dark btn-lg" role="button" aria-pressed="true">
+            Schedule
+        </a>
+    </div>
+    <div class="row d-flex justify-content-end">
         <!-- buttons -->
         <% if(user.teamId) { %>
-            <% if(user.teamId == team.id) { %>                    
-            <a href="/announcements/<%= team.id %>" class="btn btn-outline-dark btn-lg mt-3" role="button" aria-pressed="true">
-                Announcements
-            </a>
-            <% } %>
+        <% if(user.teamId == team.id) { %>
+        <a href="/announcements/<%= team.id %>" class="btn btn-outline-dark btn-lg mt-3" role="button"
+            aria-pressed="true">
+            Announcements
+        </a>
         <% } %>
-        </div>
+        <% } %>
     </div>
+</div>

@@ -1,56 +1,50 @@
 <%- include('../partials/header') %>
 <%- include('../partials/secondHeader') %>
 
-
-
-    <!-- team info -->
-    <div class="container">
-        <div class="row">
-            <div class="col-10">  
-                <div class="row">                               
-                    <h1>
-                            <%= team.name %>
-
-                    </h1>
-                </div>
-                <div class="row">
-                </div>
-                <div class="row team-header mt-4">
-
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="row">
+                <h1>
+                    <%= team.name %>
+                </h1>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row team-header mt-4">
                 <% if(user.isLeader) { %>
                 <% if(user.teamId === team.id) { %>
-                    <button type="button" class="btn btn-outline-dark mr-4" data-toggle="modal" data-target="#addAnnouncementModal">
-                        Add Announcement
-                    </button>
+                <button type="button" class="btn btn-outline-dark mr-4" data-toggle="modal"
+                    data-target="#addAnnouncementModal">
+                    Add Announcement
+                </button>
                 <% }; %>
                 <% }; %>
                 <h4>Announcement</h4>
             </div>
-
-                    <!-- announcement table -->
-                    <% if(user.teamId === team.id) { %>
-                    <% team.announcements.forEach((p)=>{ %>
-                <div class="row mt-4">
-                    <div class="col-10">
-
+            <% if(user.teamId === team.id) { %>
+            <% team.announcements.forEach((p)=>{ %>
+            <div class="row mt-4">
+                <div class="col-10">
                     <div class="card bg-light border-dark">
                         <div class="card-header post-card">
                             <%= p.time.toLocaleString() %>
                             <% if(user.isLeader) { %>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAnnouncementModal">
-                                    Delete
-                                </button>
-                                <% }; %>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#deleteAnnouncementModal">
+                                Delete
+                            </button>
+                            <% }; %>
                         </div>
                         <div class="card-body">
                             <h6 class="card-title"><%= p.title %></h6>
                             <p class="card-text">
                                 <%= p.content %>
                             </p>
-                            <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#c<%= p.id%>" aria-expanded="false" aria-controls="collapseExample">
+                            <button class="btn btn-outline-dark" type="button" data-toggle="collapse"
+                                data-target="#c<%= p.id%>" aria-expanded="false" aria-controls="collapseExample">
                                 Show Comments
                             </button>
-                            
                         </div>
                         <div class="collapse" id="c<%= p.id %>">
                             <div class="card card-body">
@@ -63,36 +57,35 @@
                                 </form>
                                 <hr>
                                 <% p.comments.forEach((c)=>{ %>
-                                    <div>
-                                        <h6><%= c.text %></h6>
-                                        <small class="text-muted"><%= c.time.toLocaleString() %>  By <%= c.author %></small>
-                                    </div>
-                                    <hr>
+                                <div>
+                                    <h6><%= c.text %></h6>
+                                    <small class="text-muted"><%= c.time.toLocaleString() %> By <%= c.author %></small>
+                                </div>
+                                <hr>
                                 <% }); %>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                </div>    
-
-                    <% }); %>
-                    <% } %>
             </div>
-            <%- include('../partials/subNav') %>
+            <% }); %>
+            <% } %>
         </div>
+        <%- include('../partials/subNav') %>
     </div>
+</div>
 </div>
 
 <!-- add announcement modal -->
-<div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="addAnnouncementModalTitle" aria-hidden="true">
+<div class="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog"
+    aria-labelledby="addAnnouncementModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="/teams/<%= user.teamId %>/announcements" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addAnnouncementModalTitle">New Announcement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -114,50 +107,52 @@
     </div>
 </div>
 
-    <!-- delete announcement Modal -->
-<div class="modal fade" id="deleteAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="deleteAnnouncementModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
+<!-- delete announcement Modal -->
+<div class="modal fade" id="deleteAnnouncementModal" tabindex="-1" role="dialog"
+    aria-labelledby="deleteAnnouncementModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
             <form action="/announcements/<%= user.teamId %>?_method=DELETE" method="POST">
                 <div class="modal-header">
-                <h5 class="modal-title" id="deleteAnnouncementModalTitle">Delete This Announcement</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title" id="deleteAnnouncementModalTitle">Delete This Announcement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <span>Are you sure you want to delete?</span>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </form>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
 
-      <!-- Leave Team Modal -->
-      <div class="modal fade" id="leaveTeamModal" tabindex="-1" role="dialog" aria-labelledby="leaveTeamModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <form action="/players/leave?_method=PUT" method="POST">
-                    <div class="modal-header">
+<!-- Leave Team Modal -->
+<div class="modal fade" id="leaveTeamModal" tabindex="-1" role="dialog" aria-labelledby="leaveTeamModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form action="/players/leave?_method=PUT" method="POST">
+                <div class="modal-header">
                     <h5 class="modal-title" id="leaveTeamModalTitle">Leave My Team</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    </div>
-                    <div class="modal-body">
+                </div>
+                <div class="modal-body">
                     Are you sure you want to leave?
-                    </div>
-                    <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Leave</button>
-                    </div>
-                </form>
-              </div>
-            </div>
-          </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

@@ -2,7 +2,7 @@
 
 <div class="mx-auto mt-5 container" style="width: 900px;">
     <main class="news-main">
-    <% newsData.forEach((news)=>{ %>
+        <% newsData.forEach((news)=>{ %>
         <section class="news">
             <div class="info">
                 <h5><a href="<%= news.url %>"><%= news.title %></a></h5>
@@ -13,7 +13,7 @@
                 <a href="<%= news.url %>"><img src="<%= news.urlToImage %>" alt="image" class="news-img"></a>
             </div>
         </section>
-    <% }) %>
+        <% }) %>
     </main>
 </div>
 

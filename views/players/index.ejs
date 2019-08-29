@@ -1,19 +1,17 @@
 <%- include('../partials/header') %>
 
 <div class="mx-auto mt-5 container" style="width: 800px;">
-
     <div class="container">
-
         <div class="row">
-            <div class="col-8">  
-                <div class="row">                               
+            <div class="col-8">
+                <div class="row">
                     <h1>Profile</h1>
                 </div>
                 <div class="row">
-                        Name: <%= user.name %>
+                    Name: <%= user.name %>
                 </div>
                 <div class="row">
-                        Email: <%= user.email %>
+                    Email: <%= user.email %>
                 </div>
                 <div class="row">
                     Favourite Team: <%= user.favTeam %>
@@ -22,90 +20,84 @@
                     Favourite Position: <%= user.favPosition %>
                 </div>
                 <div class="row mt-5">
-                    <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal" data-target="#editProfileModal">
+                    <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal"
+                        data-target="#editProfileModal">
                         Edit Profile
                     </button>
-                    <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal" data-target="#uploadAvatarModal">
+                    <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal"
+                        data-target="#uploadAvatarModal">
                         Upload Avatar
                     </button>
                     <% if(user.teamId !== '') {%>
-                        <a href="/teams/<%= user.teamId %>" class="btn btn-outline-dark" role="button" aria-pressed="true">
-                            My Team
-                        </a>
-                    <% } %>  
+                    <a href="/teams/<%= user.teamId %>" class="btn btn-outline-dark" role="button" aria-pressed="true">
+                        My Team
+                    </a>
+                    <% } %>
                 </div>
             </div>
             <div class="col-4">
                 <img src="<%= user.avatar %>" alt="player avatar" class="self-avatar">
             </div>
         </div>
-
     </div>
 </div>
 
 <!--  edit profile Modal -->
-<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalTitle" aria-hidden="true">
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="/players?_method=PUT" method="POST">
-
                 <div class="modal-header">
                     <h5 class="modal-title" id="editProfileModalTitle">Edit My Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body">
-                        <div class="form-group">
-                            <label for="favourite-team" class="col-form-label">Favourite Team:</label>
-                            <input type="text" class="form-control" name="favTeam">
-                        </div>
-                        <div class="form-group">
-                            <label for="favourite-position" class="col-form-label">Favourite Position</label>
-                            <input class="form-control" name="favPosition"></textarea>
-                        </div>
+                    <div class="form-group">
+                        <label for="favourite-team" class="col-form-label">Favourite Team:</label>
+                        <input type="text" class="form-control" name="favTeam">
+                    </div>
+                    <div class="form-group">
+                        <label for="favourite-position" class="col-form-label">Favourite Position</label>
+                        <input class="form-control" name="favPosition"></textarea>
+                    </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
 
 <!-- upload avatar Modal -->
-<div class="modal fade" id="uploadAvatarModal" tabindex="-1" role="dialog" aria-labelledby="uploadAvatarModalTitle" aria-hidden="true">
+<div class="modal fade" id="uploadAvatarModal" tabindex="-1" role="dialog" aria-labelledby="uploadAvatarModalTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form action="/players" enctype="multipart/form-data" method="POST">
-
                 <div class="modal-header">
                     <h5 class="modal-title" id="editProfileModalTitle">New Avatar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="favourite-team" class="col-form-label">New Avatar</label>
                         <input type="file" class="form-control" name="upload" multiple="multiple">
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
 
 <%- include('../partials/footer') %>
-
