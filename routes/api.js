@@ -6,7 +6,6 @@ const apiKey = '9d290332d83746ee974d4e50f4ba29e6';
 const ukSportApi = `https://newsapi.org/v2/top-headlines?country=gb&category=sports&apiKey=${apiKey}`;
 const usaSportApi = `https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=${apiKey}`;
 
-/* GET home page. */
 router.get('/uk', function(req, res, next) {
   request.get(ukSportApi, (error, response, newsData)=>{
     const parsedData = JSON.parse(newsData);
