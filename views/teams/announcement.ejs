@@ -8,24 +8,29 @@
         <div class="row">
             <div class="col-10">  
                 <div class="row">                               
-                    <h1>Announcement</h1>
+                    <h1>
+                            <%= team.name %>
+
+                    </h1>
                 </div>
                 <div class="row">
-                    Team Name: <%= team.name %>
                 </div>
+                <div class="row team-header mt-4">
+
                 <% if(user.isLeader) { %>
                 <% if(user.teamId === team.id) { %>
-                <div class="row">
-                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#addAnnouncementModal">
+                    <button type="button" class="btn btn-outline-dark mr-4" data-toggle="modal" data-target="#addAnnouncementModal">
                         Add Announcement
                     </button>
-                </div>
                 <% }; %>
                 <% }; %>
+                <h4>Announcement</h4>
+            </div>
+
                     <!-- announcement table -->
                     <% if(user.teamId === team.id) { %>
                     <% team.announcements.forEach((p)=>{ %>
-                <div class="row ">
+                <div class="row mt-4">
                     <div class="col-10">
 
                     <div class="card">

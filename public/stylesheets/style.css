@@ -117,3 +117,9 @@ a {
     border: solid 1px rgb(202, 200, 200);
     border-radius: 20px;
 }
+
+/* schedule */
+.team-header {
+    display: flex;
+    align-items: center;
+}
