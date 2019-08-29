@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-10">  
                 <div class="row">                               
-                    <h1>Profile</h1>
+                    <h1>Announcement</h1>
                 </div>
                 <div class="row">
                     Team Name: <%= team.name %>
@@ -22,13 +22,15 @@
                 </div>
                 <% }; %>
                 <% }; %>
-                <div class="row">
                     <!-- announcement table -->
                     <% if(user.teamId === team.id) { %>
                     <% team.announcements.forEach((p)=>{ %>
+                <div class="row ">
+                    <div class="col-10">
+
                     <div class="card">
                         <div class="card-header">
-                            <%= p.time %>
+                            <%= p.time.toLocaleString() %>
                         </div>
                         <div class="card-body">
                             <h6 class="card-title"><%= p.title %></h6>
@@ -36,7 +38,7 @@
                                 <%= p.content %>
                             </p>
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#c<%= p.id%>" aria-expanded="false" aria-controls="collapseExample">
-                                Comments
+                                Show Comments
                             </button>
                             <% if(user.isLeader) { %>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAnnouncementModal">
@@ -60,9 +62,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                </div>    
+
                     <% }); %>
                     <% } %>
-                </div>    
             </div>
             <%- include('../partials/subNav') %>
         </div>
