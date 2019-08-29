@@ -13,7 +13,7 @@
                         Name: <%= user.name %>
                 </div>
                 <div class="row">
-                        Email: 
+                        Email: <%= user.email %>
                 </div>
                 <div class="row">
                     Favourite Team: <%= user.favTeam %>
@@ -27,7 +27,7 @@
                     </button>
                     <% if(user.teamId !== '') {%>
                         <a href="/teams/<%= user.teamId %>" class="btn btn-outline-dark" role="button" aria-pressed="true">
-                            See My Team
+                            My Team
                         </a>
                     <% } %>  
                 </div>
