@@ -8,6 +8,8 @@ router.put('/leave', playersCtrl.leaveTeam);
 router.put('/join', playersCtrl.joinTeam);
 router.put('/', playersCtrl.updatePlayer);
 
+router.post('/', playersCtrl.newAvatar);
+
 
 // Insert this middleware for routes that require a logged in user
 function isLoggedIn(req, res, next) {

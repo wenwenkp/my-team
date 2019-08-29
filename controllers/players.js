@@ -1,5 +1,7 @@
 var Players = require('../models/player');
 var Teams = require('../models/team');
+var formidable = require("formidable");
+var fs = require("fs");
 
 module.exports = {
     index,
@@ -7,6 +9,7 @@ module.exports = {
     updatePlayer,
     leaveTeam,
     joinTeam,
+    newAvatar,
 }
 
 function index(req, res, next) {
@@ -84,6 +87,18 @@ function joinTeam(req, res, next) {
       res.redirect('/players');
     })
   })
+}
+
+function newAvatar(req, res, next) {
+  var form = new formidable.IncomingForm();
+  form.parse(req, function(error, fields, files) {
+      fs.writeFileSync(`public/images/players-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+      Players.findById(req.user.id, (err, player)=>{
+        player.avatar = `/images/players-avatar/${files.upload.name}`;
+        player.save();
+      })
+      res.redirect('/players') ;
+  });
 }
 
 
