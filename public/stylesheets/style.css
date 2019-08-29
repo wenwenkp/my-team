@@ -73,11 +73,6 @@ a {
 }
 
 /* create team form */
-.create-form {
-    display: flex;
-    flex-direction: column;
-}
-.create-form > div {
-    display: flex;
-    
+.team-logos > div > div >img {
+    border-radius: 20px;
 }
