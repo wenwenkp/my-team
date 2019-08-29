@@ -124,3 +124,10 @@ a {
     display: flex;
     align-items: center;
 }
+
+/* announcement */
+.post-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

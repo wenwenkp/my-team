@@ -33,9 +33,14 @@
                 <div class="row mt-4">
                     <div class="col-10">
 
-                    <div class="card">
-                        <div class="card-header bg-light border-dark">
+                    <div class="card bg-light border-dark">
+                        <div class="card-header post-card">
                             <%= p.time.toLocaleString() %>
+                            <% if(user.isLeader) { %>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAnnouncementModal">
+                                    Delete
+                                </button>
+                                <% }; %>
                         </div>
                         <div class="card-body">
                             <h6 class="card-title"><%= p.title %></h6>
@@ -45,11 +50,7 @@
                             <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#c<%= p.id%>" aria-expanded="false" aria-controls="collapseExample">
                                 Show Comments
                             </button>
-                            <% if(user.isLeader) { %>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAnnouncementModal">
-                                Delete
-                            </button>
-                            <% }; %>
+                            
                         </div>
                         <div class="collapse" id="c<%= p.id %>">
                             <div class="card card-body">
@@ -89,7 +90,7 @@
         <div class="modal-content">
             <form action="/teams/<%= user.teamId %>/announcements" method="POST">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addAnnouncementModalTitle">Modal title</h5>
+                    <h5 class="modal-title" id="addAnnouncementModalTitle">New Announcement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -119,7 +120,7 @@
           <div class="modal-content">
             <form action="/announcements/<%= user.teamId %>?_method=DELETE" method="POST">
                 <div class="modal-header">
-                <h5 class="modal-title" id="deleteAnnouncementModalTitle">Modal title</h5>
+                <h5 class="modal-title" id="deleteAnnouncementModalTitle">Delete This Announcement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
