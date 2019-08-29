@@ -33,11 +33,10 @@ button {
 .no-style {
     list-style: none;
 }
-.news {
+.news-main {
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    justify-content: start;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
     align-items: center;
   }
   .news-img {
@@ -55,4 +54,13 @@ button {
   }
   .header-img {
       border-radius: 20px 20px 0px 0px
+  }
+  .home-main {
+      width: 1200px;
+      height: 300px;
+      background-color: grey;
+      border-radius: 0px 0px 20px 20px;
+  }
+  .home-title {
+      /* margin-top: 40px; */
   }
