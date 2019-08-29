@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<div class="mx-auto mt-5 container" style="width: 800px;">
+<div class="mx-auto mt-5 container" style="width: 900px;">
     <div class="row">
         <div class="col-9">  
         </div>
@@ -14,47 +14,37 @@
     <hr>
     
     <div class="container">
-        <!-- need to set section as grid -->
-        <section>
+
+
+            <main class="teams-main">
             <% teams.forEach((team)=>{ %>
-            <div class="card" style="width: 12rem;">
-                <img src="<%= team.logo %>" class="card-img-top team-avatar" alt="team logo">
-                <div class="card-body">
-                <ul>
-                    <li class="no-style">
-                    <h5 class="card-title no-pad"><%= team.name %></h5>
+                <section class="teams">
+                    <div class="teams-info">
+                        <h2 class="ml-3"><%= team.name %></h2>
+                        <div class="info-body mt-4">
+                            <a href="/teams/<%= team.id %>" class="btn btn-outline-dark mr-4 ml-3 btn-sm">Go Check</a>
+                            <% if(!user.teamId){ %>
+                            <form action="/players/join?_method=PUT" method="POST">
+                                <input type="text" name="teamId" value="<%= team.id %>" hidden>
+                                <button type="submit" class="btn btn-outline-dark btn-sm">Join</button>
+                            </form>
+                            <% } %>
+                        </div>
 
-                    </li>
-                    <li class="no-style">
-                        Leader: 
-                        <%= team.leader %>
-                    </li>
-                    <li class="no-style">
-                        Found Date: 
-                        <%= team.foundDate %>
-                    </li>
-            <li class="no-style">
+                    </div>
+                    <div class="teams-logos">
+                        <a href="/teams/<%= team.id %>">
+                            <img src="<%= team.logo %>" alt="team logo">                            
+                        </a>
+                    </div>
+                </section>
+                <% }) %>
+            </main>
 
-                    <a href="/teams/<%= team.id %>" class="btn btn-outline-dark">Go Check</a>
-                </li>
-                <li class="no-style">
 
-                    <% if(!user.teamId){ %>
-                    <form action="/players/join?_method=PUT" method="POST">
-                        <input type="text" name="teamId" value="<%= team.id %>" hidden>
-                        <button type="submit" class="btn btn-success">Join</button>
-                    </form>
-                    <% } %>
-                </li>
-
-                </ul>
-            </div>
-
-            </div>
-            <% })%>
-        </section>
+        <!-- need to set section as grid -->
+        
     </div>
-
 </div>
 
 
