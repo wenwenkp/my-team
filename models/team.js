@@ -27,7 +27,7 @@ var announcementSchema = new Schema({
     },
     time: {
         type: Date,
-        default: () => {return new Date;}
+        default: () => { return new Date; }
     },
     content: {
         type: String,
@@ -56,15 +56,15 @@ var teamSchema = new Schema({
     location: String,
     name: String,
     leader: String,
-    players:[{
-        type: Schema.Types.ObjectId, 
+    players: [{
+        type: Schema.Types.ObjectId,
         ref: 'Player'
     }],
-    description:{
+    description: {
         type: String,
         required: true
     },
-    matches:[matchSchema],
+    matches: [matchSchema],
     foundDate: {
         type: String,
         default: () => {
@@ -72,9 +72,9 @@ var teamSchema = new Schema({
             return today.toLocaleString();
         }
     },
-    announcements:[announcementSchema],
-},{
-    timestamps: true
+    announcements: [announcementSchema],
+}, {
+        timestamps: true
 });
 
 module.exports = mongoose.model('Team', teamSchema);
