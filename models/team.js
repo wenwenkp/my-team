@@ -5,7 +5,10 @@ var commentSchema = new Schema({
     time: {
         type: Date,
         required: true,
-        default: () => {return new Date;}
+        default: () => {
+            var now = new Date;
+            return now.toLocaleString();
+        }
     },
     text: {
         type: String,

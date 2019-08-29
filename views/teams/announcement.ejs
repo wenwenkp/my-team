@@ -60,9 +60,13 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Confirm</button>
                                 </form>
+                                <hr>
                                 <% p.comments.forEach((c)=>{ %>
-                                <h6>At <%= c.time %>  By <%= c.author %></h6>
-                                <p><%= c.text %></p>
+                                    <div>
+                                        <h6><%= c.text %></h6>
+                                        <small class="text-muted"><%= c.time.toLocaleString() %>  By <%= c.author %></small>
+                                    </div>
+                                    <hr>
                                 <% }); %>
                             </div>
                         </div>
