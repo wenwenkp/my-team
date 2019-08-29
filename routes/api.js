@@ -14,6 +14,7 @@ router.get('/uk', function (req, res, next) {
         })
     })
 });
+
 router.get('/usa', function (req, res, next) {
     request.get(usaSportApi, (error, response, newsData) => {
         const parsedData = JSON.parse(newsData);
