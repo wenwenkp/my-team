@@ -1,24 +1,24 @@
 <%- include('../partials/secondP') %>
 
+<div class="mx-auto mt-5 container" style="width: 900px;">
+
 <main class="news-main">
 
 
 <% newsData.forEach((news)=>{ %>
     <section class="news">
-      <div>
-          <h2><a href="<%= news.url %>"><%= news.title %></a></h2>
+      <div class="info">
+          <h5><a href="<%= news.url %>"><%= news.title %></a></h5>
+          <small class="text-muted">Source: <%= news.source.name %></small><br>
+          <small class="text-muted"><%= news.publishedAt %></small>
       </div>
       <div>
-          <p><a href="<%= news.url %>"><img src="<%= news.urlToImage %>" alt="image" class="news-img"></a></p>
-      </div>
-      <div>
-          <h4>Description: <%= news.description %></h4>
-          <h5>Source: <%= news.source.name %>,  By: <%= news.author %>   <%= news.publishedAt %></h5>
+          <a href="<%= news.url %>"><img src="<%= news.urlToImage %>" alt="image" class="news-img"></a>
       </div>
 
     </section>
   <% }) %>
 
 </main>
- 
+ </div>
 <%- include('../partials/footer') %>

@@ -33,16 +33,39 @@ button {
 .no-style {
     list-style: none;
 }
-.news-main {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    justify-content: center;
-    align-items: center;
-  }
-  .news-img {
-    max-width: 300px;
+
+
+/* api */
+.news {
+    /* display: grid;
+    grid-template-columns: 50% 50%;
+    padding-left: 50px;
+    justify-content: start;
+    align-items: start;
+    margin-bottom: 20px;
+    border: grey solid 1px; */
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
     border-radius: 20px;
+    border: solid 1px rgb(202, 200, 200);
+    width: 800px
+}
+.info {
+    padding: 20px 20px 10px 40px;
   }
+.news-img {
+    max-width: 300px;
+    border-radius: 0px 20px 20px 0px;
+}
+a {
+    text-decoration: none;
+}
+.news-main {
+    /* text-align: center; */
+    margin-top: 30px;
+}
+
   a {
     text-decoration: none;
   }
