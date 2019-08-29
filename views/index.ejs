@@ -1,21 +1,18 @@
 <%- include('./partials/header') %>
 
-<div class="img-fluid home-main">
-    <div style="width: 600px; text-align: center">
-        <h1 class="home-title">Join Us!</h1>
-    </div>
-</div>
-<div class="mx-auto" style="width: 600px; text-align: center; margin-top: 0px;">
+<div class="mx-auto mt-5" style="width: 800px; text-align: right">
     
-    <h1>Main Page</h1>
-    <% if (!user) { %>
-
-    <h1>Please Log In To Continue</h1>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#loginModal">
-        Log In
-    </button>
-    <% } %>
+    <div class="card bg-dark text-white">
+        <img src="/images/background.jpg" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <!-- Button trigger modal -->
+            <% if (!user) { %>
+            <button type="button" class="btn btn-warning btn-lg home-btn" data-toggle="modal" data-target="#loginModal">
+                Log In
+            </button>
+            <% } %>
+        </div>
+    </div>
 
 </div>
       
