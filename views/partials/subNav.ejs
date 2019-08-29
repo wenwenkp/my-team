@@ -3,15 +3,15 @@
         <!-- team logo -->
             <img src="<%= team.logo %>" alt="team avatar" class="team-avatar">
         </div>
-        <div class="row d-flex justify-content-end">
+        <div class="row d-flex justify-content-end mt-5">
         <!-- buttons -->
-            <a href="/teams/<%= team.id %>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+            <a href="/teams/<%= team.id %>" class="btn btn-outline-dark btn-m" role="button" aria-pressed="true">
                 Team Info
             </a>
         </div>
-        <div class="row d-flex justify-content-end">
+        <div class="row d-flex justify-content-end mt-3">
         <!-- buttons -->
-            <a href="/matches/<%= team.id %>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+            <a href="/matches/<%= team.id %>" class="btn btn-outline-dark btn-m" role="button" aria-pressed="true">
                 Schedule
             </a>
         </div>
@@ -19,7 +19,7 @@
         <!-- buttons -->
         <% if(user.teamId) { %>
             <% if(user.teamId == team.id) { %>                    
-            <a href="/announcements/<%= team.id %>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">
+            <a href="/announcements/<%= team.id %>" class="btn btn-outline-dark btn-m mt-3" role="button" aria-pressed="true">
                 Announcements
             </a>
             <% } %>
