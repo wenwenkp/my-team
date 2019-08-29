@@ -1,5 +1,7 @@
 var Teams = require('../models/team');
 var Players = require('../models/player');
+var formidable = require("formidable");
+var fs = require("fs");
 
 module.exports = {
     index,
@@ -15,6 +17,7 @@ module.exports = {
     createMatch,
     deleteMatch,
     createComment,
+    newLogo,
 };
 
 function index(req, res, next) {
@@ -187,3 +190,15 @@ function createComment(req, res, next) {
         // })
     })
 }
+
+function newLogo(req, res, next) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(error, fields, files) {
+        fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+        Teams.findById(req.user.teamId, (err, team)=>{
+          team.logo = `/images/teams-avatar/${files.upload.name}`;
+          team.save();
+        })
+        res.redirect(`/teams/${req.user.teamId}`) ;
+    });
+  }
