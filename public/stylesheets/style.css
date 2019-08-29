@@ -21,6 +21,7 @@ a {
 }
 .team-avatar {
     max-width: 200px;
+    border-radius: 20px;
 }
 .p-avatar{
     max-width: 20px;
