@@ -6,6 +6,7 @@ router.get('/:id', teamsCtrl.showTeam);
 
 router.put('/:id/matches', teamsCtrl.createMatch);
 router.post('/:id/announcements', teamsCtrl.createAnnouncement);
+router.post('/:id/comments', teamsCtrl.createComment);
 
 router.put('/:id', teamsCtrl.updateTeam);
 

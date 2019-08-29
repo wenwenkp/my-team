@@ -170,7 +170,7 @@ function createComment(req, res, next) {
         req.body.author = req.user.name;
         team.announcements[targetIdx].comments.push(req.body);
         team.save();
-        res.redirect(`/teams/announcements/${team.announcements[targetIdx]._id}`);
+        res.redirect(`/announcements/${team.id}`);
         // res.render('teams/announcement', {
         //     user: req.user,
         //     team,
