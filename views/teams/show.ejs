@@ -35,29 +35,31 @@
 
 
         </div>
+<hr>
+<div class="row">                               
+        <h1 class="mb-5">Players</h1>
+    </div>
 
         <!-- players list -->
         <!-- need to set section as grid -->
-        <section>
+        <section class="players-list">
             <% team.players.forEach((p)=>{ %>
-            <div class="card" style="width: 15rem;">
-                <img src="<%= p.avatar %>" class="card-img-top" alt="">
-                <div class="card-body">
-                    <p class="card-text">
-                        <span class="card-text">
-                            <%= p.name %>
-                        </span>
-                        <span class="card-text">
-                            Favourite Position: <%= p.favPosition %>
-                        </span>
-                        <span class="card-text">
-                            <small class="text-muted">
-                                <% if(p.isLeader) { %>
-                                    Leader
-                                <% } %>
-                            </small>
-                        </span>
-                    </p>
+            <div class="player mr-3 mb-5">
+                <img src="<%= p.avatar %>" class="player-logo" alt="player logo">
+                <div class="player-info">
+                    <h2 class="player-name">
+                        <%= p.name %>
+                    </h2>
+                    <h6 class="player-position">
+                        Position: <%= p.favPosition %>
+                    </h6>
+                    <span class="captain">
+                        <small class="text-muted">
+                            <% if(p.isLeader) { %>
+                                Leader
+                            <% } %>
+                        </small>
+                    </span>
                 </div>
             </div>
             <% }) %>
