@@ -15,7 +15,6 @@ var indexRouter = require('./routes/index');
 var playersRouter = require('./routes/players');
 var teamsRouter = require('./routes/teams');
 var announcementsRouter = require('./routes/announcements');
-var commentsRouter = require('./routes/comments');
 var matchesRouter = require('./routes/matches');
 var apiRouter = require('./routes/api');
 
@@ -43,7 +42,6 @@ app.use('/', indexRouter);
 app.use('/players', playersRouter);
 app.use('/teams', teamsRouter);
 app.use('/', announcementsRouter);
-app.use('/', commentsRouter);
 app.use('/', matchesRouter);
 app.use('/api', apiRouter);
 

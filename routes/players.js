@@ -3,7 +3,6 @@ var playersCtrl = require('../controllers/players');
 
 // GET /players
 router.get('/', isLoggedIn, playersCtrl.index);
-router.get('/edit', playersCtrl.editPlayer);
 
 router.put('/leave', playersCtrl.leaveTeam);
 router.put('/join', playersCtrl.joinTeam);

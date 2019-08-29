@@ -2,11 +2,15 @@
 
 <div class="mx-auto mt-5 container" style="width: 600px; text-align: center">
     <h1>Main Page</h1>
+    <% if (!user) { %>
+
     <h1>Please Log In To Continue</h1>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#loginModal">
         Log In
     </button>
+    <% } %>
+
 </div>
       
 <!-- Modal -->

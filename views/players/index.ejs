@@ -25,10 +25,10 @@
                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
                         Edit Profile
                     </button>
-                </div>
-                <div class="row">
                     <% if(user.teamId !== '') {%>
-                        <a href="/teams/<%= user.teamId %>">Check My Team</a>
+                        <a href="/teams/<%= user.teamId %>" class="btn btn-outline-dark" role="button" aria-pressed="true">
+                            See My Team
+                        </a>
                     <% } %>  
                 </div>
             </div>

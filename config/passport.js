@@ -13,6 +13,7 @@ passport.use(new GoogleStrategy({
             if(player) {
                 if (!player.avatar) {
                     player.avatar = profile.photos[0].value;
+                    player.email = profile.emails[0].value,
                     player.save((err)=>{
                     return cb(null, player);
                     });

@@ -2,9 +2,9 @@ var router = require('express').Router();
 var teamsCtrl = require('../controllers/teams');
 
 router.get('/', isLoggedIn, teamsCtrl.index);
-router.get('/:id', teamsCtrl.showTeam);
+router.get('/:id', isLoggedIn, teamsCtrl.showTeam);
 
-router.put('/:id/matches', teamsCtrl.createMatch);
+router.post('/:id/matches', teamsCtrl.createMatch);
 router.post('/:id/announcements', teamsCtrl.createAnnouncement);
 router.post('/:id/comments', teamsCtrl.createComment);
 

@@ -49,6 +49,8 @@ var matchSchema = new Schema({
 });
 
 var teamSchema = new Schema({
+    logo: String,
+    location: String,
     name: String,
     leader: String,
     players:[{
@@ -64,7 +66,7 @@ var teamSchema = new Schema({
         type: String,
         default: () => {
             var today = new Date;
-            return today.toDateString();
+            return today.toLocaleString();
         }
     },
     announcements:[announcementSchema],

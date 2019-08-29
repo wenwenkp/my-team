@@ -19,11 +19,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
+                    <div class="navbar-nav mr-auto">
+                        <div class="nav-item">
                             <a class="nav-link" href="/">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
+                        </div>
+                        <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               News
                             </a>
@@ -33,16 +33,16 @@
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
+                        </div>
+                        <div class="nav-item">
                             <a class="nav-link" href="/players">Profile</a>
-                        </li>
-                        <li class="nav-item">
+                        </div>
+                        <div class="nav-item">
                                 <a class="nav-link" href="/teams">My Team</a>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                     <% if (user) { %>
-                    <a href="/logout" class="btn btn-light btn-lg active" role="button" aria-pressed="true">Log Out</a>
+                    <a href="/logout" class="btn btn-outline-dark" role="button" aria-pressed="true">Log Out</a>
                     <% } %>
                 </div>
             </nav>
