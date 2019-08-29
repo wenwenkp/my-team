@@ -21,8 +21,8 @@
                 <div class="row">
                     Favourite Position: <%= user.favPosition %>
                 </div>
-                <div class="row">
-                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModalCenter">
+                <div class="row mt-5">
+                    <button type="button" class="btn btn-outline-dark mr-5" data-toggle="modal" data-target="#exampleModalCenter">
                         Edit Profile
                     </button>
                     <% if(user.teamId !== '') {%>
@@ -54,7 +54,6 @@
                 </div>
 
                 <div class="modal-body">
-                    <!-- <div class="col-8">   -->
                         <div class="form-group">
                             <label for="favourite-team" class="col-form-label">Favourite Team:</label>
                             <input type="text" class="form-control" name="favTeam">
@@ -63,13 +62,6 @@
                             <label for="favourite-position" class="col-form-label">Favourite Position</label>
                             <input class="form-control" name="favPosition"></textarea>
                         </div>
-                        <!-- <div class="row">
-                            Favourite Team: <input type="text" name="favTeam">
-                        </div>
-                        <div class="row">
-                            Favourite Position: <input type="text" name="favPosition">
-                        </div> -->
-                    <!-- </div> -->
                 </div>
 
                 <div class="modal-footer">

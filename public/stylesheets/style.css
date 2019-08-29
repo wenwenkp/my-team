@@ -17,6 +17,7 @@ a {
 }
 .self-avatar {
     max-width: 100px;
+    border-radius: 15px;
 }
 .team-avatar {
     max-width: 200px;
