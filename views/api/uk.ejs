@@ -1,20 +1,43 @@
 <%- include('../partials/secondP') %>
 
-<div class="mx-auto mt-5 container" style="width: 900px;">
-    <main class="news-main">
-        <% newsData.forEach((news)=>{ %>
-        <section class="news">
-            <div class="info">
-                <h5><a href="<%= news.url %>"><%= news.title %></a></h5>
-                <small class="text-muted">Source: <%= news.source.name %></small><br>
-                <small class="text-muted"><%= news.publishedAt %></small>
-            </div>
-            <div>
-                <a href="<%= news.url %>"><img src="<%= news.urlToImage %>" alt="image" class="news-img"></a>
-            </div>
-        </section>
-        <% }) %>
-    </main>
+<div class="mx-auto mt-5 container" style="width: 1000px;">
+    <div class="row">
+        <div class="col-2">
+            <ul class="nav flex-column news-main">
+                <li class="nav-item">
+                    <a class="btn btn-outline-dark btn-lg mb-3" role="button" aria-pressed="true" href="/api/uk">UK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-dark btn-lg mb-3" role="button" aria-pressed="true" href="/api/usa">USA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-dark btn-lg mb-3" role="button" aria-pressed="true" href="/api/br">Brazil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-dark btn-lg mb-3" role="button" aria-pressed="true" href="/api/de">Germany</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-dark btn-lg mb-3" role="button" aria-pressed="true" href="/api/fr">France</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <main class="news-main">
+                <% newsData.forEach((news)=>{ %>
+                <section class="news">
+                    <div class="info">
+                        <h5><a href="<%= news.url %>"><%= news.title %></a></h5>
+                        <small class="text-muted">Source: <%= news.source.name %></small><br>
+                        <small class="text-muted"><%= news.publishedAt %></small>
+                    </div>
+                    <div>
+                        <a href="<%= news.url %>"><img src="<%= news.urlToImage %>" alt="image" class="news-img"></a>
+                    </div>
+                </section>
+                <% }) %>
+            </main>
+        </div>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
