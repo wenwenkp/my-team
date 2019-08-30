@@ -29,19 +29,25 @@ function index(req, res, next) {
 
 function createTeam(req, res, next) {
     var form = new formidable.IncomingForm();
-    form.parse(req, (error, fields, files) => {
-        fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
-        var newTeam = new Teams(fields);
-        newTeam.save();
-        newTeam.logo = `/images/teams-avatar/${files.upload.name}`;
-        newTeam.players.push(req.user.id);
-        newTeam.leader = req.user.name;
-        Players.findById(req.user.id, (err, p) => {
-            p.teamId = newTeam.id;
-            p.isLeader = true;
-            p.save();
-            res.redirect('/players');
+    if (req.upload) {
+        form.parse(req, (error, fields, files) => {
+            fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+            var newTeam = new Teams(fields);
+            newTeam.save();
+            newTeam.logo = `/images/teams-avatar/${files.upload.name}`;
         })
+    } else {
+        var newTeam = new Teams(req.body);
+        newTeam.save();
+        newTeam.logo = `/images/default-team-logo.jpg`;
+    };
+    newTeam.players.push(req.user.id);
+    newTeam.leader = req.user.name;
+    Players.findById(req.user.id, (err, p) => {
+        p.teamId = newTeam.id;
+        p.isLeader = true;
+        p.save();
+        res.redirect('/players');
     })
 }
 
