@@ -57,6 +57,7 @@ My Team is an app for soccer fans to create or join a team.
 
 ### Link to The Game
 Please click here to join my team:
+[https://my-soccer-team.herokuapp.com/](https://my-soccer-team.herokuapp.com/)
 
 ### Instructions
 - Users does not need to log in to read the news.
