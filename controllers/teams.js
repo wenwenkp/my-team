@@ -30,11 +30,6 @@ function index(req, res, next) {
 function createTeam(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.rename(files.upload.name, req.user.teamId, (err)=>{
-            if(err){
-                return console.log(err);
-            }
-        });
         fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
         var newTeam = new Teams(fields);
         newTeam.save();
@@ -159,11 +154,6 @@ function createComment(req, res, next) {
 function newLogo(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.rename(files.upload.name, req.user.teamId, (err)=>{
-            if(err){
-                return console.log(err);
-            }
-        });
         fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
         Teams.findById(req.user.teamId, (err, team) => {
             team.logo = `/images/teams-avatar/${files.upload.name}`;

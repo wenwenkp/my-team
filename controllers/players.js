@@ -79,16 +79,6 @@ function joinTeam(req, res, next) {
 function newAvatar(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.unlink(`public/images/teams-avatar/${req.user.avatar}`, (err)=>{
-            if(err) {
-                return console.log(err);
-            }
-        });
-        fs.rename(files.upload.name, req.user.id, (err)=>{
-            if(err){
-                return console.log(err);
-            }
-        });
         fs.writeFileSync(`public/images/players-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
         Players.findById(req.user.id, (err, player) => {
             player.avatar = `/images/players-avatar/${files.upload.name}`;
