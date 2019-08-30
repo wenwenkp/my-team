@@ -7,27 +7,27 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
 },
-    function(accessToken, refreshToken, profile, cb) {
-        Player.findOne({'googleId':profile.id}, (err, player)=>{
-            if(err) return cb(err);
-            if(player) {
+    function (accessToken, refreshToken, profile, cb) {
+        Player.findOne({ 'googleId': profile.id }, (err, player) => {
+            if (err) return cb(err);
+            if (player) {
                 if (!player.avatar) {
                     player.avatar = profile.photos[0].value;
                     player.email = profile.emails[0].value,
-                    player.save((err)=>{
-                    return cb(null, player);
-                    });
-                }else{
+                        player.save((err) => {
+                            return cb(null, player);
+                        });
+                } else {
                     return cb(null, player);
                 }
-            }else{
+            } else {
                 var newPlayer = new Player({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     googleId: profile.id
                 });
-                newPlayer.save((err)=>{
-                    if(err) return cb(err);
+                newPlayer.save((err) => {
+                    if (err) return cb(err);
                     return cb(null, player);
                 })
             }
@@ -35,12 +35,12 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-passport.serializeUser((player, done)=>{
+passport.serializeUser((player, done) => {
     done(null, player.id);
 });
 
-passport.deserializeUser((id, done)=>{
-    Player.findById(id, (err, player)=>{
+passport.deserializeUser((id, done) => {
+    Player.findById(id, (err, player) => {
         done(err, player);
     });
 });
