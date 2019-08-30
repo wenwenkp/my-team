@@ -79,9 +79,9 @@ function joinTeam(req, res, next) {
 function newAvatar(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.writeFileSync(`public/images/players-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+        fs.writeFileSync(`public/images/${files.upload.name}`, fs.readFileSync(files.upload.path));
         Players.findById(req.user.id, (err, player) => {
-            player.avatar = `/images/players-avatar/${files.upload.name}`;
+            player.avatar = `/images/${files.upload.name}`;
             player.save();
         })
         res.redirect('/players');

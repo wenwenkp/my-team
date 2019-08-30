@@ -30,10 +30,10 @@ function index(req, res, next) {
 function createTeam(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+        fs.writeFileSync(`public/images/${files.upload.name}`, fs.readFileSync(files.upload.path));
         var newTeam = new Teams(fields);
         newTeam.save();
-        newTeam.logo = `/images/teams-avatar/${files.upload.name}`;
+        newTeam.logo = `/images/${files.upload.name}`;
         newTeam.players.push(req.user.id);
         newTeam.leader = req.user.name;
         Players.findById(req.user.id, (err, p) => {
@@ -154,9 +154,9 @@ function createComment(req, res, next) {
 function newLogo(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
+        fs.writeFileSync(`public/images/${files.upload.name}`, fs.readFileSync(files.upload.path));
         Teams.findById(req.user.teamId, (err, team) => {
-            team.logo = `/images/teams-avatar/${files.upload.name}`;
+            team.logo = `/images/${files.upload.name}`;
             team.save();
         })
         res.redirect(`/teams/${req.user.teamId}`);
