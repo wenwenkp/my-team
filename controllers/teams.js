@@ -30,6 +30,16 @@ function index(req, res, next) {
 function createTeam(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
+        fs.unlink(`public/images/teams-avatar/${files.upload.name}`, (err)=>{
+            if(err) {
+                return console.log(err);
+            }
+        });
+        fs.rename(files.upload.name, req.user.id, (err)=>{
+            if(err){
+                return console.log(err);
+            }
+        });
         fs.writeFileSync(`public/images/teams-avatar/${files.upload.name}`, fs.readFileSync(files.upload.path));
         var newTeam = new Teams(fields);
         newTeam.save();
