@@ -159,11 +159,6 @@ function createComment(req, res, next) {
 function newLogo(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.unlink(`public/images/teams-avatar/${files.upload.name}`, (err)=>{
-            if(err) {
-                return console.log(err);
-            }
-        });
         fs.rename(files.upload.name, req.user.teamId, (err)=>{
             if(err){
                 return console.log(err);

@@ -79,7 +79,7 @@ function joinTeam(req, res, next) {
 function newAvatar(req, res, next) {
     var form = new formidable.IncomingForm();
     form.parse(req, (error, fields, files) => {
-        fs.unlink(`public/images/teams-avatar/${files.upload.name}`, (err)=>{
+        fs.unlink(`public/images/teams-avatar/${req.user.avatar}`, (err)=>{
             if(err) {
                 return console.log(err);
             }
