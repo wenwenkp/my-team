@@ -34,10 +34,8 @@ function createTeam(req, res, next) {
         var newTeam = new Teams(fields);
         newTeam.save();
         newTeam.logo = `/images/teams-avatar/${files.upload.name}`;
-
         newTeam.players.push(req.user.id);
         newTeam.leader = req.user.name;
-
         Players.findById(req.user.id, (err, p) => {
             p.teamId = newTeam.id;
             p.isLeader = true;
@@ -45,8 +43,6 @@ function createTeam(req, res, next) {
             res.redirect('/players');
         })
     })
-
-
 }
 
 function showTeam(req, res, next) {
