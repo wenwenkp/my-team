@@ -47,7 +47,6 @@ function createTeam(req, res, next) {
 
 function showTeam(req, res, next) {
     Teams.findById(req.params.id).populate('players').exec((err, team) => {
-        console.log(req.params.id);
         res.render('teams/show', {
             user: req.user,
             team,
@@ -116,7 +115,6 @@ function createMatch(req, res, next) {
     Teams.findById(req.user.teamId, (err, team) => {
         team.matches.unshift(req.body);
         team.save();
-        console.log(`match created!!!`);
         res.redirect(`/matches/${team.id}`);
     })
 }
@@ -142,7 +140,6 @@ function createComment(req, res, next) {
                 targetIdx = idx;
             }
         });
-        console.log(team.announcements[targetIdx].id);
         req.body.author = req.user.name;
         team.announcements[targetIdx].comments.unshift(req.body);
         team.save();
