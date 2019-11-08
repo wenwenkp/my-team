@@ -55,7 +55,7 @@ My Team is an app for soccer fans to create or join a team.
 9. Heroku
 10. Third-Part API
 
-### Link to The Game
+### Link to The App
 Please click here to join my team:
 [https://my-soccer-team.herokuapp.com](https://my-soccer-team.herokuapp.com)
 
